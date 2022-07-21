@@ -20,7 +20,7 @@ const Pricing = () => {
     },
   ];
   return (
-    <div>
+    <div className="w-5/6 mx-auto">
       <h3 className="text-center my-5 signika text-4xl">Pricing</h3>
       <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-3">
         {pricings?.map((pricing) => {
