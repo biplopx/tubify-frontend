@@ -5,11 +5,11 @@ import Pricing from './Pricing/Pricing';
 
 const Home = () => {
   return (
-    <div>
+    <>
       <Banner />
       <Pricing />
       <ConnectUs />
-    </div>
+    </>
   );
 };
 
