@@ -1,0 +1,20 @@
+/* =========================
+     Google Font Start
+========================== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+/* =========================
+     Google Font End
+========================== */
+.about{
+  background: #000221;
+}
+.about-img{
+  width: 452px;
+height: 485px;
+}
+.about-text{
+font-family: 'Poppins', sans-serif;
+font-weight: 400;
+font-size: 24px;
+line-height: 40px;
+}
