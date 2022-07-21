@@ -5,11 +5,10 @@ const Footer = () => {
     <footer className="bg-[#0D0F2C]">
       <div className="container mx-auto px-5 grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1">
         <div className="col p-5">
-          <h3 className="text-[#FFFFFF] text-[24px] signika">About Us:</h3>
           <div className="mb-2">
             <img
               src="https://i.ibb.co/fFhrMHZ/tubify-logo.png"
-              className="w-[180px] h-[50px]"
+              className="w-[180px]"
               alt=""
             />
           </div>
