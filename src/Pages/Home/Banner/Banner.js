@@ -1,11 +1,14 @@
 import React from 'react';
-import hero from './hero.png'
 import './Banner.css'
-
 const Banner = () => {
   return (
     <section>
-      Banner
+      <div className="grid">
+        <div className="div">
+
+        </div>
+        <div className="div"></div>
+      </div>
     </section>
   );
 };
