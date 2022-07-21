@@ -16,8 +16,8 @@ const Footer = () => {
         </div>
         <div className="col p-5">
           <h3 className="text-[#FFFFFF] text-[24px] signika mb-2">Company</h3>
-          <div className="ml-5">
-            <ul className="list-disc">
+          <div className="">
+            <ul className="">
               <li>About us</li>
               <li>Privecy Policy</li>
               <li>Terms & Conditions</li>
@@ -29,8 +29,8 @@ const Footer = () => {
           <h3 className="text-[#FFFFFF] text-[24px] signika mb-2">
             My Account
           </h3>
-          <div className="ml-5">
-            <ul className="list-disc">
+          <div className="">
+            <ul className="">
               <li>About us</li>
               <li>Privecy Policy</li>
               <li>Terms & Conditions</li>
@@ -40,8 +40,8 @@ const Footer = () => {
         </div>
         <div className="col p-5">
           <h3 className="text-[#FFFFFF] text-[24px] signika mb-2">Subscribe</h3>
-          <div className="ml-5">
-            <ul className="list-disc">
+          <div className="">
+            <ul className="">
               <li>About us</li>
               <li>Privecy Policy</li>
               <li>Terms & Conditions</li>
