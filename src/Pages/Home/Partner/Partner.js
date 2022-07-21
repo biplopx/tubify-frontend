@@ -11,9 +11,9 @@ const Partner = () => {
 
             <div className=" bg-pricing py-4 grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1   content-around  ">
                 <div className='w-2/4 mx-auto'><img className='w-[80px]' src={dolby} alt="" /></div>
-                <div className='w-2/4 mx-auto'><img className='w-[80px]' src={disnep} alt="" /></div>
                 <div className='w-2/4 mx-auto'><img className='w-[80px]' src={pandora} alt="" /></div>
                 <div className='w-2/4 mx-auto'><img className='w-[80px]' src={spotify} alt="" /></div>
+                <div className='w-2/4 mx-auto'><img className='w-[80px]' src={disnep} alt="" /></div>
 
 
             </div>
