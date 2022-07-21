@@ -41,9 +41,9 @@ const Pricing = () => {
     },
   ];
   return (
-    <section className="container mx-auto px-5 my-5">
+    <section className="container mx-auto px-5 mb-[50px]">
       <h3 className="text-center my-5 signika text-[40px]">Pricing</h3>
-      <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-3">
+      <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-[60px]">
         {pricings?.map((pricing) => {
           return (
             <div key={pricing?.id} className="col bg-pricing p-5">
