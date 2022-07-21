@@ -7,7 +7,13 @@ const Pricing = () => {
       id: 1,
       plan: 'Weekly Plan',
       price: 5,
-      services: ['3 movies', ' 5 drams', '1000 songs', '20 tv series'],
+      services: [
+        '3 movies',
+        ' 5 drams',
+        '1000 songs',
+        '1 live music concert',
+        '20 tv series',
+      ],
     },
     {
       id: 2,
@@ -17,6 +23,7 @@ const Pricing = () => {
         'Unlimited movies',
         'Unlimited drams',
         'Unlimited songs',
+        '1 live music concert',
         '30 tv series',
       ],
     },
@@ -29,7 +36,7 @@ const Pricing = () => {
         'Unlimited drams',
         'Unlimited songs',
         '5 live music concerts',
-        '20 tv series',
+        'Unlimited tv series',
       ],
     },
   ];
