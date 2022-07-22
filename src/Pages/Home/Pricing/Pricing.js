@@ -51,7 +51,7 @@ const Pricing = () => {
                 {pricing?.plan}
               </h3>
               <p className="text-xl text-center my-2">
-                $ <span className="font-[500] text-xl">{pricing?.price}</span>
+                $ <span className="font-[500] text-2xl">{pricing?.price}</span>
               </p>
               <div className="lg:pl-[70px] md:pl-[40px] pl-[40px]">
                 <ul className="list-disc">
@@ -61,7 +61,7 @@ const Pricing = () => {
                 </ul>
               </div>
               <div className="text-center my-5">
-                <button className="md:w-1/2 lg:w-2/6 w-2/3 bg-[#3F9FFF] p-2 rounded-[10px]">
+                <button className="px-4 py-2 font-semibold text-sm bg-sky-500 text-white rounded-md shadow-sm opacity-100 mt-5 lg:mt-0 md:mt-0">
                   Buy Now
                 </button>
               </div>
