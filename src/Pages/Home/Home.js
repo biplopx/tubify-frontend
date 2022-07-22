@@ -1,12 +1,20 @@
-import React from 'react';
-import Banner from './Banner/Banner';
+import React from "react";
+import About from "./About/About";
+import Banner from "./Banner/Banner";
+import Pricing from "./Pricing/Pricing";
+import Partner from "./Partner/Partner";
+import WatchEverything from "./WatchEverything/WatchEveryting";
+
 
 const Home = () => {
   return (
-    <div>
-
+    <>
       <Banner />
-    </div>
+      <About />
+      <WatchEverything/>
+      <Partner />
+      <Pricing />
+    </>
   );
 };
 
