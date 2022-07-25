@@ -2,7 +2,7 @@ import React from 'react';
 
 const About = () => {
   return (
-    <section className="about  px-5  py-20">
+    <section className="  px-5  py-20">
       <div className="container mx-auto grid  grid-cols-1 lg:grid-cols-2 md:grid-cols-1 sm:grid-cols-1 gap-10">
         <div>
           <img

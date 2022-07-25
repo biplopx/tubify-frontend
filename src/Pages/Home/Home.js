@@ -6,6 +6,7 @@ import Partner from "./Partner/Partner";
 import WatchEverything from "./WatchEverything/WatchEveryting";
 
 
+
 const Home = () => {
   return (
     <>
@@ -14,6 +15,7 @@ const Home = () => {
       <WatchEverything/>
       <Partner />
       <Pricing />
+      
     </>
   );
 };
