@@ -1,0 +1,21 @@
+.iconBox {
+  width: 132px;
+  height: 132px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(
+    138.22deg,
+    rgba(255, 255, 255, 0.3) 5.15%,
+    rgba(255, 255, 255, 0.1) 89.69%
+  );
+  backdrop-filter: blur(40px);
+  border-radius: 10px;
+}
+
+.iconBox img {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto;
+}

@@ -41,9 +41,9 @@ const Pricing = () => {
     },
   ];
   return (
-    <section className="container mx-auto px-5 mb-[50px]">
+    <section className="container mx-auto px-5 my-5">
       <h3 className="text-center my-5 signika text-[40px]">Pricing</h3>
-      <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-[60px]">
+      <div className="grid lg:grid-cols-3 md:grid-cols-3 grid-cols-1 gap-5 lg:gap-[60px]">
         {pricings?.map((pricing) => {
           return (
             <div key={pricing?.id} className="col bg-pricing p-5">
@@ -51,9 +51,9 @@ const Pricing = () => {
                 {pricing?.plan}
               </h3>
               <p className="text-xl text-center my-2">
-                $ <span className="font-[500] text-xl">{pricing?.price}</span>
+                $ <span className="font-[500] text-2xl">{pricing?.price}</span>
               </p>
-              <div className="pl-[70px]">
+              <div className="lg:pl-[70px] md:pl-[40px] pl-[40px]">
                 <ul className="list-disc">
                   {pricing?.services.map((service) => (
                     <li className="mt-2 text-[16px]">{service}</li>
@@ -61,7 +61,7 @@ const Pricing = () => {
                 </ul>
               </div>
               <div className="text-center my-5">
-                <button className="w-2/6 bg-[#3F9FFF] p-2 rounded-[10px]">
+                <button className="px-4 py-2 font-semibold text-sm bg-sky-500 text-white rounded-md shadow-sm opacity-100 mt-5 lg:mt-0 md:mt-0">
                   Buy Now
                 </button>
               </div>

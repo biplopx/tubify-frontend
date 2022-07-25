@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react';
 
-const AboutUs = () => {
+const About = () => {
   return (
     <section className="about  px-5  py-20">
-      <div className="container mx-auto grid  grid-cols-1 lg:grid-cols-2 gap-10">
+      <div className="container mx-auto grid  grid-cols-1 lg:grid-cols-2 md:grid-cols-1 sm:grid-cols-1 gap-10">
         <div>
           <img
             src="https://i.ibb.co/pPsRgP1/about-image.png"
@@ -12,7 +12,7 @@ const AboutUs = () => {
           />
         </div>
         <div>
-          <p className="leading-loose">
+          <p className="leading-loose mb-5 text-justify">
             Tubify is an online video and music streaming platform. It is making
             online music easy and fun established to bring entertainment to
             people at a low cost. It's easy to find the right music or podcast
@@ -20,7 +20,7 @@ const AboutUs = () => {
             can run your professional and efficient stream studio from home or
             office with Tubify. Subscribe or listen for free.
           </p>
-          <p className="leading-loose">
+          <p className="leading-loose text-justify">
             The primary purpose of this music streaming application is to play
             music available in the service's databases, compose custom playlists
             and suggest similar songs—the best music streaming freelance
@@ -39,4 +39,4 @@ const AboutUs = () => {
   );
 };
 
-export default AboutUs;
+export default About;
