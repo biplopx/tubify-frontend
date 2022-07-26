@@ -11,10 +11,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout children={<Home />} />}></Route>
         <Route path="/about-us" element={<Layout children={<AboutUs />} />}></Route>
-        <Route path="/signup" element={<Layout children={<SignUp/>} />}></Route>
-        <Route path="/login" element={<Layout children={<Login/>} />}></Route>
+        <Route path="/signup" element={<Layout children={<SignUp />} />}></Route>
+        <Route path="/login" element={<Layout children={<Login />} />}></Route>
         <Route path="*" element={<Layout children={<NotFound />} />}></Route>
-        
       </Routes>
     </>
   );
