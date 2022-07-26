@@ -17,15 +17,15 @@
   margin-top: 35px;
 }
 
-.bottom-text {
+.buttom-text {
   color: #00B0FF;
 }
 
 .or-login-option::after {
-  right: 26px;
+  right: 20px;
   position: absolute;
   content: "";
-  width: 118px;
+  width: 126px;
   height: 1px;
   background: #ffffff;
   top: 13px;
@@ -34,9 +34,9 @@
 .or-login-option::before {
   position: absolute;
   content: "";
-  width: 118px;
+  width: 126px;
   height: 1px;
   background: #ffffff;
   top: 13px;
-  left: 26px;
+  left: 20px;
 }
