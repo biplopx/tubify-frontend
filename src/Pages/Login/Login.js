@@ -21,11 +21,11 @@ const Login = () => {
   const handleUserEmail = (e) => {
     setEmail(e.target.value);
   }
-  // const from = location.state?.from?.pathname || "/";
+  const from = location.state?.from?.pathname || "/";
   //*********** Error handle*************** //
-  // if (user) {
-  //   navigate(from, { replace: true });
-  // }
+  if (user) {
+    navigate(from, { replace: true });
+  }
   // if (email != password) {
   //   setPassword("Something Went Wrong. Please Try Again.")
   // }
