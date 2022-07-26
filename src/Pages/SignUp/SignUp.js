@@ -20,7 +20,7 @@ const SignUp = () => {
   const handleUserConfirmPassword = (e) => {
     setConfirmPassword(e.target.value)
   }
- 
+
   const handleCreateUser = (e) => {
     e.preventDefault();
     if (password !== confrimPassword) {
@@ -33,7 +33,7 @@ const SignUp = () => {
     }
     if (user) {
       navigate("/")
-      
+
     }
     createUserWithEmailAndPassword(email, password);
   }
@@ -58,7 +58,7 @@ const SignUp = () => {
             <label htmlFor="confirm-password" className='block text-base pb-2'>Confirm Password </label>
             <input onBlur={handleUserConfirmPassword} type="password" name="confirm-password " className=' px-3' id="" />
           </div>
-          <p className=' text-re'>{error}</p>
+          <p className=' text-red-600  p-3 rounded text-center'>{error}</p>
           <button className='login-btn text-base font-bold white'>SignUp</button>
         </form>
         <div className=' text-base mt-3 text-center'>
