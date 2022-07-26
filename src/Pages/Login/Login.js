@@ -48,7 +48,7 @@ const Login = () => {
             <label htmlFor="password" className='block text-base pb-2'>Password </label>
             <input onBlur={handleUserPassword} type="password" name="password " className=' px-3' id="" />
           </div>
-          <button className='login-btn text-base font-bold white'>Login</button>
+          <button className='login-btn text-base font-bold white mt-7'>Login</button>
         </form>
          <p className=' text-red-600'>{error}</p> 
         <div className=' text-base mt-4 '>
