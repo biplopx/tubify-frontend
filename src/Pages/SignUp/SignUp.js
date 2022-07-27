@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useCreateUserWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init'
+import Loading from '../../components/Loading/Loading';
 const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confrimPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
-  const [createUserWithEmailAndPassword, user] = useCreateUserWithEmailAndPassword(auth);
+  const [createUserWithEmailAndPassword, user, loading] = useCreateUserWithEmailAndPassword(auth);
   const [signInWithGoogle] = useSignInWithGoogle(auth);
+  const location = useLocation();
   const navigate = useNavigate();
   const handleUserEmail = (e) => {
     setEmail(e.target.value);
@@ -20,7 +22,14 @@ const SignUp = () => {
   const handleUserConfirmPassword = (e) => {
     setConfirmPassword(e.target.value)
   }
+  const from = location.state?.from?.pathname || "/";
 
+  if (user) {
+    navigate(from, { replace: true });
+  }
+  if (loading) {
+    return <Loading></Loading>
+  }
   const handleCreateUser = (e) => {
     e.preventDefault();
     if (password !== confrimPassword) {
@@ -31,10 +40,7 @@ const SignUp = () => {
       setError("Password must be 6 characters or longer");
       return;
     }
-    if (user) {
-      navigate("/")
 
-    }
     createUserWithEmailAndPassword(email, password);
   }
   return (

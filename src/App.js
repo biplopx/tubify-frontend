@@ -7,6 +7,7 @@ import SignUp from "./Pages/SignUp/SignUp";
 import Login from "./Pages/Login/Login";
 import DashboardLayout from "./Layouts/DashboardLayout";
 import Explore from "./Pages/Explore/Explore";
+import RequireAuth from "./Pages/RequireAuth/RequireAuth";
 function App() {
   return (
     <>
@@ -15,7 +16,9 @@ function App() {
         <Route path="/about-us" element={<Layout children={<AboutUs />} />}></Route>
         <Route path="/signup" element={<Layout children={<SignUp />} />}></Route>
         <Route path="/login" element={<Layout children={<Login />} />}></Route>
-        <Route path="/explore" element={<DashboardLayout children={<Explore />} />}></Route>
+        <Route path="/explore" element={
+          <DashboardLayout children={<RequireAuth><Explore /></RequireAuth>} />
+        }></Route>
         <Route path="*" element={<Layout children={<NotFound />} />}></Route>
       </Routes>
     </>
