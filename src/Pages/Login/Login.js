@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import Loading from '../../components/Loading/Loading';
 import auth from '../../firebase.init';
 import './Login.css'
 
 const Login = () => {
   const [email, setEmail] = useState("");
-  const [error , setError] =useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const location = useLocation();
@@ -14,6 +14,8 @@ const Login = () => {
   const [
     signInWithEmailAndPassword,
     user,
+    loading,
+    error,
   ] = useSignInWithEmailAndPassword(auth);
   const handleUserPassword = (e) => {
     setPassword(e.target.value);
@@ -22,14 +24,14 @@ const Login = () => {
     setEmail(e.target.value);
   }
   const from = location.state?.from?.pathname || "/";
-  //*********** Error handle*************** //
+
   if (user) {
     navigate(from, { replace: true });
   }
-  // if (email != password) {
-  //   setPassword("Something Went Wrong. Please Try Again.")
-  // }
-  //*********** Error handle*************** //
+  if (loading) {
+    return <Loading></Loading>
+  }
+
   const handleLoginUser = (e) => {
     e.preventDefault();
     signInWithEmailAndPassword(email, password);
@@ -37,7 +39,7 @@ const Login = () => {
   return (
     <div className='flex justify-center items-center mt-10'>
       <div >
-     
+
         <h2 className=' text-2xl font-bold pb-4'>Let’s Login Here</h2>
         <form action="" onSubmit={handleLoginUser}>
           <div className="input-group pb-3">
@@ -48,9 +50,11 @@ const Login = () => {
             <label htmlFor="password" className='block text-base pb-2'>Password </label>
             <input onBlur={handleUserPassword} type="password" name="password " className=' px-3' id="" />
           </div>
+          <p className=' text-red-600 pt-3'>{loading}</p>
+          <p className=' text-red-600 pt-3'>{error?.message}</p>
           <button className='login-btn text-base font-bold white mt-7'>Login</button>
         </form>
-         <p className=' text-red-600'>{error}</p> 
+
         <div className=' text-base mt-4 '>
           <p className=' buttom-text'>Forgte Password</p>
           <p className='pt-2 buttom-text'>  <Link to="/signup">Create Account</Link></p>

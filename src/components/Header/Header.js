@@ -8,7 +8,7 @@ import './Header.css';
 const Header = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const [user] = useAuthState(auth);
-  const loginOut =() =>{
+  const loginOut = () => {
     signOut(auth)
   }
   return (
@@ -20,15 +20,15 @@ const Header = () => {
         <nav className={isMenuOpen ? "navbar menu-open" : "navbar"}>
           <ul>
             <li><NavLink to="/">Home</NavLink></li>
-            <li><NavLink to="/" >Explore</NavLink></li>
+            <li><NavLink to="/explore" >Explore</NavLink></li>
             <li><NavLink to="/">Pricing</NavLink></li>
             <li><NavLink to="/">Blog</NavLink></li>
             <li><NavLink to="/">Contact</NavLink></li>
-          {
-              user ?<button onClick={loginOut}>signout</button> :<li>
-              <NavLink to="/signup"><button className='px-4 py-2 font-semibold text-sm bg-sky-500 text-white rounded-md shadow-sm opacity-100 mt-5 lg:mt-0 md:mt-0'>Create New Accont</button></NavLink>
-            </li>
-          }
+            {
+              user ? <button onClick={loginOut}>signout</button> : <li>
+                <NavLink to="/signup"><button className='px-4 py-2 font-semibold text-sm bg-sky-500 text-white rounded-md shadow-sm opacity-100 mt-5 lg:mt-0 md:mt-0'>Create New Accont</button></NavLink>
+              </li>
+            }
 
 
           </ul>
