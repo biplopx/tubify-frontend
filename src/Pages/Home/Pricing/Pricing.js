@@ -41,7 +41,7 @@ const Pricing = () => {
     },
   ];
   return (
-    <section className="container mx-auto px-5 my-5">
+    <section className="container mx-auto px-5 py-12 my-5">
       <h3 className="text-center my-5 signika text-[40px]">Pricing</h3>
       <div className="grid lg:grid-cols-3 md:grid-cols-3 grid-cols-1 gap-5 lg:gap-[60px]">
         {pricings?.map((pricing) => {
@@ -55,8 +55,8 @@ const Pricing = () => {
               </p>
               <div className="lg:pl-[70px] md:pl-[40px] pl-[40px]">
                 <ul className="list-disc">
-                  {pricing?.services.map((service) => (
-                    <li className="mt-2 text-[16px]">{service}</li>
+                  {pricing?.services.map((service, index) => (
+                    <li key={index} className="mt-2 text-[16px]">{service}</li>
                   ))}
                 </ul>
               </div>

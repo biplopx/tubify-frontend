@@ -7,7 +7,7 @@ const drama = 'https://i.ibb.co/C1JWNxq/dramas-icon.png'
 const tvSeries = 'https://i.ibb.co/3yw7nyV/tv-series-icon.png'
 const WatchEverything = () => {
     return (
-        <div>
+        <section className='py-16'>
             <h3 className="text-center my-5 signika text-[40px]">Watch Everything</h3>
             <div className=' w-[90%] lg:w-[70%] grid grid-cols-2  gap-y-10 md:grid-cols-3 lg:grid-cols-5 mx-auto px-5 my-10'>
                 <div className={style.iconBox}>
@@ -31,7 +31,7 @@ const WatchEverything = () => {
                     <h4 className='signika mt-2 text-[10px]'>Tv series</h4>
                 </div>
             </div>
-        </div>
+        </section>
     );
 };
 
