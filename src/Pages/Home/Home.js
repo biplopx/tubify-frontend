@@ -12,10 +12,9 @@ const Home = () => {
     <>
       <Banner />
       <About />
-      <WatchEverything/>
+      <WatchEverything />
       <Partner />
       <Pricing />
-      
     </>
   );
 };
