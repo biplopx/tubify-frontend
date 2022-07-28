@@ -4,6 +4,10 @@ import { useCreateUserWithEmailAndPassword, useSignInWithGoogle } from 'react-fi
 import auth from '../../firebase.init'
 import Loading from '../../components/Loading/Loading';
 const SignUp = () => {
+
+  /*==============================================
+        User Email & Password Handle Start
+  ===============================================*/
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confrimPassword, setConfirmPassword] = useState("");
@@ -12,16 +16,30 @@ const SignUp = () => {
   const [signInWithGoogle] = useSignInWithGoogle(auth);
   const location = useLocation();
   const navigate = useNavigate();
+
+
   const handleUserEmail = (e) => {
     setEmail(e.target.value);
-    console.log(e)
   }
+
+
   const handleUserPassword = (e) => {
     setPassword(e.target.value);
   }
+
+
   const handleUserConfirmPassword = (e) => {
     setConfirmPassword(e.target.value)
   }
+  /*==============================================
+          User Email & Password Handle End
+    ===============================================*/
+
+
+  /*==============================================
+              Navigate & page Lodding  Start
+    ===============================================*/
+
   const from = location.state?.from?.pathname || "/";
 
   if (user) {
@@ -30,6 +48,14 @@ const SignUp = () => {
   if (loading) {
     return <Loading></Loading>
   }
+  /*==============================================
+            Navigate & page Lodding  End
+  ===============================================*/
+
+
+  /*==============================================
+         Create User & Check Password Start
+  ===============================================*/
   const handleCreateUser = (e) => {
     e.preventDefault();
     if (password !== confrimPassword) {
@@ -43,6 +69,10 @@ const SignUp = () => {
 
     createUserWithEmailAndPassword(email, password);
   }
+  /*==============================================
+        Create User & Check Password End
+ ===============================================*/
+
   return (
     <div className='flex justify-center mt-16'>
       <div >
