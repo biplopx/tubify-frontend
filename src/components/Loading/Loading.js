@@ -4,7 +4,9 @@ import logingIMG from '../../../src/images/loading2.gif'
 const Loading = () => {
   return (
     <div>
-      <img src={logingIMG} className=' w-full h-1/5' alt="" />
+      <div className="h-screen flex items-center justify-center ">
+        <div className="w-16 h-16 border-b-2 border-primary rounded-full animate-spin"></div>
+      </div>
     </div>
   );
 };
