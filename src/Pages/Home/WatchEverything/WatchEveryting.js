@@ -9,7 +9,7 @@ const WatchEverything = () => {
     return (
         <section className='py-16'>
             <h3 className="text-center my-5 signika text-[40px]">Watch Everything</h3>
-            <div className=' w-[90%] lg:w-[70%] grid grid-cols-2  gap-y-10 md:grid-cols-3 lg:grid-cols-5 mx-auto px-5 my-10'>
+            <div className=' w-[90%] lg:w-[70%] grid grid-cols-2  gap-y-10 md:grid-cols-3 lg:grid-cols-5 items-center mx-auto px-5 my-10'>
                 <div className={style.iconBox}>
                     <img src={movies} alt="" />
                     <h4 className='signika mt-2 text-[10px]'>Movies</h4>
