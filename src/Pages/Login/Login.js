@@ -6,23 +6,35 @@ import auth from '../../firebase.init';
 import './Login.css'
 
 const Login = () => {
+
+  /*==============================================
+        User Email & Password Handle Start
+  ===============================================*/
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const location = useLocation();
-
   const [
     signInWithEmailAndPassword,
     user,
     loading,
     error,
   ] = useSignInWithEmailAndPassword(auth);
+
   const handleUserPassword = (e) => {
     setPassword(e.target.value);
   }
   const handleUserEmail = (e) => {
     setEmail(e.target.value);
+
   }
+  /*==============================================
+        User Email & Password Handle End
+  ===============================================*/
+
+  /*==============================================
+            Navigate & page Lodding  Start
+  ===============================================*/
   const from = location.state?.from?.pathname || "/";
 
   if (user) {
@@ -32,10 +44,22 @@ const Login = () => {
     return <Loading></Loading>
   }
 
+  /*==============================================
+           Navigate & page Lodding End
+ ===============================================*/
+
+
+  /*==============================================
+              Login User Start
+ ===============================================*/
+
   const handleLoginUser = (e) => {
     e.preventDefault();
     signInWithEmailAndPassword(email, password);
   }
+  /*==============================================
+             Create User End
+===============================================*/
   return (
     <div className='flex justify-center items-center mt-10'>
       <div >
