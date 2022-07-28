@@ -3,11 +3,15 @@ import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { NavLink } from 'react-router-dom';
 import auth from '../../firebase.init';
+import Loading from '../Loading/Loading';
 import './Header.css';
 
 const Header = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
-  const [user] = useAuthState(auth);
+  const [user, loading] = useAuthState(auth);
+  if (loading) {
+    return <Loading />
+  }
   const loginOut = () => {
     signOut(auth)
   }
@@ -29,8 +33,6 @@ const Header = () => {
                 <NavLink to="/signup"><button className='px-4 py-2 font-semibold text-sm bg-sky-500 text-white rounded-md shadow-sm opacity-100 mt-5 lg:mt-0 md:mt-0'>Create New Accont</button></NavLink>
               </li>
             }
-
-
           </ul>
         </nav>
         <div className='menu-btn' onClick={() => { setMenuOpen(!isMenuOpen) }}>
