@@ -6,10 +6,11 @@ import NotFound from "./components/NotFound/NotFound";
 import SignUp from "./Pages/SignUp/SignUp";
 import Login from "./Pages/Login/Login";
 import DashboardLayout from "./Layouts/DashboardLayout";
-import Explore from "./Pages/Explore/Explore";
+import UserDashboard from "./Pages/UserDashboard/UserDashboard";
 import RequireAuth from "./Pages/RequireAuth/RequireAuth";
-import ExHome from "./Pages/ExHome/ExHome";
 import YourLibary from "./Pages/YourLibary/YourLibary";
+import Explore from "./Pages/Explore/Explore";
+import MyProfile from "./Pages/MyAccount/MyProfile";
 function App() {
   return (
     <>
@@ -18,12 +19,14 @@ function App() {
         <Route path="/about-us" element={<Layout children={<AboutUs />} />}></Route>
         <Route path="/signup" element={<Layout children={<SignUp />} />}></Route>
         <Route path="/login" element={<Layout children={<Login />} />}></Route>
-        <Route path="/explore" element={
-          <DashboardLayout children={<RequireAuth><Explore /></RequireAuth>} />
+        <Route path="/dashboard" element={
+          <DashboardLayout children={<RequireAuth><UserDashboard /></RequireAuth>} />
         }>
           <Route>
-            <Route index element={<DashboardLayout children={<ExHome></ExHome>} />}></Route>
+            <Route index element={<DashboardLayout children={<Explore />} />}></Route>
+            <Route path="explore" element={<DashboardLayout children={<Explore />} />}></Route>
             <Route path="your-libary" element={<DashboardLayout children={<YourLibary />} />}></Route>
+            <Route path="my-profile" element={<DashboardLayout children={<MyProfile />} />}></Route>
           </Route>
         </Route>
         <Route path="*" element={<Layout children={<NotFound />} />}></Route>
