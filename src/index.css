@@ -22,6 +22,10 @@ body {
   font-weight: 700;
 }
 
+.secondary-bg {
+  background-color: var(--secondary-bg-color);
+}
+
 .glassbg {
   width: 300px;
   height: 300px;

@@ -64,15 +64,15 @@ const Login = () => {
     <div className='flex justify-center items-center mt-10'>
       <div >
 
-        <h2 className=' text-2xl font-bold pb-4'>Let’s Login Here</h2>
+        <h2 className=' text-2xl font-bold pb-4'>Let's Login Here</h2>
         <form action="" onSubmit={handleLoginUser}>
           <div className="input-group pb-3">
             <label htmlFor="email" className='block  text-base pb-2'>Email </label>
-            <input onBlur={handleUserEmail} type="email" name="email" id="" className='px-3' />
+            <input onBlur={handleUserEmail} type="email" name="email" id="email" className='px-3' />
           </div>
           <div className="input-group ">
             <label htmlFor="password" className='block text-base pb-2'>Password </label>
-            <input onBlur={handleUserPassword} type="password" name="password " className=' px-3' id="" />
+            <input onBlur={handleUserPassword} type="password" name="password " className=' px-3' id="password" />
           </div>
           <p className=' text-red-600 pt-3'>{loading}</p>
           <p className=' text-red-600 pt-3'>{error?.message}</p>
