@@ -21,7 +21,7 @@ const Header = () => {
         <div className='logo'>
           <img src="https://i.ibb.co/fFhrMHZ/tubify-logo.png" alt="logo" />
         </div>
-        <nav className={isMenuOpen ? "navbar menu-open" : "navbar"}>
+        <nav className={`navbar ${isMenuOpen ? "menu-open" : ""}`}>
           <ul>
             <li><NavLink to="/">Home</NavLink></li>
             <li><NavLink to="/explore" >Explore</NavLink></li>
