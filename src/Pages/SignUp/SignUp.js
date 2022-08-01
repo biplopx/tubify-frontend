@@ -3,8 +3,6 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init'
 import Loading from '../../components/Loading/Loading';
-const SignUp = () => {
-  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   let signupError;
@@ -12,31 +10,15 @@ const SignUp = () => {
   const [createUserWithEmailAndPassword, user, loading, error] = useCreateUserWithEmailAndPassword(auth);
   const [signInWithGoogle, gLoading, gError] = useSignInWithGoogle(auth);
   const [updateProfile, updating] = useUpdateProfile(auth);
-
   const location = useLocation();
   const navigate = useNavigate();
-  const from = location.state?.from?.pathname || "/";
-
-  const handleUserName = (e) => {
-    setName(e.target.value);
-  }
 
   const handleUserEmail = (e) => {
     setEmail(e.target.value);
   }
-  const handleUserPassword = (e) => {
+  const handleUserassword = (e) => {
     setPassword(e.target.value);
   }
-  useEffect(() => {
-    if (user) {
-      navigate(from, { replace: true });
-    }
-  }, [from, user, navigate])
-
-  if (loading || gLoading) {
-    return <Loading></Loading>
-  }
-
   // error handling
   if (error || gError) {
     signupError = <div className="p-2 w-full my-3 border border-red-500 text-white rounded-md">
@@ -49,6 +31,10 @@ const SignUp = () => {
     await createUserWithEmailAndPassword(email, password);
     await updateProfile({ displayName: name })
   }
+  /*==============================================
+        Create User & Check Password End
+ ===============================================*/
+
   return (
     <div className='flex justify-center mt-16'>
       <div className='w-[90%] md:w-96'>
