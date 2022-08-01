@@ -46,7 +46,6 @@ const Explore = () => {
             <input className="shadow bg-[#000221] border rounded w-full py-2 px-3 text-white text-sm leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Search song, movies, videos" />
           </div>
           {/* My Account */}
-
           <div className="relative inline-block text-left">
             <div>
               <button onClick={() => { setMyAccountMenu(!isMyAccountMenuOpen) }} type="button" className="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-transparen text-sm font-medium text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100" aria-expanded="true" aria-haspopup="true">
@@ -64,7 +63,6 @@ const Explore = () => {
               </div>
             </div>
           </div>
-
         </div>
         <div className='mt-6'>
           <Outlet />
