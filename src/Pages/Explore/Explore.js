@@ -15,7 +15,6 @@ const Explore = () => {
   if (loading) {
     return <Loading />
   }
-  console.log(isMobileMenuOpen);
 
   return (
     <section className='flex'>
