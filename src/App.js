@@ -19,7 +19,7 @@ function App() {
         <Route path="/signup" element={<Layout children={<SignUp />} />}></Route>
         <Route path="/login" element={<Layout children={<Login />} />}></Route>
         <Route path="/explore" element={
-          <DashboardLayout children={<Explore />} />
+          <DashboardLayout children={<RequireAuth><Explore /></RequireAuth>} />
         }>
           <Route>
             <Route index element={<DashboardLayout children={<ExHome></ExHome>} />}></Route>
