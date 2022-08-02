@@ -53,7 +53,7 @@ const SignUp = () => {
   }
   return (
     <div className='flex justify-center mt-16'>
-      <div className='w-[90%] md:w-96'>
+      <div>
         <h2 className=' text-2xl font-bold pb-8'>Let's SignUp Here</h2>
         <form onSubmit={handleCreateUser}>
           <div className="input-group pb-3">

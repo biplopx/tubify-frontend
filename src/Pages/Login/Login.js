@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Loading from '../../components/Loading/Loading';
@@ -14,6 +14,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
   const [
     signInWithEmailAndPassword,
     user,
@@ -34,14 +35,12 @@ const Login = () => {
     setEmail(e.target.value);
 
   }
-  /*==============================================
-        User Email & Password Handle End
-  ===============================================*/
+  useEffect(() => {
+    if (user) {
+      navigate(from, { replace: true });
+    }
+  }, [user, from, navigate])
 
-  /*==============================================
-            Navigate & page Lodding  Start
-  ===============================================*/
-  const from = location.state?.from?.pathname || "/";
 
   if (token) {
     navigate(from, { replace: true });
