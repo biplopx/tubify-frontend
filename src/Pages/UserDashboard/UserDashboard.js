@@ -1,3 +1,4 @@
+import { signOut } from 'firebase/auth';
 import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, Outlet } from 'react-router-dom';
@@ -15,6 +16,11 @@ const UserDashboard = () => {
   if (loading) {
     return <Loading />
   }
+
+  const logout = () => {
+    signOut(auth);
+  };
+
 
   return (
     <section className='flex'>
@@ -58,8 +64,8 @@ const UserDashboard = () => {
 
             <div className={`origin-top-right absolute right-0 mt-5 w-56 rounded-md shadow-lg secondary-bg ring-1 ring-black ring-opacity-5 divide-y divide-gray-100 focus:outline-none ${isMyAccountMenuOpen ? "block" : "hidden"}`} role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabIndex="-1">
               <div className="py-1" role="none">
-                <Link to="/dashboard/my-profile" className="text--white block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-0">Profile</Link>
-                <Link to="/" className="text--white block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-1">Duplicate</Link>
+                <Link to="/dashboard/my-profile" className="text--white block px-4 py-2 text-sm" role="menuitem" tabIndex="-1" id="menu-item-0">Profile</Link>
+                <button onClick={logout} className="text--white block px-4 py-2 text-sm" role="menuitem" tabIndex="-1" id="menu-item-1">Logut</button>
               </div>
             </div>
           </div>
