@@ -3,10 +3,10 @@ import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Loading from '../../components/Loading/Loading';
 import auth from '../../firebase.init';
+import useToken from '../../Hooks/UseToken';
 import './Login.css'
 
 const Login = () => {
-
   /*==============================================
         User Email & Password Handle Start
   ===============================================*/
@@ -20,6 +20,12 @@ const Login = () => {
     loading,
     error,
   ] = useSignInWithEmailAndPassword(auth);
+
+   /* =======================
+    token verification by mahedi imun 
+    =======================
+  */
+ const [token] = useToken(user)
 
   const handleUserPassword = (e) => {
     setPassword(e.target.value);
@@ -37,7 +43,7 @@ const Login = () => {
   ===============================================*/
   const from = location.state?.from?.pathname || "/";
 
-  if (user) {
+  if (token) {
     navigate(from, { replace: true });
   }
   if (loading) {
@@ -45,7 +51,7 @@ const Login = () => {
   }
 
   /*==============================================
-           Navigate & page Lodding End
+           Navigate & page Loading End
  ===============================================*/
 
 
@@ -57,6 +63,7 @@ const Login = () => {
     e.preventDefault();
     signInWithEmailAndPassword(email, password);
   }
+  
   /*==============================================
              Create User End
 ===============================================*/
