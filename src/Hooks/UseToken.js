@@ -1,19 +1,33 @@
-
-import axios from "axios";
 import { useEffect, useState } from "react"
+
 const useToken = (user) => {
-    const email = user?.user?.email
-    const [token, setToken] = useState('');
+    console.log(user);
+    const [token, setToken] = useState('')
     useEffect(() => {
-        const getToken = async () => {
-            if (email) {
-                const { data } = await axios.post('https://secure-sands-19636.herokuapp.com/gettoken', { email });
-                setToken(data)
-                localStorage.setItem('accessToken', data)
-            }
+        const email = user?.user?.email;
+        
+        const currentUser = {
+            email: email,
+        };
+        if (email) {
+            fetch(`http://localhost:5000/user/${email}`, {
+                method: 'PUT',
+                headers: {
+                    'content-type': 'application/json'
+
+                },
+                body: JSON.stringify(currentUser)
+            })
+                .then(res => res.json())
+                .then(data => {
+                    const userToken = data.accessToken;
+                    console.log(userToken);
+                    localStorage.setItem('accessToken', userToken)
+                    setToken(userToken)
+                })
         }
-        getToken()
-    }, [email])
+    }, [user])
+
     return [token]
 }
 export default useToken

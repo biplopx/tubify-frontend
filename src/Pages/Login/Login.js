@@ -3,10 +3,13 @@ import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Loading from '../../components/Loading/Loading';
 import auth from '../../firebase.init';
+import useToken from '../../Hooks/UseToken';
 import './Login.css'
 
 const Login = () => {
-
+  /*==============================================
+        User Email & Password Handle Start
+  ===============================================*/
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
@@ -18,6 +21,12 @@ const Login = () => {
     loading,
     error,
   ] = useSignInWithEmailAndPassword(auth);
+
+   /* =======================
+    token verification by mahedi imun 
+    =======================
+  */
+ const [token] = useToken(user)
 
   const handleUserPassword = (e) => {
     setPassword(e.target.value);
@@ -33,14 +42,30 @@ const Login = () => {
   }, [user, from, navigate])
 
 
+  if (token) {
+    navigate(from, { replace: true });
+  }
   if (loading) {
     return <Loading></Loading>
   }
+
+  /*==============================================
+           Navigate & page Loading End
+ ===============================================*/
+
+
+  /*==============================================
+              Login User Start
+ ===============================================*/
 
   const handleLoginUser = (e) => {
     e.preventDefault();
     signInWithEmailAndPassword(email, password);
   }
+  
+  /*==============================================
+             Create User End
+===============================================*/
   return (
     <div className='flex justify-center items-center mt-10'>
       <div >

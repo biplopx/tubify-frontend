@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init'
 import Loading from '../../components/Loading/Loading';
+import useToken from '../../Hooks/UseToken';
 const SignUp = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -10,8 +11,8 @@ const SignUp = () => {
   let signupError;
 
   const [createUserWithEmailAndPassword, user, loading, error] = useCreateUserWithEmailAndPassword(auth);
-  const [signInWithGoogle, gLoading, gError] = useSignInWithGoogle(auth);
-  const [updateProfile] = useUpdateProfile(auth);
+  const [signInWithGoogle, GoogleUser, gLoading, gError] = useSignInWithGoogle(auth);
+  const [updateProfile] = useUpdateProfile(auth || GoogleUser);
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -27,11 +28,12 @@ const SignUp = () => {
   const handleUserPassword = (e) => {
     setPassword(e.target.value);
   }
-  useEffect(() => {
-    if (user) {
-      navigate(from, { replace: true });
-    }
-  }, [from, user, navigate])
+  const [token] = useToken(user || GoogleUser);
+
+  if (token) {
+    navigate(from, { replace: true });
+  }
+
 
   if (loading || gLoading) {
     return <Loading></Loading>
