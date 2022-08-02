@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Loading from '../../components/Loading/Loading';
@@ -7,13 +7,11 @@ import './Login.css'
 
 const Login = () => {
 
-  /*==============================================
-        User Email & Password Handle Start
-  ===============================================*/
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
   const [
     signInWithEmailAndPassword,
     user,
@@ -28,38 +26,21 @@ const Login = () => {
     setEmail(e.target.value);
 
   }
-  /*==============================================
-        User Email & Password Handle End
-  ===============================================*/
+  useEffect(() => {
+    if (user) {
+      navigate(from, { replace: true });
+    }
+  }, [user, from, navigate])
 
-  /*==============================================
-            Navigate & page Lodding  Start
-  ===============================================*/
-  const from = location.state?.from?.pathname || "/";
 
-  if (user) {
-    navigate(from, { replace: true });
-  }
   if (loading) {
     return <Loading></Loading>
   }
-
-  /*==============================================
-           Navigate & page Lodding End
- ===============================================*/
-
-
-  /*==============================================
-              Login User Start
- ===============================================*/
 
   const handleLoginUser = (e) => {
     e.preventDefault();
     signInWithEmailAndPassword(email, password);
   }
-  /*==============================================
-             Create User End
-===============================================*/
   return (
     <div className='flex justify-center items-center mt-10'>
       <div >
