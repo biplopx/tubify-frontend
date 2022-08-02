@@ -35,7 +35,7 @@ const Login = () => {
   /*==============================================
             Navigate & page Lodding  Start
   ===============================================*/
-  const from = location.state?.from?.pathname || "/";
+  const from = location.state?.from?.pathname || "/explore";
 
   if (user) {
     navigate(from, { replace: true });

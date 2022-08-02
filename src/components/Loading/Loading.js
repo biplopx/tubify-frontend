@@ -1,5 +1,4 @@
-import React from 'react';
-import logingIMG from '../../../src/images/loading2.gif'
+import React from 'react'
 
 const Loading = () => {
   return (

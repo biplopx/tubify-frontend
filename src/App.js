@@ -10,6 +10,7 @@ import Explore from "./Pages/Explore/Explore";
 import RequireAuth from "./Pages/RequireAuth/RequireAuth";
 import ExHome from "./Pages/ExHome/ExHome";
 import YourLibary from "./Pages/YourLibary/YourLibary";
+import ContactUs from "./Pages/ContactUs/ContactUs";
 function App() {
   return (
     <>
@@ -26,6 +27,7 @@ function App() {
             <Route path="your-libary" element={<DashboardLayout children={<YourLibary />} />}></Route>
           </Route>
         </Route>
+        <Route path="/contact" element={<ContactUs></ContactUs>}></Route>
         <Route path="*" element={<Layout children={<NotFound />} />}></Route>
       </Routes>
     </>
