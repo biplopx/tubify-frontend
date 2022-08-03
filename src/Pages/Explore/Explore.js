@@ -1,10 +1,37 @@
 import React from 'react';
-
+import ReactJkMusicPlayer from 'react-jinke-music-player'
+import 'react-jinke-music-player/assets/index.css'
+import musicCover from '../../audio/cover.png'
+import audio from '../../audio/Avash___Avash___Official_Video.mp3'
 const Explore = () => {
+  const audioList = [
+    {
+      name: 'Bedtime Stories',
+      singer: 'Jay Chou',
+      cover:musicCover,
+      musicSrc:audio
+    },
+    {
+      name: 'Bedtime Stories',
+      singer: 'Jay Chou',
+      cover:
+        'http://res.cloudinary.com/alick/image/upload/v1502375978/bedtime_stories_bywggz.jpg',
+      musicSrc:
+        'http://res.cloudinary.com/alick/video/upload/v1502375674/Bedtime_Stories.mp3',
+    },
+  ]
   return (
     <div>
+      <ReactJkMusicPlayer 
+      audioList={audioList}
+      autoPlay={false}
+      mode='full'
+      autoplayInitLoadPlayList={true}
+      />
+      
       <h1>Explore Home</h1>
-      <div className="flex justify-center">
+      
+      {/* <div className="flex justify-center">
         <div className="block p-6 rounded-lg shadow-lg bg-white max-w-sm">
           <h5 className="text-gray-900 text-xl leading-tight font-medium mb-2">Card title</h5>
           <p className="text-gray-700 text-base mb-4">
@@ -13,7 +40,9 @@ const Explore = () => {
           </p>
           <button type="button" className=" inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Button</button>
         </div>
-      </div>
+      </div> */}
+      
+     
     </div>
   );
 };
