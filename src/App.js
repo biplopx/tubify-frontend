@@ -11,6 +11,7 @@ import RequireAuth from "./Pages/RequireAuth/RequireAuth";
 import YourLibary from "./Pages/YourLibary/YourLibary";
 import Explore from "./Pages/Explore/Explore";
 import MyProfile from "./Pages/MyAccount/MyProfile";
+import CreatePlaylist from "./Pages/CreatePlaylist/CreatePlaylist";
 function App() {
   return (
     <>
@@ -26,6 +27,7 @@ function App() {
             <Route index element={<DashboardLayout children={<Explore />} />}></Route>
             <Route path="explore" element={<DashboardLayout children={<Explore />} />}></Route>
             <Route path="your-libary" element={<DashboardLayout children={<YourLibary />} />}></Route>
+            <Route path="create-playlist" element={<DashboardLayout children={<CreatePlaylist />} />}></Route>
             <Route path="my-profile" element={<DashboardLayout children={<MyProfile />} />}></Route>
           </Route>
         </Route>
