@@ -21,7 +21,6 @@ const Login = () => {
     loading,
     error,
   ] = useSignInWithEmailAndPassword(auth);
-  console.log(error)
 
    /* =======================
     token verification by mahedi imun 
@@ -36,6 +35,12 @@ const Login = () => {
     setEmail(e.target.value);
 
   }
+  useEffect(() => {
+    if (user) {
+      navigate(from, { replace: true });
+    }
+  }, [user, from, navigate])
+
 
   if (token) {
     navigate(from, { replace: true });

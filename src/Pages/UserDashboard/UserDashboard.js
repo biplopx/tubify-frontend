@@ -11,6 +11,8 @@ const UserDashboard = () => {
   const menuItems = <>
     <li className='flex items-center py-3'><i className="ri-home-line text-xl mr-3"></i> <Link to="/dashboard">Explore</Link></li>
     <li className='flex items-center py-3'><i className="ri-folder-music-line text-xl mr-3"></i> <Link to="/dashboard/your-libary">Your Libary</Link></li>
+    <li className='flex items-center py-3'><i className="ri-add-box-fill text-xl mr-3"></i> <Link to="/dashboard/create-playlist">Create Playlist</Link></li>
+    <li className='flex items-center py-3'><i className="ri-add-box-fill text-xl mr-3"></i> <Link to="/dashboard/all-users">All Users</Link></li>
   </>
 
   if (loading) {
@@ -23,7 +25,7 @@ const UserDashboard = () => {
 
 
   return (
-    <section className='flex'>
+    <section className='flex h-screen'>
       <div className="hidden lg:block w-[230px] h-screen bg-[#0D0F2C]">
         <div className="pt-5">
           <Link to="/"><img src="https://i.ibb.co/fFhrMHZ/tubify-logo.png" className='block mx-auto' width="120px" alt="logo" /></Link>
@@ -35,7 +37,7 @@ const UserDashboard = () => {
         </div>
       </div>
 
-      <div className='w-full px-3'>
+      <div className='w-full px-4'>
         <div className='w-full box-border relative h-[70px] bg-[#0D0F2C] flex justify-between items-center py-2 px-3 mt-4 rounded-md'>
           {/* Mobile Menu */}
           <div onClick={() => { setMobileMenuOpen(!isMobileMenuOpen) }} className='lg:hidden flex items-center bg-'>
