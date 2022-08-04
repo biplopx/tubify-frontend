@@ -30,9 +30,12 @@ const SignUp = () => {
   }
   const [token] = useToken(user || GoogleUser);
 
-  if (token) {
-    navigate(from, { replace: true });
-  }
+  useEffect(() => {
+    if (token) {
+      navigate(from, { replace: true });
+    }
+  }, [token, from, navigate])
+
 
 
   if (loading || gLoading) {
