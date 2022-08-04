@@ -5,12 +5,12 @@ import musicCover from '../../audio/cover.png'
 import audio from '../../audio/Avash___Avash___Official_Video.mp3'
 const Explore = () => {
   const options = {
-    audioLists:[
+    audioLists: [
       {
         name: 'Bedtime Stories',
         singer: 'Jay Chou',
-        cover:musicCover,
-        musicSrc:audio
+        cover: musicCover,
+        musicSrc: audio
       },
       {
         name: 'Bedtime Stories',
@@ -22,9 +22,9 @@ const Explore = () => {
       },
 
     ]
-    
+
   }
-  return <ReactJkMusicPlayer {...options}/>
+  return <ReactJkMusicPlayer {...options} />
 
 };
 
