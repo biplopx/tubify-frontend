@@ -5,7 +5,7 @@ const ContactUs = () => {
     <div className='container mx-auto mb-16'>
       <h1 className=' text-center text-4xl m-8 '>Contact Us</h1>
       <div className=' grid grid-cols-1 lg:grid-cols-2 md:grid-clos-1 '>
-        <div className="contact-from bg-gray-800 bg-opacity-40 py-8 px-6">
+        <div className="contact-from bg-gray-800 bg-opacity-40 py-16 px-6">
           <h2 className=' text-3xl pb-10 ml-10'>Send a Message</h2>
           <form className='mx-10'>
             <input type="text" className=' bg-transparent border-b w-full mb-6 pb-1 ' placeholder='Name' />
