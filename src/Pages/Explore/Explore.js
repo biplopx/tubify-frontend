@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import MusicPlayer from '../../components/MusicPlayer/MusicPlayer';
 import { useQuery } from '@tanstack/react-query'
 import Loading from '../../components/Loading/Loading';
@@ -8,14 +8,9 @@ const Explore = () => {
       res.json()
     )
   )
-
-
    if(isLoading){
     return <Loading></Loading>
    }
-  
-
-   
   return (
     <div>
       <h3 className='px-4'>Explore </h3>
