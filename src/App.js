@@ -36,7 +36,7 @@ function App() {
             <Route path="my-profile" element={<DashboardLayout children={<MyProfile />} />}></Route>
             {/* Admin Routes */}
 
-            <Route path="all-users" element={<DashboardLayout children={<RequireAdmin><AllUsers /></RequireAdmin>} />}></Route>
+            <Route path="all-users" element={<DashboardLayout children={<AllUsers />} />}></Route>
 
             <Route path="all-users" element={<DashboardLayout children={<AllUsers />} />}></Route>
             <Route path="add-music" element={<DashboardLayout children={<AddMusic />} />}></Route>
