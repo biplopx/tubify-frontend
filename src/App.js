@@ -14,6 +14,7 @@ import MyProfile from "./Pages/MyAccount/MyProfile";
 import CreatePlaylist from "./Pages/CreatePlaylist/CreatePlaylist";
 import AllUsers from "./Pages/UserDashboard/AdminDashboard/AllUsers";
 import ContactUs from "./Pages/ContactUs/ContactUs";
+import RequireAdmin from "./Pages/RequireAdmin/RequireAdmin";
 function App() {
   return (
     <>
@@ -32,7 +33,7 @@ function App() {
             <Route path="create-playlist" element={<DashboardLayout children={<CreatePlaylist />} />}></Route>
             <Route path="my-profile" element={<DashboardLayout children={<MyProfile />} />}></Route>
             {/* Admin Routes */}
-            <Route path="all-users" element={<DashboardLayout children={<AllUsers />} />}></Route>
+            <Route path="all-users" element={<DashboardLayout children={<RequireAdmin><AllUsers /></RequireAdmin>} />}></Route>
           </Route>
         </Route>
         <Route path="*" element={<Layout children={<NotFound />} />}></Route>
