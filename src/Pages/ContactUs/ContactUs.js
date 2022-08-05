@@ -2,9 +2,9 @@ import React from 'react';
 // import submitICON from '../../images/paper-plane-solid.svg'
 const ContactUs = () => {
   return (
-    <div className='container mx-auto mb-16'>
+    <div className='container mx-auto pb-16'>
       <h1 className=' text-center text-4xl m-8 '>Contact Us</h1>
-      <div className=' grid grid-cols-1 lg:grid-cols-2 md:grid-clos-1 '>
+      <div className=' grid grid-cols-1 lg:grid-cols-2 md:grid-clos-1 max-w-screen-md mx-auto'>
         <div className="contact-from bg-gray-800 bg-opacity-40 py-16 px-6">
           <h2 className=' text-3xl pb-10 ml-10'>Send a Message</h2>
           <form className='mx-10'>
@@ -16,7 +16,7 @@ const ContactUs = () => {
             <button type='submit' className='bg-sky-500 py-2 px-5 text-xl rounded uppercase '>Submit</button>
           </form>
         </div>
-        <div className="contact-info bg-gray-800 bg-opacity-20 w-96">
+        <div className="contact-info bg-gray-800 bg-opacity-20 ">
           <h1 className=' text-3xl pb-9 ml-9 py-8 px-6'>Contact info</h1>
           <div className=' ml-9 px-6'>
             <p >Tubify Music limited</p>
