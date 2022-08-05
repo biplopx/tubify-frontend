@@ -1,5 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
 
 const AddMusic = () => {
   const { register, formState: { errors }, handleSubmit, reset } = useForm({
@@ -8,7 +9,19 @@ const AddMusic = () => {
   });
 
   const onSubmit = (data) => {
-    console.log(data)
+    fetch('http://localhost:5000/song/add-song', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+        'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+      },
+      body: JSON.stringify(data)
+    })
+      .then(res => res.json())
+      .then(result => {
+        toast.success('Song successfully added')
+        reset()
+      })
   }
   return (
     <div>
