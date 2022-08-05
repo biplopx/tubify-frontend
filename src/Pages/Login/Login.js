@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import React, { useState } from 'react';
+import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Loading from '../../components/Loading/Loading';
 import auth from '../../firebase.init';
@@ -7,26 +7,18 @@ import useToken from '../../Hooks/UseToken';
 import './Login.css'
 
 const Login = () => {
-  /*==============================================
-        User Email & Password Handle Start
-  ===============================================*/
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
-  const [
-    signInWithEmailAndPassword,
-    user,
-    loading,
-    error,
-  ] = useSignInWithEmailAndPassword(auth);
+  // sign email and pass auth 
+  const [signInWithEmailAndPassword, user,loading,error,] = useSignInWithEmailAndPassword(auth);
 
-   /* =======================
-    token verification by mahedi imun 
-    =======================
-  */
- const [token] = useToken(user)
+  // google signup auth
+  const [signInWithGoogle,googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
+  // get token 
+  const [token] = useToken(user || googleUser)
 
   const handleUserPassword = (e) => {
     setPassword(e.target.value);
@@ -35,37 +27,20 @@ const Login = () => {
     setEmail(e.target.value);
 
   }
-  useEffect(() => {
-    if (user) {
-      navigate(from, { replace: true });
-    }
-  }, [user, from, navigate])
-
-
+  const handleLoginUser = async (e) => {
+    e.preventDefault();
+    await signInWithEmailAndPassword(email, password);
+  }
+  // google sign in
+  const handleGoogleLogin = async () => {
+    await signInWithGoogle()
+  }
+  if (loading || googleLoading) {
+    return <Loading></Loading>
+  }
   if (token) {
     navigate(from, { replace: true });
   }
-  if (loading) {
-    return <Loading></Loading>
-  }
-
-  /*==============================================
-           Navigate & page Loading End
- ===============================================*/
-
-
-  /*==============================================
-              Login User Start
- ===============================================*/
-
-  const handleLoginUser = (e) => {
-    e.preventDefault();
-    signInWithEmailAndPassword(email, password);
-  }
-  
-  /*==============================================
-             Create User End
-===============================================*/
   return (
     <div className='flex justify-center items-center mt-10'>
       <div >
@@ -81,15 +56,15 @@ const Login = () => {
             <input onBlur={handleUserPassword} type="password" name="password " className=' px-3' id="password" />
           </div>
           <p className=' text-red-600 pt-3'>{loading}</p>
-          <p className=' text-red-600 pt-3'>{error?.message}</p>
-          <button className='login-btn text-base font-bold white mt-7'>Login</button>
+          <p className=' text-red-600 pt-3'>{error?.message || googleError?.message}</p>
+          <input type="submit" value='login' className='login-btn text-base font-bold white mt-7'></input>
         </form>
 
         <div className=' text-base mt-4 '>
           <p className=' buttom-text'>Forgte Password</p>
           <p className='pt-2 buttom-text'>  <Link to="/signup">Create Account</Link></p>
           <div className='or-login-option text-center relative mt-2 mb-5 text-white'>or</div>
-          <button className='flex  items-center border-2 pl-14 pr-12  rounded mb-10 '><img src="https://i.ibb.co/gdnsvzX/7123025-logo-google-g-icon-4.png" alt="" />  Continue With Google</button>
+          <button onClick={() => handleGoogleLogin()} className='flex  items-center border-2 pl-14 pr-12  rounded mb-10 '><img src="https://i.ibb.co/gdnsvzX/7123025-logo-google-g-icon-4.png" alt="" />  Continue With Google</button>
         </div>
       </div>
     </div>

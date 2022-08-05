@@ -12,6 +12,7 @@ import YourLibary from "./Pages/YourLibary/YourLibary";
 import Explore from "./Pages/Explore/Explore";
 import MyProfile from "./Pages/MyAccount/MyProfile";
 import CreatePlaylist from "./Pages/CreatePlaylist/CreatePlaylist";
+import AllUsers from "./Pages/UserDashboard/AdminDashboard/AllUsers";
 import ContactUs from "./Pages/ContactUs/ContactUs";
 function App() {
   return (
@@ -30,6 +31,8 @@ function App() {
             <Route path="your-libary" element={<DashboardLayout children={<YourLibary />} />}></Route>
             <Route path="create-playlist" element={<DashboardLayout children={<CreatePlaylist />} />}></Route>
             <Route path="my-profile" element={<DashboardLayout children={<MyProfile />} />}></Route>
+            {/* Admin Routes */}
+            <Route path="all-users" element={<DashboardLayout children={<AllUsers />} />}></Route>
           </Route>
         </Route>
         <Route path="*" element={<Layout children={<NotFound />} />}></Route>
