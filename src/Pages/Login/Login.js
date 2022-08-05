@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Loading from '../../components/Loading/Loading';
@@ -13,10 +13,10 @@ const Login = () => {
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
   // sign email and pass auth 
-  const [signInWithEmailAndPassword, user,loading,error,] = useSignInWithEmailAndPassword(auth);
+  const [signInWithEmailAndPassword, user, loading, error,] = useSignInWithEmailAndPassword(auth);
 
   // google signup auth
-  const [signInWithGoogle,googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
+  const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
   // get token 
   const [token] = useToken(user || googleUser)
 
@@ -35,12 +35,17 @@ const Login = () => {
   const handleGoogleLogin = async () => {
     await signInWithGoogle()
   }
+  useEffect(() => {
+    if (token) {
+      navigate(from, { replace: true });
+    }
+  }, [from, navigate, token])
+
   if (loading || googleLoading) {
     return <Loading></Loading>
   }
-  if (token) {
-    navigate(from, { replace: true });
-  }
+
+
   return (
     <div className='flex justify-center items-center mt-10'>
       <div >

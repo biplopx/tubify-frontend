@@ -4,20 +4,25 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, Outlet } from 'react-router-dom';
 import Loading from '../../components/Loading/Loading';
 import auth from '../../firebase.init';
+import useAdmin from '../../Hooks/UseAdmin';
 const UserDashboard = () => {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isMyAccountMenuOpen, setMyAccountMenu] = useState(false);
   const [user, loading] = useAuthState(auth);
+  const [admin, adminLoading] = useAdmin(user);
   const menuItems = <>
     <li className='flex items-center py-3'><i className="ri-home-line text-xl mr-3"></i> <Link to="/dashboard">Explore</Link></li>
     <li className='flex items-center py-3'><i className="ri-folder-music-line text-xl mr-3"></i> <Link to="/dashboard/your-libary">Your Libary</Link></li>
     <li className='flex items-center py-3'><i className="ri-add-box-fill text-xl mr-3"></i> <Link to="/dashboard/create-playlist">Create Playlist</Link></li>
     {/* Admin Route */}
-    <li className='flex items-center py-3'><i className="ri-group-fill text-xl mr-3"></i> <Link to="/dashboard/all-users">All Users</Link></li>
-    <li className='flex items-center py-3'><i className="ri-add-fill text-xl mr-3"></i> <Link to="/dashboard/add-music">Add Music</Link></li>
+    {admin && <>
+      <li className='flex items-center py-3'><i className="ri-group-fill text-xl mr-3"></i> <Link to="/dashboard/all-users">All Users</Link></li>
+      <li className='flex items-center py-3'><i className="ri-add-fill text-xl mr-3"></i> <Link to="/dashboard/add-music">Add Music</Link></li>
+    </>}
+
   </>
 
-  if (loading) {
+  if (loading || adminLoading) {
     return <Loading />
   }
 
