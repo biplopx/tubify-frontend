@@ -10,7 +10,7 @@ const MusicPlayer = (props) => {
                 name: music?.name,
                 singer: music?.singer,
                 cover: music?.musicCover,
-                musicSrc: `${music?.musicSrc}`
+                musicSrc: 'https://23.filelu.com/d/x53akelnjrojnjtancmyo4hftyxt225lwxt2zkfycuap6lywde4pnbj23gphgcsutiyjewy2/_Abhi_Toh_Party_Shuru_Hui_Hai__FULL_VIDEO_Song___Khoobsurat___Badshah___Aast.mp3'
              },
             
         ],
