@@ -14,6 +14,7 @@ import MyProfile from "./Pages/MyAccount/MyProfile";
 import CreatePlaylist from "./Pages/CreatePlaylist/CreatePlaylist";
 import AllUsers from "./Pages/UserDashboard/AdminDashboard/AllUsers";
 import ContactUs from "./Pages/ContactUs/ContactUs";
+import AddMusic from "./Pages/UserDashboard/AdminDashboard/AddMusic";
 function App() {
   return (
     <>
@@ -33,6 +34,7 @@ function App() {
             <Route path="my-profile" element={<DashboardLayout children={<MyProfile />} />}></Route>
             {/* Admin Routes */}
             <Route path="all-users" element={<DashboardLayout children={<AllUsers />} />}></Route>
+            <Route path="add-music" element={<DashboardLayout children={<AddMusic />} />}></Route>
           </Route>
         </Route>
         <Route path="*" element={<Layout children={<NotFound />} />}></Route>

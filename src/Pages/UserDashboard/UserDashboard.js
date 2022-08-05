@@ -12,7 +12,9 @@ const UserDashboard = () => {
     <li className='flex items-center py-3'><i className="ri-home-line text-xl mr-3"></i> <Link to="/dashboard">Explore</Link></li>
     <li className='flex items-center py-3'><i className="ri-folder-music-line text-xl mr-3"></i> <Link to="/dashboard/your-libary">Your Libary</Link></li>
     <li className='flex items-center py-3'><i className="ri-add-box-fill text-xl mr-3"></i> <Link to="/dashboard/create-playlist">Create Playlist</Link></li>
-    <li className='flex items-center py-3'><i className="ri-add-box-fill text-xl mr-3"></i> <Link to="/dashboard/all-users">All Users</Link></li>
+    {/* Admin Route */}
+    <li className='flex items-center py-3'><i className="ri-group-fill text-xl mr-3"></i> <Link to="/dashboard/all-users">All Users</Link></li>
+    <li className='flex items-center py-3'><i className="ri-add-fill text-xl mr-3"></i> <Link to="/dashboard/add-music">Add Music</Link></li>
   </>
 
   if (loading) {
