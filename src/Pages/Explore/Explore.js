@@ -1,6 +1,6 @@
 import React from 'react';
 import MusicPlayer from '../../components/MusicPlayer/MusicPlayer';
-import { useQuery } from 'react-query'
+import { useQuery } from 'react-query';
 import Loading from '../../components/Loading/Loading';
 const Explore = () => {
   // const { isLoading, error, data } = useQuery('exploreAudioFree', () =>
@@ -8,7 +8,7 @@ const Explore = () => {
   //      res.json()
   //    )
   //  );
-   
+
   //  if(isLoading){
   //   return <Loading></Loading>
   //  }

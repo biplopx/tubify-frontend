@@ -17,6 +17,10 @@ import ContactUs from "./Pages/ContactUs/ContactUs";
 import RequireAdmin from "./Pages/RequireAdmin/RequireAdmin";
 import AddMusic from "./Pages/UserDashboard/AdminDashboard/AddMusic";
 
+
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
+
 function App() {
   return (
     <>
@@ -37,8 +41,6 @@ function App() {
             {/* Admin Routes */}
 
             <Route path="all-users" element={<DashboardLayout children={<RequireAdmin><AllUsers /></RequireAdmin>} />}></Route>
-
-            <Route path="all-users" element={<DashboardLayout children={<AllUsers />} />}></Route>
             <Route path="add-music" element={<DashboardLayout children={<AddMusic />} />}></Route>
 
           </Route>
@@ -46,6 +48,7 @@ function App() {
         <Route path="*" element={<Layout children={<NotFound />} />}></Route>
         <Route path="/contact" element={<Layout children={<ContactUs />} />}></Route>
       </Routes>
+      <ToastContainer />
     </>
   );
 }
