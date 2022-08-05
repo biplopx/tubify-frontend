@@ -13,7 +13,7 @@ const Header = () => {
   }
   return (
     <header className='px-5'>
-      <div className="container mx-auto">
+      <div className="container mx-auto ">
         <div className='logo'>
           <img src="https://i.ibb.co/fFhrMHZ/tubify-logo.png" alt="logo" />
         </div>
@@ -23,7 +23,7 @@ const Header = () => {
             <li><NavLink to="/dashboard" >Explore</NavLink></li>
             <li><NavLink to="/">Pricing</NavLink></li>
             <li><NavLink to="/">Blog</NavLink></li>
-            <li><NavLink to="/">Contact</NavLink></li>
+            <li><NavLink to="/contact">Contact</NavLink></li>
             {
               user ? <button className='py-1 px-2 bg-sky-500 text-white rounded-md'><Link to="/dashboard">Dashboard</Link></button> : <li>
                 <NavLink to="/signup"><button className='py-1 px-2 bg-sky-500 text-white rounded-md'>Create New Accont</button></NavLink>

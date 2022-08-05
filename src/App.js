@@ -13,6 +13,7 @@ import Explore from "./Pages/Explore/Explore";
 import MyProfile from "./Pages/MyAccount/MyProfile";
 import CreatePlaylist from "./Pages/CreatePlaylist/CreatePlaylist";
 import AllUsers from "./Pages/UserDashboard/AdminDashboard/AllUsers";
+import ContactUs from "./Pages/ContactUs/ContactUs";
 function App() {
   return (
     <>
@@ -35,6 +36,7 @@ function App() {
           </Route>
         </Route>
         <Route path="*" element={<Layout children={<NotFound />} />}></Route>
+        <Route path="/contact" element={<Layout children={<ContactUs />} />}></Route>
       </Routes>
     </>
   );
