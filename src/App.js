@@ -41,6 +41,7 @@ function App() {
             {/* Admin Routes */}
 
             <Route path="all-users" element={<DashboardLayout children={<RequireAdmin><AllUsers /></RequireAdmin>} />}></Route>
+
             <Route path="add-music" element={<DashboardLayout children={<AddMusic />} />}></Route>
 
           </Route>
