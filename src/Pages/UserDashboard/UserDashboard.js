@@ -27,7 +27,7 @@ const UserDashboard = () => {
 
 
   return (
-    <section className='flex h-screen'>
+    <section className='flex'>
       <div className="hidden lg:block w-[230px] h-screen bg-[#0D0F2C]">
         <div className="pt-5">
           <Link to="/"><img src="https://i.ibb.co/fFhrMHZ/tubify-logo.png" className='block mx-auto' width="120px" alt="logo" /></Link>
