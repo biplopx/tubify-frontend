@@ -2,22 +2,31 @@ import React from 'react';
 import ReactJkMusicPlayer from 'react-jinke-music-player'
 import 'react-jinke-music-player/assets/index.css'
 const MusicPlayer = (props) => {
-    const music = props.music[0]
-    console.log(music.musicSrc); 
-   const options  = {
-        audioLists: [
-            {
-                name: music?.name,
-                singer: music?.singer,
-                cover: music?.musicCover,
-                musicSrc: 'https://23.filelu.com/d/x53akelnjrojnjtancmyo4hftyxt225lwxt2zkfycuap6lywde4pnbj23gphgcsutiyjewy2/_Abhi_Toh_Party_Shuru_Hui_Hai__FULL_VIDEO_Song___Khoobsurat___Badshah___Aast.mp3'
-             },
+    console.log(props);
+    let audioList=[]
+    // eslint-disable-next-line array-callback-return
+     props.music.map(music=> {
+        audioList.push({
+            name: music?.name,
+            singer: music?.singer,
+            cover: music?.cover,
+            musicSrc: music?.musicSrc,
+            lyric:music?.lyric
             
-        ],
+         },)
+    })
+   const options  = {
+        audioLists:audioList,
 
         mode: 'full',
         responsive: true,
         autoPlay: false,
+        playIndex:0,
+        showLyric:true,
+        showPlay:true,
+        glassBg:true,
+        showProgressLoadBar:true
+        
 
     }
     return <ReactJkMusicPlayer {...options} />
