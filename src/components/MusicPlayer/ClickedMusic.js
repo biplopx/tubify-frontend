@@ -1,34 +1,31 @@
 import React from 'react';
-import ReactJkMusicPlayer from 'react-jinke-music-player'
-import 'react-jinke-music-player/assets/index.css'
-const MusicPlayer = (props) => {
-    let audioList = []
-    // eslint-disable-next-line array-callback-return
-    props.music?.map(music => {
-        audioList.push({
+import ReactJkMusicPlayer from 'react-jinke-music-player';
+const ClickedMusic = (props) => {
+    const music = props.clickedMusic;
+    const audioList = [
+        {
             name: music?.name,
             singer: music?.singer,
             cover: music?.cover,
             musicSrc: music?.musicSrc,
             lyric: music?.lyric
+        }
 
-        })
-    })
+    ]
     const options = {
         audioLists: audioList,
         mode: 'full',
         responsive: true,
-        autoPlay: false,
+        autoPlay: true,
         playIndex: 0,
         showLyric: true,
         showPlay: true,
         glassBg: true,
-        showProgressLoadBar: true
-
-
+        showProgressLoadBar: true,
+        clearPriorAudioLists: true,
+        quietUpdate: true
     }
     return <ReactJkMusicPlayer {...options} />
-
 };
 
-export default MusicPlayer;
+export default ClickedMusic;
