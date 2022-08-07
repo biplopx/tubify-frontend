@@ -14,7 +14,7 @@ const Home = () => {
       <About />
       <WatchEverything />
       <Partner />
-      <Pricing />
+      <Pricing></Pricing>
     </>
   );
 };

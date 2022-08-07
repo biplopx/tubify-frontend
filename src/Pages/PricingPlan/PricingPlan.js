@@ -1,50 +1,46 @@
 import React from 'react';
-import './Pricing.css';
-
-const Pricing = () => {
-  const pricing = [
-    {
-      id: 1,
-      plan: 'Weekly Plan',
-      price: 5,
-      services: [
-        '3 movies',
-        ' 5 drams',
-        '1000 songs',
-        '1 live music concert',
-        '20 tv series',
-      ],
-    },
-    {
-      id: 2,
-      plan: 'Monthly Plan',
-      price: 7,
-      services: [
-        'Unlimited movies',
-        'Unlimited drams',
-        'Unlimited songs',
-        '1 live music concert',
-        '30 tv series',
-      ],
-    },
-    {
-      id: 3,
-      plan: 'Yearly Plan',
-      price: 30,
-      services: [
-        'Unlimited movies',
-        'Unlimited drams',
-        'Unlimited songs',
-        '5 live music concerts',
-        'Unlimited tv series',
-      ],
-    },
-
-    
-  ];
-  return (
-    <section className="container mx-auto px-5 py-12 my-5">
-      <h3 className="text-center my-5 signika text-[40px]">Pricing</h3>
+const PricingPlan = () => {
+    const pricing = [
+        {
+          id: 1,
+          plan: 'Weekly Plan',
+          price: 5,
+          services: [
+            '3 movies',
+            ' 5 drams',
+            '1000 songs',
+            '1 live music concert',
+            '20 tv series',
+          ],
+        },
+        {
+          id: 2,
+          plan: 'Monthly Plan',
+          price: 7,
+          services: [
+            'Unlimited movies',
+            'Unlimited drams',
+            'Unlimited songs',
+            '1 live music concert',
+            '30 tv series',
+          ],
+        },
+        {
+          id: 3,
+          plan: 'Yearly Plan',
+          price: 30,
+          services: [
+            'Unlimited movies',
+            'Unlimited drams',
+            'Unlimited songs',
+            '5 live music concerts',
+            'Unlimited tv series',
+          ],
+        },    
+      ];
+    return (
+        <section className="container mx-auto px-5 py-12 my-5">
+      <h3 className="text-center my-5 signika text-[40px]">Choose package</h3>
       <div className="grid lg:grid-cols-3 md:grid-cols-3 grid-cols-1 gap-5 lg:gap-[60px]">
         { pricing?.map((pricing) => {
           return (
@@ -64,7 +60,7 @@ const Pricing = () => {
               </div>
               <div className="text-center my-5">
                 <button className="px-4 py-2 font-semibold text-sm bg-sky-500 text-white rounded-md shadow-sm opacity-100 mt-5 lg:mt-0 md:mt-0">
-                  Buy Now
+                  Choose package
                 </button>
               </div>
             </div>
@@ -72,7 +68,7 @@ const Pricing = () => {
         })}
       </div>
     </section>
-  );
+    );
 };
 
-export default Pricing;
+export default PricingPlan;
