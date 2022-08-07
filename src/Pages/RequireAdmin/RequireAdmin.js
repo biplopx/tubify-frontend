@@ -9,7 +9,6 @@ import useAdmin from '../../Hooks/UseAdmin';
 const RequireAdmin = ({ children }) => {
     const [user, loading] = useAuthState(auth);
     const [admin, adminLoading] = useAdmin(user);
-    console.log(admin)
     if (loading || adminLoading) {
         return <Loading></Loading>
     }

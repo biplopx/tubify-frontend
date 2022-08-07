@@ -3,7 +3,7 @@ import swal from 'sweetalert';
 import { toast } from 'react-toastify';
 
 const UserRow = ({ user, index, fetchUsers }) => {
-  const { email } = user;
+  const { email, role } = user;
 
   const makeAdmin = () => {
     swal({
@@ -56,7 +56,7 @@ const UserRow = ({ user, index, fetchUsers }) => {
           <p className="text-gray-500 text-sm font-semibold tracking-wide">{email}</p>
         </td>
         <td className="px-6 py-4 text-center">
-          <button onClick={makeAdmin} className='p-1 bg-sky-500 text-white text-xs rounded-sm'>Make Admin</button>
+          {role ? <p className="text-gray-500 text-sm font-semibold tracking-wide">Already Admin</p> : <button onClick={makeAdmin} className='p-1 bg-sky-500 text-white text-xs rounded-sm'>Make Admin</button>}
         </td>
       </tr>
     </>

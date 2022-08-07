@@ -18,6 +18,7 @@ const UserDashboard = () => {
     {admin && <>
       <li className='flex items-center py-3'><i className="ri-group-fill text-xl mr-3"></i> <Link to="/dashboard/all-users">All Users</Link></li>
       <li className='flex items-center py-3'><i className="ri-add-fill text-xl mr-3"></i> <Link to="/dashboard/add-music">Add Music</Link></li>
+      <li className='flex items-center py-3'><i className="ri-folder-music-line text-xl mr-3"></i> <Link to="/dashboard/manage-music">Manage Music</Link></li>
     </>}
 
   </>
