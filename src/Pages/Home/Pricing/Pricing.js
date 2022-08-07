@@ -39,24 +39,14 @@ const Pricing = () => {
         'Unlimited tv series',
       ],
     },
-    {
-      id: 3,
-      plan: 'Free Plan',
-      price: 0.0,
-      services: [
-        '10 movies',
-        '15 drams',
-        '50 songs',
-        '0 live music concerts',
-        '0 tv series',
-      ],
-    },
+
+    
   ];
   return (
     <section className="container mx-auto px-5 py-12 my-5">
       <h3 className="text-center my-5 signika text-[40px]">Pricing</h3>
-      <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 gap-5 lg:gap-[60px]">
-        {pricing?.map((pricing) => {
+      <div className="grid lg:grid-cols-3 md:grid-cols-3 grid-cols-1 gap-5 lg:gap-[60px]">
+        { pricing?.map((pricing) => {
           return (
             <div key={pricing?.id} className="col bg-pricing p-1">
               <h3 className="text-center text-[24px] signika">
