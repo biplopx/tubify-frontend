@@ -22,6 +22,10 @@ body {
   font-weight: 700;
 }
 
+.primary-bg {
+  background: var(--primary-bg-color);
+}
+
 .secondary-bg {
   background-color: var(--secondary-bg-color);
 }

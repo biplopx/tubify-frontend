@@ -53,10 +53,10 @@ const UserRow = ({ user, index, fetchUsers }) => {
           <p className="text-gray-500 text-sm font-semibold tracking-wide">{email}</p>
         </td>
         <td className="px-6 py-4 text-center">
-          <p className="text-gray-500 text-sm font-semibold tracking-wide">{email}</p>
+          {role === "admin" ? <p className="text-gray-500 text-sm font-semibold tracking-wide">Admin</p> : <p className="text-gray-500 text-sm font-semibold tracking-wide">User</p>}
         </td>
         <td className="px-6 py-4 text-center">
-          {role ? <p className="text-gray-500 text-sm font-semibold tracking-wide">Already Admin</p> : <button onClick={makeAdmin} className='p-1 bg-sky-500 text-white text-xs rounded-sm'>Make Admin</button>}
+          {role ? <button onClick={makeAdmin} className='p-1 bg-red-500 text-white text-xs rounded-sm'>Remove Admin</button> : <button onClick={makeAdmin} className='p-1 bg-sky-500 text-white text-xs rounded-sm'>Make Admin</button>}
         </td>
       </tr>
     </>
