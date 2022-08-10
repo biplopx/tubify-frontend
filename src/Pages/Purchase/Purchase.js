@@ -6,7 +6,7 @@ import auth from '../../firebase.init';
 import Loading from '../../components/Loading/Loading';
 import PurchaseModal from './PurchaseModal';
 const Purchase = () => {
-    const [modal, setModal] = useState(null)
+    const [modalIsOpen, setIsOpen] = useState(false);
     const navigate = useNavigate()
     const { id } = useParams()
     const url = `http://localhost:5000/pricing/plan/${id}`
@@ -18,7 +18,6 @@ const Purchase = () => {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`
         }
     }
-
     ).then(res => {
         if (res.status === 401 || res.status === 403) {
             signOut(auth)
@@ -34,13 +33,16 @@ const Purchase = () => {
 
     const { plan, _id, price, services } = myPlan;
 
-    const handleSetProductModal = () => {
-        setModal(myPlan)
+
+    const openModal = () => {
+        setIsOpen(true)
+
     }
     return (
         <div className='w-3/4 mx-auto my-12'>
+
             <div key={_id} className="col bg-pricing p-1">
-                <h3 className="text-center text-[24px] signika">
+                <h3 className="text-center text-[40px] signika ">
                     {plan}
                 </h3>
                 <p className="text-xl text-center my-2">
@@ -54,16 +56,16 @@ const Purchase = () => {
                     </ul>
                 </div>
                 <div className="text-center my-5">
-                    <button onClick={() => handleSetProductModal()} className="px-4 py-2 font-semibold text-sm bg-sky-500 text-white rounded-md shadow-sm opacity-100 mt-5 lg:mt-0 md:mt-0">
-                        checkout
+                    <button onClick={() => openModal()} className="px-4 py-2 font-semibold text-sm bg-sky-500 text-white rounded-md shadow-sm opacity-100 mt-5 lg:mt-0 md:mt-0">checkout
                     </button>
-
                 </div>
             </div>
-            {
-                modal && <PurchaseModal setModal={setModal} myPlan={myPlan} refetch={refetch}>
-                </PurchaseModal>
-            }
+            <div className='my-12'>
+                {
+                    modalIsOpen === true && <PurchaseModal modalIsOpen={modalIsOpen} setIsOpen={setIsOpen} myPlan={myPlan} refetch={refetch}>
+                    </PurchaseModal>
+                }
+            </div>
         </div>
     );
 };
