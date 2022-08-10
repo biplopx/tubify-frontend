@@ -8,7 +8,7 @@ const ClickedMusic = (props) => {
             singer: music?.singer,
             cover: music?.cover,
             musicSrc: music?.musicSrc,
-            lyric: music?.lyric
+            lyric: music?.lyrics
         }
 
     ]
