@@ -21,7 +21,7 @@ const AddMusic = () => {
       .then(res => res.json())
       .then(result => {
         console.log(result)
-        if (result === "success") {
+        if (result.status === "successful") {
           toast.success('Song successfully added');
           reset()
         }
@@ -32,7 +32,7 @@ const AddMusic = () => {
   }
   return (
     <div>
-      <div className='max-w-4xl w-full mx-auto secondary-bg px-4 py-5 rounded-md'>
+      <div className='max-w-4xl w-full mx-auto my-5 secondary-bg px-4 py-6 rounded-md'>
         <h2 className='text-2xl signika mb-4'>Add Music</h2>
         <form onSubmit={handleSubmit(onSubmit)} className='transparent'>
           {/* Song Name */}
@@ -110,12 +110,12 @@ const AddMusic = () => {
               {...register("lyrics")}
               className='w-full bg-transparent px-3 py-2 text-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none 
               focus:border-sky-300 focus:ring-sky-300 block rounded-md sm:text-sm focus:ring-1'
-              placeholder='Enter song name' required>
+              placeholder='Enter song name'>
             </textarea>
           </div>
           {/* Album Input */}
           <div className='mb-4'>
-            <label className='block mb-4'>Playlist Name</label>
+            <label className='block mb-4'>Album Name</label>
             <input type="text"
               {...register("album", {
                 required: {
