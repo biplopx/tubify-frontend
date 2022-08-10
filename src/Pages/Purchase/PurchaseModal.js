@@ -1,10 +1,12 @@
 import React from 'react';
+import Modal from 'react-modal';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from "react-hook-form";
 import Loading from '../../components/Loading/Loading';
 import auth from '../../firebase.init';
-const PurchaseModal = ({myPlan,setModal, refetch }) => {
-    const {plan,price}=myPlan;
+import { toast } from 'react-toastify';
+const PurchaseModal = ({ myPlan, setIsOpen, refetch, modalIsOpen }) => {
+    const { plan, price } = myPlan;
     const [user, loading] = useAuthState(auth);
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = (userData) => {
@@ -29,40 +31,63 @@ const PurchaseModal = ({myPlan,setModal, refetch }) => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
-                if (data.insertedId) {
+                if (data._id) {
                     refetch()
-                    setModal(null)
+                    setIsOpen(false)
                     reset()
-                    alert.success('successfully ordered please check my order page')
+                    toast.success('successfully ordered please check my order page')
 
                 }
             })
 
 
     };
-    if(loading){
-        return<Loading></Loading>
+    Modal.setAppElement('#root');
+    const closeModal = () => {
+        setIsOpen(false);
     }
+    if (loading) {
+        return <Loading></Loading>
+    }
+    const customStyles = {
+        content: {
+            width: "500px",
+            height: "450px",
+            background: "#000221",
+            top: '50%',
+            left: '50%',
+            right: 'auto',
+            bottom: 'auto',
+            marginRight: '-50%',
+            transform: 'translate(-50%, -50%)',
+        },
+    };
     return (
-        <div>
-        <input type="checkbox" id="purchase-modal" className="modal-toggle" />
-        <div className="modal modal-bottom sm:modal-middle">
-            <div className="modal-box">
-                <label htmlFor="purchase-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-                <h3 className="font-bold text-sm px-5 text-primary">{plan}</h3>
-                <form onSubmit={handleSubmit(onSubmit)}  className=' flex justify-center items-center flex-col mt-5'>
-                    <input value={user?.displayName} disabled className="input input-bordered mb-2  w-full max-w-xs" />
-                    <input value={user?.email} disabled className="input input-bordered mb-2  w-full max-w-xs" />
-                    <input value={`Total: $${price}`} readOnly className="input input-bordered mb-2  w-full max-w-xs" />
-                    <input required type="number"{...register("phone")} placeholder='Your Phone Number' className="input input-bordered mb-2  w-full max-w-xs" />
-                    <input required type='text' {...register("address")} placeholder='Your Address' className="input input-bordered mb-2  w-full max-w-xs" />
-                    <input type='submit' value="order" className="input btn btn-secondary mb-2  w-full max-w-xs" />
-                </form>
-            </div>
-        </div>
+        <div className=''>
+            <Modal
+                isOpen={modalIsOpen}
+                onRequestClose={closeModal}
+                style={customStyles}
+                contentLabel="purchase Modal">
 
-    </div>
+                <div className='' >
+                    <h2 className=' text-center signika text-[20px] mt-2' >Add Your Purchase Information</h2>
+                    <p className=' text-right mt-[-40px]'><button className='  border px-1 rounded' onClick={closeModal}>close</button></p>
+                </div>
+
+                <h3 className="font-bold text-sm text-center mt-5 ">{plan}</h3>
+                <h3 className="font-bold text-sm text-center mt-2 ">price: ${price}</h3>
+                <form onSubmit={handleSubmit(onSubmit)} className=' flex justify-center items-center flex-col mt-5'>
+                    <input value={user?.displayName} disabled className=" p-2 mb-2  w-full max-w-xs rounded" />
+                    <input value={user?.email} disabled className="p-2 mb-2  w-full max-w-xs rounded" />
+                    <input value={`Total: $${price}`} readOnly disabled className="p-2 mb-2  w-full  max-w-xs rounded" />
+                    <input required type="number"{...register("phone")} placeholder='Your Phone Number' className="p-2 mb-2 text-black  w-full max-w-xs rounded" />
+                    <input required type='text' {...register("address")} placeholder='Your Address' className="p-2 mb-2   w-full max-w-xs rounded text-black" />
+                    <input type='submit' value="Booked" className="p-2 mb-2  w-full max-w-xs rounded bg-[#3F9FFF]" />
+                </form>
+
+            </Modal>
+        </div>
     );
 };
 
