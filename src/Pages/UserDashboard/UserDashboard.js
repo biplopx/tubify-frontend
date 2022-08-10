@@ -32,7 +32,8 @@ const UserDashboard = () => {
 
 
   return (
-    <section className='flex'>
+    <section className='flex h-screen'>
+      {/* Sidebar */}
       <div className="hidden lg:block w-[230px] h-screen bg-[#0D0F2C]">
         <div className="pt-5">
           <Link to="/"><img src="https://i.ibb.co/fFhrMHZ/tubify-logo.png" className='block mx-auto' width="120px" alt="logo" /></Link>
@@ -43,8 +44,8 @@ const UserDashboard = () => {
           </ul>
         </div>
       </div>
-
-      <div className='w-full px-4'>
+      {/* Sidebar End */}
+      <div className='w-full px-4 overflow-y-scroll'>
         <div className='w-full box-border relative h-[70px] bg-[#0D0F2C] flex justify-between items-center py-2 px-3 mt-4 rounded-md'>
           {/* Mobile Menu */}
           <div onClick={() => { setMobileMenuOpen(!isMobileMenuOpen) }} className='lg:hidden flex items-center bg-'>
@@ -79,6 +80,7 @@ const UserDashboard = () => {
             </div>
           </div>
         </div>
+        {/* Content */}
         <div className='mt-6'>
           <Outlet />
         </div>
