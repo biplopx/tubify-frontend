@@ -10,7 +10,7 @@ const MusicPlayer = (props) => {
             singer: music?.singer,
             cover: music?.cover,
             musicSrc: music?.musicSrc,
-            lyric: music?.lyric
+            lyric: music?.lyrics
 
         })
     })
@@ -23,8 +23,8 @@ const MusicPlayer = (props) => {
         showLyric: true,
         showPlay: true,
         glassBg: true,
-        showProgressLoadBar: true
-
+        showProgressLoadBar: true,
+        
 
     }
     return <ReactJkMusicPlayer {...options} />

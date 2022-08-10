@@ -29,97 +29,16 @@ const Explore = () => {
         </div>
 
         <div className='grid grid-cols-3 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-8 gap-4 justify-between'>
-          <div className='w-[180px] secondary-bg p-4 rounded-md'>
-            <div className='mb-3'>
-              <img src="https://i.scdn.co/image/ab67706f00000002e6414a2d228dc14280229000" alt="" className='w-full rounded' />
-            </div>
-            <div>
-              <p className='text-sm'>Ami tomar bhalobasa</p>
-            </div>
-          </div>
-          <div className='w-[180px] secondary-bg p-4 rounded-md'>
-            <div className='mb-3'>
-              <img src="https://i.scdn.co/image/ab67706f00000002e6414a2d228dc14280229000" alt="" className='w-full rounded' />
-            </div>
-            <div>
-              <p className='text-sm'>Ami tomar bhalobasa</p>
-            </div>
-          </div>
-          <div className='w-[180px] secondary-bg p-4 rounded-md'>
-            <div className='mb-3'>
-              <img src="https://i.scdn.co/image/ab67706f00000002e6414a2d228dc14280229000" alt="" className='w-full rounded' />
-            </div>
-            <div>
-              <p className='text-sm'>Ami tomar bhalobasa</p>
-            </div>
-          </div>
-          <div className='w-[180px] secondary-bg p-4 rounded-md'>
-            <div className='mb-3'>
-              <img src="https://i.scdn.co/image/ab67706f00000002e6414a2d228dc14280229000" alt="" className='w-full rounded' />
-            </div>
-            <div>
-              <p className='text-sm'>Ami tomar bhalobasa</p>
-            </div>
-          </div>
-          <div className='w-[180px] secondary-bg p-4 rounded-md'>
-            <div className='mb-3'>
-              <img src="https://i.scdn.co/image/ab67706f00000002e6414a2d228dc14280229000" alt="" className='w-full rounded' />
-            </div>
-            <div>
-              <p className='text-sm'>Ami tomar bhalobasa</p>
-            </div>
-          </div>
-          <div className='w-[180px] secondary-bg p-4 rounded-md'>
-            <div className='mb-3'>
-              <img src="https://i.scdn.co/image/ab67706f00000002e6414a2d228dc14280229000" alt="" className='w-full rounded' />
-            </div>
-            <div>
-              <p className='text-sm'>Ami tomar bhalobasa</p>
-            </div>
-          </div>
-          <div className='w-[180px] secondary-bg p-4 rounded-md'>
-            <div className='mb-3'>
-              <img src="https://i.scdn.co/image/ab67706f00000002e6414a2d228dc14280229000" alt="" className='w-full rounded' />
-            </div>
-            <div>
-              <p className='text-sm'>Ami tomar bhalobasa</p>
-            </div>
-          </div>
-          <div className='w-[180px] secondary-bg p-4 rounded-md'>
-            <div className='mb-3'>
-              <img src="https://i.scdn.co/image/ab67706f00000002e6414a2d228dc14280229000" alt="" className='w-full rounded' />
-            </div>
-            <div>
-              <p className='text-sm'>Ami tomar bhalobasa</p>
-            </div>
-          </div>
-          <div className='w-[180px] secondary-bg p-4 rounded-md'>
-            <div className='mb-3'>
-              <img src="https://i.scdn.co/image/ab67706f00000002e6414a2d228dc14280229000" alt="" className='w-full rounded' />
-            </div>
-            <div>
-              <p className='text-sm'>Ami tomar bhalobasa</p>
-            </div>
-          </div>
-          <div className='w-[180px] secondary-bg p-4 rounded-md'>
-            <div className='mb-3'>
-              <img src="https://i.scdn.co/image/ab67706f00000002e6414a2d228dc14280229000" alt="" className='w-full rounded' />
-            </div>
-            <div>
-              <p className='text-sm'>Ami tomar bhalobasa</p>
-            </div>
-          </div>
-        </div>
-      </section>
-      {/* <div className='grid grid-cols-3'>
-        {
+          {
           musics.map(music => <MusicCard
             key={music._id}
             music={music}
             handlePlayMusic={handlePlayMusic}
           ></MusicCard>)
         }
-      </div> */}
+        </div>
+      </section>
+      
       <UsePlayer toggle={toggle} musics={musics} clickedMusic={clickedMusic} ></UsePlayer>
     </>
   );
