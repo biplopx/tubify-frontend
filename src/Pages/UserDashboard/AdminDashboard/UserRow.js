@@ -47,16 +47,16 @@ const UserRow = ({ user, index, fetchUsers }) => {
     <>
       <tr>
         <td className="px-6 py-4">
-          <p className="text-gray-500 text-sm font-semibold tracking-wide">{index + 1}</p>
+          {index + 1}
         </td>
         <td className="px-6 py-4 text-center">
-          <p className="text-gray-500 text-sm font-semibold tracking-wide">{email}</p>
+          {email}
         </td>
         <td className="px-6 py-4 text-center">
-          <p className="text-gray-500 text-sm font-semibold tracking-wide">{email}</p>
+          {role === "admin" ? "Admin" : "User"}
         </td>
         <td className="px-6 py-4 text-center">
-          {role ? <p className="text-gray-500 text-sm font-semibold tracking-wide">Already Admin</p> : <button onClick={makeAdmin} className='p-1 bg-sky-500 text-white text-xs rounded-sm'>Make Admin</button>}
+          {role ? <button onClick={makeAdmin} className='p-1 bg-red-500 text-white text-xs rounded-sm'>Remove Admin</button> : <button onClick={makeAdmin} className='p-1 bg-sky-500 text-white text-xs rounded-sm'>Make Admin</button>}
         </td>
       </tr>
     </>

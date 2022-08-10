@@ -18,7 +18,7 @@ const AllUsers = () => {
       <h1 className='text-2xl signika mb-5'>All Users List</h1>
       <div className='w-full'>
         <div className='overflow-x-auto w-full'>
-          <table className='mx-auto max-w-5xl w-full whitespace-nowrap rounded-lg bg-white divide-y divide-gray-300 overflow-hidden'>
+          <table className='mx-auto max-w-5xl w-full whitespace-nowrap rounded-lg bg-glass overflow-hidden'>
             <thead className="bg-gray-900">
               <tr className="text-white text-left">
                 <th className="font-semibold text-sm uppercase px-6 py-4"> Index </th>

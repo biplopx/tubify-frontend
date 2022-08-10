@@ -9,6 +9,7 @@ const AddMusic = () => {
   });
 
   const onSubmit = (data) => {
+    console.log(data)
     fetch('http://localhost:5000/song/add-song', {
       method: 'POST',
       headers: {
@@ -20,13 +21,18 @@ const AddMusic = () => {
       .then(res => res.json())
       .then(result => {
         console.log(result)
-        toast.success('Song successfully added')
-        reset()
+        if (result.status === "successful") {
+          toast.success('Song successfully added');
+          reset()
+        }
+        else {
+          toast.error(result.error)
+        }
       })
   }
   return (
     <div>
-      <div className='max-w-4xl w-full mx-auto secondary-bg px-4 py-5 rounded-md'>
+      <div className='max-w-4xl w-full mx-auto my-5 secondary-bg px-4 py-6 rounded-md'>
         <h2 className='text-2xl signika mb-4'>Add Music</h2>
         <form onSubmit={handleSubmit(onSubmit)} className='transparent'>
           {/* Song Name */}
@@ -104,28 +110,66 @@ const AddMusic = () => {
               {...register("lyrics")}
               className='w-full bg-transparent px-3 py-2 text-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none 
               focus:border-sky-300 focus:ring-sky-300 block rounded-md sm:text-sm focus:ring-1'
-              placeholder='Enter song name' required>
+              placeholder='Enter song name'>
             </textarea>
           </div>
-          {/* Playlist Input */}
+          {/* Album Input */}
           <div className='mb-4'>
-            <label className='block mb-4'>Playlist Name</label>
+            <label className='block mb-4'>Album Name</label>
             <input type="text"
-              {...register("playlist", {
+              {...register("album", {
                 required: {
                   value: true,
-                  message: 'Please enter music url'
+                  message: 'Please enter album name'
                 }
               })}
               className='w-full bg-transparent px-3 py-2 text-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none 
               focus:border-sky-300 focus:ring-sky-300 block rounded-md sm:text-sm focus:ring-1'
               placeholder='Enter song playlist name' required />
             <label className="block mt-2">
-              {errors.playlist?.type === 'required' && <span className="text-sm text-red-500">{errors.playlist.message}</span>}
+              {errors.album?.type === 'required' && <span className="text-sm text-red-500">{errors.album.message}</span>}
             </label>
           </div>
 
-          {/* Music Type Input */}
+          {/* Language Input */}
+          <div className='mb-4'>
+            <label className='block mb-4'>Language</label>
+            <div className="flex">
+              <div className="mb-3 w-full">
+                <select {...register('lang', {
+                  required: {
+                    value: true,
+                    message: 'Please select music language'
+                  }
+                })} className="form-select appearance-none
+      block
+      secondary-bg
+      w-full
+      px-3
+      py-1.5
+      text-base
+      font-normal
+      text-gray-300
+      border border-solid border-gray-300
+      rounded
+      transition
+      ease-in-out
+      m-0
+      focus:text-gray-300 focus:secondary-bg focus:border-blue-600 focus:outline-none" aria-label="Default select example" defaultValue={'Hindi'}>
+
+                  <option value="Hindi">Hindi</option>
+                  <option value="Bangla">Bangla</option>
+                  <option value="English">English</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+            </div>
+            <label className="block mt-2">
+              {errors.lang?.type === 'required' && <span className="text-sm text-red-500">{errors.lang.message}</span>}
+            </label>
+          </div>
+
+          {/* Lanaguage Input */}
           <div className='mb-4'>
             <label className='block mb-4'>Music Type</label>
             <div className='flex gap-x-5'>
