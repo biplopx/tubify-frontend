@@ -106,7 +106,7 @@ const AddMusic = () => {
           {/* Lysrics Input */}
           <div className='mb-4'>
             <label className='block mb-4'>Lyrics</label>
-            <textarea type="text" row="5"
+            <textarea required type="text" row="5"
               {...register("lyrics")}
               className='w-full bg-transparent px-3 py-2 text-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none 
               focus:border-sky-300 focus:ring-sky-300 block rounded-md sm:text-sm focus:ring-1'

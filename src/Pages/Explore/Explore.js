@@ -36,15 +36,6 @@ const Explore = () => {
           }
         </div>
       </section>
-      {/* <div className='grid grid-cols-3'>
-        {
-          musics.map(music => <MusicCard
-            key={music._id}
-            music={music}
-            handlePlayMusic={handlePlayMusic}
-          ></MusicCard>)
-        }
-      </div> */}
       <UsePlayer toggle={toggle} musics={musics} clickedMusic={clickedMusic} ></UsePlayer>
     </>
   );
