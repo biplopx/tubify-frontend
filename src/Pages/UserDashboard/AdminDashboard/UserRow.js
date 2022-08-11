@@ -43,6 +43,41 @@ const UserRow = ({ user, index, fetchUsers }) => {
       });
   }
 
+
+  const removeAdmin = () => {
+    swal({
+      title: "Are you sure?",
+      text: "You want to remove this user from admin?",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+      .then((willAdmin) => {
+        if (willAdmin) {
+          fetch(`http://localhost:5000/user/admin/remove/${email}`, {
+            method: 'PUT',
+            headers: {
+              'content-type': 'application/json',
+              'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+            },
+          })
+            .then(res => res.json())
+            .then(data => {
+              console.log(data)
+              // if (result.status === "successful") {
+              //   toast.success("user successfully remove from admin role")
+              // }
+              // else {
+              //   toast.error("Failed to remove admin")
+              // }
+            })
+        } else {
+          swal("No");
+        }
+      });
+  }
+
+
   return (
     <>
       <tr>
@@ -56,7 +91,7 @@ const UserRow = ({ user, index, fetchUsers }) => {
           {role === "admin" ? "Admin" : "User"}
         </td>
         <td className="px-6 py-4 text-center">
-          {role ? <button onClick={makeAdmin} className='p-1 bg-red-500 text-white text-xs rounded-sm'>Remove Admin</button> : <button onClick={makeAdmin} className='p-1 bg-sky-500 text-white text-xs rounded-sm'>Make Admin</button>}
+          {role === "admin" ? <button onClick={removeAdmin} className='p-1 bg-red-500 text-white text-xs rounded-sm'>Remove Admin</button> : <button onClick={makeAdmin} className='p-1 bg-sky-500 text-white text-xs rounded-sm'>Make Admin</button>}
         </td>
       </tr>
     </>

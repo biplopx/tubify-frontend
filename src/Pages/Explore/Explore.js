@@ -8,9 +8,7 @@ const Explore = () => {
   const [toggle, setToggle] = useState(false)
   const [clickedMusic, setClickedMusic] = useState({})
   const { isLoading, data: musics, } = useQuery(['song'], () =>
-    fetch('http://localhost:5000/song/all-song').then(res =>
-      res.json()
-    )
+    fetch('http://localhost:5000/song/all-song').then(res => res.json())
   )
   if (isLoading) {
     return <Loading></Loading>
@@ -28,87 +26,14 @@ const Explore = () => {
           <p className='text-normal'><Link to="/">View All</Link></p>
         </div>
 
-        <div className='grid grid-cols-3 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-8 gap-4 justify-between'>
-          <div className='w-[180px] secondary-bg p-4 rounded-md'>
-            <div className='mb-3'>
-              <img src="https://i.scdn.co/image/ab67706f00000002e6414a2d228dc14280229000" alt="" className='w-full rounded' />
-            </div>
-            <div>
-              <p className='text-sm'>Ami tomar bhalobasa</p>
-            </div>
-          </div>
-          <div className='w-[180px] secondary-bg p-4 rounded-md'>
-            <div className='mb-3'>
-              <img src="https://i.scdn.co/image/ab67706f00000002e6414a2d228dc14280229000" alt="" className='w-full rounded' />
-            </div>
-            <div>
-              <p className='text-sm'>Ami tomar bhalobasa</p>
-            </div>
-          </div>
-          <div className='w-[180px] secondary-bg p-4 rounded-md'>
-            <div className='mb-3'>
-              <img src="https://i.scdn.co/image/ab67706f00000002e6414a2d228dc14280229000" alt="" className='w-full rounded' />
-            </div>
-            <div>
-              <p className='text-sm'>Ami tomar bhalobasa</p>
-            </div>
-          </div>
-          <div className='w-[180px] secondary-bg p-4 rounded-md'>
-            <div className='mb-3'>
-              <img src="https://i.scdn.co/image/ab67706f00000002e6414a2d228dc14280229000" alt="" className='w-full rounded' />
-            </div>
-            <div>
-              <p className='text-sm'>Ami tomar bhalobasa</p>
-            </div>
-          </div>
-          <div className='w-[180px] secondary-bg p-4 rounded-md'>
-            <div className='mb-3'>
-              <img src="https://i.scdn.co/image/ab67706f00000002e6414a2d228dc14280229000" alt="" className='w-full rounded' />
-            </div>
-            <div>
-              <p className='text-sm'>Ami tomar bhalobasa</p>
-            </div>
-          </div>
-          <div className='w-[180px] secondary-bg p-4 rounded-md'>
-            <div className='mb-3'>
-              <img src="https://i.scdn.co/image/ab67706f00000002e6414a2d228dc14280229000" alt="" className='w-full rounded' />
-            </div>
-            <div>
-              <p className='text-sm'>Ami tomar bhalobasa</p>
-            </div>
-          </div>
-          <div className='w-[180px] secondary-bg p-4 rounded-md'>
-            <div className='mb-3'>
-              <img src="https://i.scdn.co/image/ab67706f00000002e6414a2d228dc14280229000" alt="" className='w-full rounded' />
-            </div>
-            <div>
-              <p className='text-sm'>Ami tomar bhalobasa</p>
-            </div>
-          </div>
-          <div className='w-[180px] secondary-bg p-4 rounded-md'>
-            <div className='mb-3'>
-              <img src="https://i.scdn.co/image/ab67706f00000002e6414a2d228dc14280229000" alt="" className='w-full rounded' />
-            </div>
-            <div>
-              <p className='text-sm'>Ami tomar bhalobasa</p>
-            </div>
-          </div>
-          <div className='w-[180px] secondary-bg p-4 rounded-md'>
-            <div className='mb-3'>
-              <img src="https://i.scdn.co/image/ab67706f00000002e6414a2d228dc14280229000" alt="" className='w-full rounded' />
-            </div>
-            <div>
-              <p className='text-sm'>Ami tomar bhalobasa</p>
-            </div>
-          </div>
-          <div className='w-[180px] secondary-bg p-4 rounded-md'>
-            <div className='mb-3'>
-              <img src="https://i.scdn.co/image/ab67706f00000002e6414a2d228dc14280229000" alt="" className='w-full rounded' />
-            </div>
-            <div>
-              <p className='text-sm'>Ami tomar bhalobasa</p>
-            </div>
-          </div>
+        <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 lg:grid-cols-7 gap-4 justify-between'>
+          {
+            musics.map(music => <MusicCard
+              key={music._id}
+              music={music}
+              handlePlayMusic={handlePlayMusic}
+            ></MusicCard>)
+          }
         </div>
       </section>
       {/* <div className='grid grid-cols-3'>
