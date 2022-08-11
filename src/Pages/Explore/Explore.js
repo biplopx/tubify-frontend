@@ -8,9 +8,7 @@ const Explore = () => {
   const [toggle, setToggle] = useState(false)
   const [clickedMusic, setClickedMusic] = useState({})
   const { isLoading, data: musics, } = useQuery(['song'], () =>
-    fetch('http://localhost:5000/song/all-song').then(res =>
-      res.json()
-    )
+    fetch('http://localhost:5000/song/all-song').then(res => res.json())
   )
   if (isLoading) {
     return <Loading></Loading>
@@ -28,17 +26,16 @@ const Explore = () => {
           <p className='text-normal'><Link to="/">View All</Link></p>
         </div>
 
-        <div className='grid grid-cols-3 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-8 gap-4 justify-between'>
+        <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 lg:grid-cols-7 gap-4 justify-between'>
           {
-          musics.map(music => <MusicCard
-            key={music._id}
-            music={music}
-            handlePlayMusic={handlePlayMusic}
-          ></MusicCard>)
-        }
+            musics.map(music => <MusicCard
+              key={music._id}
+              music={music}
+              handlePlayMusic={handlePlayMusic}
+            ></MusicCard>)
+          }
         </div>
       </section>
-      
       <UsePlayer toggle={toggle} musics={musics} clickedMusic={clickedMusic} ></UsePlayer>
     </>
   );
