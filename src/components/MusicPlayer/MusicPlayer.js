@@ -24,7 +24,7 @@ const MusicPlayer = (props) => {
         showPlay: true,
         glassBg: true,
         showProgressLoadBar: true,
-        
+
 
     }
     return <ReactJkMusicPlayer {...options} />

@@ -45,13 +45,13 @@ const UserDashboard = () => {
         </div>
       </div>
       {/* Sidebar End */}
-      <div className='w-full px-4 overflow-y-scroll'>
+      <div className='w-full px-4 overflow-y-scroll relative'>
         <div className='w-full box-border relative h-[70px] bg-[#0D0F2C] flex justify-between items-center py-2 px-3 mt-4 rounded-md'>
           {/* Mobile Menu */}
-          <div onClick={() => { setMobileMenuOpen(!isMobileMenuOpen) }} className='lg:hidden flex items-center bg-'>
+          <div onClick={() => { setMobileMenuOpen(!isMobileMenuOpen) }} className='lg:hidden flex items-center'>
             <i className={isMobileMenuOpen ? "ri-close-line text-xl mr-3" : "ri-menu-line text-xl mr-3"}></i>
           </div>
-          <div className={`transition duration-500 w-60 bg-[#0D0F2C] p-3 absolute left-0 top-20 rounded-md ${isMobileMenuOpen ? 'opacity-100' : "opacity-0 pointer-events-none"}`}>
+          <div className={`z-[100000] transition duration-500 w-60 bg-[#0D0F2C] p-3 absolute left-0 top-20 rounded-md ${isMobileMenuOpen ? 'opacity-100' : "opacity-0 pointer-events-none"}`}>
             <ul>
               {menuItems}
             </ul>

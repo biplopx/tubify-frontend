@@ -15,8 +15,8 @@ const MusicCard = ({ music, handlePlayMusic }) => {
         <div>
           <div> <p className='text-md mb-3'>{name.slice(0, 10)}</p></div>
           <div>
-            <div className='flex justify-between'>
-              <p>{singer}</p>
+            <div className='flex justify-between items-center'>
+              <p className='text-sm'>{singer}</p>
               <div>
                 <button data-dropdown-toggle="dropdownDots" className="inline-flex items-center p-2 text-md font-medium text-center text-white primary-bg rounded-lg hover:bg-gray-600 focus:ring-4 focus:outline-none" type="button">
                   <svg className="w-3 h-3" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z"></path></svg>

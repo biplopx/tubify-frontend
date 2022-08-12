@@ -2,10 +2,11 @@ import React from 'react';
 import swal from 'sweetalert';
 import { toast } from 'react-toastify';
 
-const Song = ({ song, index, refetch }) => {
+const Song = ({ song, index, refetch, setShowModal, editModal }) => {
   const { _id, name, album } = song;
   // Delete Song
   const deletSong = (id) => {
+    console.log(id, name, album)
     swal({
       title: "Are you sure?",
       text: "You want to delete this song?",
@@ -51,7 +52,7 @@ const Song = ({ song, index, refetch }) => {
       </td>
       <td className="px-6 py-4 text-center">
         <div className='flex gap-4'>
-          <button className='px-2 py-1 bg-sky-500 text-white text-xs rounded-sm'><i className="ri-edit-box-line text-xl"></i></button>
+          <button onClick={() => { editModal(_id) }} className='px-2 py-1 bg-sky-500 text-white text-xs rounded-sm'><i className="ri-edit-box-line text-xl"></i></button>
           <button onClick={() => { deletSong(_id) }} className='px-2 py-1 bg-red-500 text-white text-xs rounded-sm'><i className="ri-delete-bin-7-line text-xl"></i></button>
         </div>
       </td>

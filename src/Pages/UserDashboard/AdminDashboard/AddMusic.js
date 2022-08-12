@@ -106,7 +106,7 @@ const AddMusic = () => {
           {/* Lysrics Input */}
           <div className='mb-4'>
             <label className='block mb-4'>Lyrics</label>
-            <textarea required type="text" row="5"
+            <textarea type="text" row="5"
               {...register("lyrics")}
               className='w-full bg-transparent px-3 py-2 text-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none 
               focus:border-sky-300 focus:ring-sky-300 block rounded-md sm:text-sm focus:ring-1'
@@ -117,20 +117,11 @@ const AddMusic = () => {
           <div className='mb-4'>
             <label className='block mb-4'>Album Name</label>
             <input type="text"
-              {...register("album", {
-                required: {
-                  value: true,
-                  message: 'Please enter album name'
-                }
-              })}
+              {...register("album")}
               className='w-full bg-transparent px-3 py-2 text-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none 
               focus:border-sky-300 focus:ring-sky-300 block rounded-md sm:text-sm focus:ring-1'
-              placeholder='Enter song playlist name' required />
-            <label className="block mt-2">
-              {errors.album?.type === 'required' && <span className="text-sm text-red-500">{errors.album.message}</span>}
-            </label>
+              placeholder='Enter album name' />
           </div>
-
           {/* Language Input */}
           <div className='mb-4'>
             <label className='block mb-4'>Language</label>
