@@ -16,13 +16,14 @@ import AllUsers from "./Pages/UserDashboard/AdminDashboard/AllUsers";
 import ContactUs from "./Pages/ContactUs/ContactUs";
 import RequireAdmin from "./Pages/RequireAdmin/RequireAdmin";
 import AddMusic from "./Pages/UserDashboard/AdminDashboard/AddMusic";
-
+import 'react-jinke-music-player/assets/index.css'
 
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
 import ManageMusic from "./Pages/UserDashboard/AdminDashboard/ManageMusic";
 import PricingPlan from "./Pages/PricingPlan/PricingPlan";
 import Purchase from "./Pages/Purchase/Purchase";
+import Payment from "./Pages/Purchase/Payment";
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
         <Route path="/login" element={<Layout children={<Login />} />}></Route>
         <Route path="/pricing" element={<Layout><RequireAuth><PricingPlan/></RequireAuth></Layout>}></Route>
         <Route path="/purchase/:id" element={<Layout><RequireAuth><Purchase/></RequireAuth></Layout>}></Route>
+        <Route path="/payment" element={<Layout><RequireAuth><Payment/></RequireAuth></Layout>}></Route>
         <Route path="/dashboard" element={
           <DashboardLayout children={<RequireAuth><UserDashboard /></RequireAuth>} />
         }>

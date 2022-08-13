@@ -10,7 +10,6 @@ const ClickedMusic = (props) => {
             musicSrc: music?.musicSrc,
             lyric: music?.lyrics
         }
-
     ]
     const options = {
         audioLists: audioList,
