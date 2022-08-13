@@ -5,7 +5,6 @@ import { useQuery } from '@tanstack/react-query'
 import { useLocation, useNavigate } from 'react-router-dom';
 const Pricing = () => {
   const path= useLocation();
-  console.log(path);
   const navigate = useNavigate()
   const { isLoading, data:plans, } = useQuery(['plan'], () =>
     fetch('http://localhost:5000/pricing/plan').then(res =>
@@ -15,7 +14,6 @@ const Pricing = () => {
   if (isLoading) {
     return <Loading></Loading>
   }
-  console.log(plans)
   return (
     <section className="container mx-auto px-5 py-12 my-5">
       
@@ -43,7 +41,7 @@ const Pricing = () => {
                 {path.pathname === '/'? <button onClick={()=>navigate('/pricing')} className="px-4 py-2 font-semibold text-sm bg-sky-500 text-white rounded-md shadow-sm opacity-100 mt-5 lg:mt-0 md:mt-0">
                   Buy Now
                 </button> :<button onClick={()=>navigate(`/purchase/${pricing._id}`)} className="px-4 py-2 font-semibold text-sm bg-sky-500 text-white rounded-md shadow-sm opacity-100 mt-5 lg:mt-0 md:mt-0">
-                  checkout
+                  choose plan
                 </button>
 
                 }

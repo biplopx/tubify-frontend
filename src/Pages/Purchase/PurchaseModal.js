@@ -5,7 +5,9 @@ import { useForm } from "react-hook-form";
 import Loading from '../../components/Loading/Loading';
 import auth from '../../firebase.init';
 import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 const PurchaseModal = ({ myPlan, setIsOpen, refetch, modalIsOpen }) => {
+    const navigate = useNavigate()
     const { plan, price } = myPlan;
     const [user, loading] = useAuthState(auth);
     const { register, handleSubmit, reset } = useForm();
@@ -17,7 +19,7 @@ const PurchaseModal = ({ myPlan, setIsOpen, refetch, modalIsOpen }) => {
             phoneNum: userData?.phone,
             price: price,
             planName: plan,
-            statusPending: true,
+            plan:true
 
         }
         fetch('http://localhost:5000/order/new', {
@@ -30,13 +32,19 @@ const PurchaseModal = ({ myPlan, setIsOpen, refetch, modalIsOpen }) => {
 
         })
             .then(res => res.json())
+            
             .then(data => {
+                console.log(data)
                 if (data._id) {
                     refetch()
                     setIsOpen(false)
                     reset()
                     toast.success('successfully ordered please check my order page')
+                    navigate('/payment')
 
+                }
+                else{
+                    toast.error(data.massage)
                 }
             })
 
@@ -83,7 +91,7 @@ const PurchaseModal = ({ myPlan, setIsOpen, refetch, modalIsOpen }) => {
                     <input value={`Total: $${price}`} readOnly disabled className="p-2 mb-2  w-full  max-w-xs rounded" />
                     <input required type="number"{...register("phone")} placeholder='Your Phone Number' className="p-2 mb-2 text-black  w-full max-w-xs rounded" />
                     <input required type='text' {...register("address")} placeholder='Your Address' className="p-2 mb-2   w-full max-w-xs rounded text-black" />
-                    <input type='submit' value="Booked" className="p-2 mb-2  w-full max-w-xs rounded bg-[#3F9FFF]" />
+                    <input type='submit' value="Booking plan" className="p-2 mb-2  w-full max-w-xs rounded bg-[#3F9FFF]" />
                 </form>
 
             </Modal>
