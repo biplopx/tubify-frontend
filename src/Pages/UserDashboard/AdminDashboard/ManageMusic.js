@@ -51,7 +51,6 @@ const ManageMusic = () => {
         </div>
         {showModal && <EditModal setShowModal={setShowModal} singleSong={singleSong} refetch={refetch} />}
       </div>
-
     </>
 
   );
