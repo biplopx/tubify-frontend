@@ -14,10 +14,12 @@ const ManageMusic = () => {
   const [singleSong, setSingleSong] = useState(false);
 
   const editModal = (id) => {
-    setShowModal(!showModal)
     fetch(`http://localhost:5000/song/${id}`)
       .then(res => res.json())
-      .then(data => setSingleSong(data));
+      .then(data => {
+        setSingleSong(data)
+        setShowModal(!showModal)
+      })
   }
 
   if (isLoading) {
@@ -49,7 +51,6 @@ const ManageMusic = () => {
         </div>
         {showModal && <EditModal setShowModal={setShowModal} singleSong={singleSong} refetch={refetch} />}
       </div>
-
     </>
 
   );

@@ -63,13 +63,13 @@ const UserRow = ({ user, index, fetchUsers }) => {
           })
             .then(res => res.json())
             .then(data => {
-              console.log(data)
-              // if (result.status === "successful") {
-              //   toast.success("user successfully remove from admin role")
-              // }
-              // else {
-              //   toast.error("Failed to remove admin")
-              // }
+              if (data.status === "successful") {
+                toast.success("user successfully remove from admin role")
+                fetchUsers();
+              }
+              else {
+                toast.error("Failed to remove admin")
+              }
             })
         } else {
           swal("No");
