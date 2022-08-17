@@ -24,6 +24,7 @@ import ManageMusic from "./Pages/UserDashboard/AdminDashboard/ManageMusic";
 import PricingPlan from "./Pages/PricingPlan/PricingPlan";
 import Purchase from "./Pages/Purchase/Purchase";
 import Payment from "./Pages/Purchase/Payment";
+import AllSongs from "./Pages/AllSong/AllSong";
 
 function App() {
   return (
@@ -33,9 +34,9 @@ function App() {
         <Route path="/about-us" element={<Layout children={<AboutUs />} />}></Route>
         <Route path="/signup" element={<Layout children={<SignUp />} />}></Route>
         <Route path="/login" element={<Layout children={<Login />} />}></Route>
-        <Route path="/pricing" element={<Layout><RequireAuth><PricingPlan/></RequireAuth></Layout>}></Route>
-        <Route path="/purchase/:id" element={<Layout><RequireAuth><Purchase/></RequireAuth></Layout>}></Route>
-        <Route path="/payment" element={<Layout><RequireAuth><Payment/></RequireAuth></Layout>}></Route>
+        <Route path="/pricing" element={<Layout><RequireAuth><PricingPlan /></RequireAuth></Layout>}></Route>
+        <Route path="/purchase/:id" element={<Layout><RequireAuth><Purchase /></RequireAuth></Layout>}></Route>
+        <Route path="/payment" element={<Layout><RequireAuth><Payment /></RequireAuth></Layout>}></Route>
         <Route path="/dashboard" element={
           <DashboardLayout children={<RequireAuth><UserDashboard /></RequireAuth>} />
         }>
@@ -45,6 +46,7 @@ function App() {
             <Route path="your-libary" element={<DashboardLayout children={<YourLibary />} />}></Route>
             <Route path="create-playlist" element={<DashboardLayout children={<CreatePlaylist />} />}></Route>
             <Route path="my-profile" element={<DashboardLayout children={<MyProfile />} />}></Route>
+            <Route path="all-songs" element={<DashboardLayout children={<AllSongs />} />}></Route>
             {/* Admin Routes */}
 
             <Route path="all-users" element={<DashboardLayout children={<RequireAdmin><AllUsers /></RequireAdmin>} />}></Route>

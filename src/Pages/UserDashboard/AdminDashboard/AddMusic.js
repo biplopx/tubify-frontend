@@ -23,7 +23,7 @@ const AddMusic = () => {
         console.log(result)
         if (result.status === "successful") {
           toast.success('Song successfully added');
-          reset()
+          // reset()
         }
         else {
           toast.error(result.error)

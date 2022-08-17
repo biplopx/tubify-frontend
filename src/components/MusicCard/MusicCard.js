@@ -51,7 +51,7 @@ const MusicCard = ({ music, handlePlayMusic }) => {
                 <div ref={refmenu} className="z-10 w-50 border border-gray-600 secondary-bg rounded divide-y divide-gray-100 shadow absolute right-[-120px] bottom-[-0px]">
                   <ul className="py-1 text-white">
                     <li onClick={() => setPlaylistModal(!isPlaylistModal)} className="flex items-center py-2 px-4 text-sm  hover:bg-blue-900">
-                      <i className="ri-add-line text-lg mr-2"></i> Add to Playlist
+                      <i className="ri-play-list-add-line text-lg mr-2"></i> Add to Playlist
                     </li>
                     <li className="flex items-center py-2 px-4 text-sm hover:bg-blue-900">
                       <i className="ri-add-line text-lg mr-2"></i>  Add to watch later
