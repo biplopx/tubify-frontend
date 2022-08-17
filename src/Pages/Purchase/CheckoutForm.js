@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { CardElement, useStripe, useElements, } from '@stripe/react-stripe-js';
 import { toast} from 'react-toastify';
-const email = "mahediimun@gmail.com"
+// const email = "mahediimun@gmail.com"
 const CheckoutFrom = ({ data }) => {
   const { userName, userEmail, price, _id, plan, phoneNum } = data;
   const [disabled, setDisabled] = useState(false)
@@ -82,7 +82,7 @@ const CheckoutFrom = ({ data }) => {
           price: price,
         };
         if (paymentIntent.id) {
-          fetch(`http://localhost:5000/payment/plan-booked/${email}`, {
+          fetch(`http://localhost:5000/payment/plan-booked/${userEmail}`, {
             method: 'PUT',
             headers: {
               'authorization': `Barer ${localStorage.getItem('accessToken')}`,
