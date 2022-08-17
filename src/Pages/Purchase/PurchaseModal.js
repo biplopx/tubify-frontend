@@ -7,6 +7,7 @@ import auth from '../../firebase.init';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 const PurchaseModal = ({ myPlan, setIsOpen, refetch, modalIsOpen }) => {
+
     const navigate = useNavigate()
     const { plan, price } = myPlan;
     const [user, loading] = useAuthState(auth);
@@ -22,7 +23,7 @@ const PurchaseModal = ({ myPlan, setIsOpen, refetch, modalIsOpen }) => {
             plan:true
 
         }
-        fetch('http://localhost:5000/order/new', {
+        fetch(`http://localhost:5000/booking/new-booking`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
