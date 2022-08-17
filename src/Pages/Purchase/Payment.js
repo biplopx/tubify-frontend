@@ -6,7 +6,7 @@ import CheckoutFrom from './CheckoutForm';
 const stripePromise = loadStripe('pk_test_51L0Z9NHKPkPGbWfR23AenemDc8oGBjTTBB42S1xTYRTBGrzG8aYDlz1YXqSl0E2lB5xVJ0OfJlX6yifY384ot6Q200Q65Ed65y');
 
 const Payment = () => {
-    const [orderInfo] = UseOrder_info()
+    const orderInfo = UseOrder_info()
     const { userName, userEmail } = orderInfo;
     return (
         <div className="card w-[90%] bg-base-100 shadow-xl mt-5">

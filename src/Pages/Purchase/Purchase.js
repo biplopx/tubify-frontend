@@ -9,10 +9,10 @@ import UseOrder_info from '../../Hooks/UseOrder_info';
 import { useAuthState } from 'react-firebase-hooks/auth';
 const Purchase = () => {
     const [modalIsOpen, setIsOpen] = useState(false);
-    const[orderInfo]=UseOrder_info()
+    const orderInfo=UseOrder_info()
     const navigate = useNavigate()
     const { id } = useParams()
-    const url = `http://localhost:5000/pricing/plan-booking/${id}`
+    const url = `http://localhost:5000/pricing/plan/${id}`
 
     const { data: myPlan, isLoading, refetch } = useQuery(['product'], () => fetch(url, {
         method: 'GET',
@@ -41,6 +41,7 @@ const Purchase = () => {
         setIsOpen(true)
 
     }
+    console.log(myPlan)
     return (
         <div className='w-3/4 mx-auto my-12'>
 

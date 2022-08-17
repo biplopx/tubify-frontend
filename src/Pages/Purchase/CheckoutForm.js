@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { CardElement, useStripe, useElements, } from '@stripe/react-stripe-js';
 import { toast} from 'react-toastify';
+// const email = "mahediimun@gmail.com"
 const CheckoutFrom = ({ data }) => {
   const { userName, userEmail, price, _id, plan, phoneNum } = data;
   const [disabled, setDisabled] = useState(false)
@@ -81,8 +82,8 @@ const CheckoutFrom = ({ data }) => {
           price: price,
         };
         if (paymentIntent.id) {
-          fetch(`http://localhost:5000/payment/plan-booked`, {
-            method: 'POST',
+          fetch(`http://localhost:5000/payment/plan-booked/${userEmail}`, {
+            method: 'PUT',
             headers: {
               'authorization': `Barer ${localStorage.getItem('accessToken')}`,
               "Content-Type": "application/json"
@@ -91,6 +92,7 @@ const CheckoutFrom = ({ data }) => {
           })
             .then(res => res.json())
             .then(data => {
+              console.log(data)
               if (data.modifiedCount > 0) {
                 toast.success('successfully payment ')
                 setDisabled(true)

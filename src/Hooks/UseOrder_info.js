@@ -7,7 +7,7 @@ const UseOrder_info = () => {
     const email = user?.email;
     const [orderInfo,setOrderInfo]=useState({})
    useEffect(()=>{
-    fetch(`http://localhost:5000/order/my-order/${email}`,{
+    fetch(`http://localhost:5000/booking/my-booking/${email}`,{
         method: 'GET',
         headers: {
             'authorization': `Barer ${localStorage.getItem('accessToken')}`
@@ -20,7 +20,7 @@ const UseOrder_info = () => {
     return<Loading></Loading>
    }
 
-    return [orderInfo ]
+    return orderInfo 
 };
 
 export default UseOrder_info;
