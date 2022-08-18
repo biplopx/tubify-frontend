@@ -9,7 +9,7 @@ import UseOrder_info from '../../Hooks/UseOrder_info';
 import { useAuthState } from 'react-firebase-hooks/auth';
 const Purchase = () => {
     const [modalIsOpen, setIsOpen] = useState(false);
-    const[orderInfo]=UseOrder_info()
+    const [orderInfo] = UseOrder_info()
     const navigate = useNavigate()
     const { id } = useParams()
     const url = `http://localhost:5000/pricing/plan-booking/${id}`
@@ -18,7 +18,7 @@ const Purchase = () => {
         method: 'GET',
         headers: {
             'content-type': 'application/json',
-            authorization: `Bearer ${localStorage.getItem('accessToken')}`
+            'authorization': `Bearer ${localStorage.getItem('accessToken')}`
         }
     }
     ).then(res => {
@@ -59,7 +59,7 @@ const Purchase = () => {
                     </ul>
                 </div>
                 <div className="text-center my-5">
-                    <button  onClick={() => openModal()} className="px-4 py-2 font-semibold text-sm bg-sky-500 text-white rounded-md shadow-sm opacity-100 mt-5 lg:mt-0 md:mt-0">checkout
+                    <button onClick={() => openModal()} className="px-4 py-2 font-semibold text-sm bg-sky-500 text-white rounded-md shadow-sm opacity-100 mt-5 lg:mt-0 md:mt-0">checkout
                     </button>
                 </div>
             </div>

@@ -9,7 +9,6 @@ const AddMusic = () => {
   });
 
   const onSubmit = (data) => {
-    console.log(data)
     fetch('http://localhost:5000/song/add-song', {
       method: 'POST',
       headers: {
