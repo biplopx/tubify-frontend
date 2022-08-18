@@ -3,7 +3,10 @@ import Loading from '../../../components/Loading/Loading';
 import './Pricing.css';
 import { useQuery } from '@tanstack/react-query'
 import { useLocation, useNavigate } from 'react-router-dom';
+import UseOrder_info from '../../../Hooks/UseOrder_info';
 const Pricing = () => {
+  const orderInfo =UseOrder_info()
+  console.log(orderInfo?.plan)
   const path= useLocation();
   const navigate = useNavigate()
   const { isLoading, data:plans, } = useQuery(['plan'], () =>
@@ -38,9 +41,14 @@ const Pricing = () => {
                 </ul>
               </div>
               <div className="text-center my-5">
-                {path.pathname === '/'? <button onClick={()=>navigate('/pricing')} className="px-4 py-2 font-semibold text-sm bg-sky-500 text-white rounded-md shadow-sm opacity-100 mt-5 lg:mt-0 md:mt-0">
+                {path.pathname === '/'? <>
+                {orderInfo?.plan || <button onClick={()=>navigate('/pricing')}  className="px-4 py-2 font-semibold text-sm bg-sky-500 text-white rounded-md shadow-sm opacity-100 mt-5 lg:mt-0 md:mt-0">
                   Buy Now
-                </button> :<button onClick={()=>navigate(`/purchase/${pricing._id}`)} className="px-4 py-2 font-semibold text-sm bg-sky-500 text-white rounded-md shadow-sm opacity-100 mt-5 lg:mt-0 md:mt-0">
+                </button>}
+                {orderInfo?.plan&& <button disabled={orderInfo?.plan} className="px-4 py-2 font-semibold text-sm bg-sky-500 text-white rounded-md shadow-sm opacity-100 mt-5 lg:mt-0 md:mt-0">
+                  ready booked plan
+                </button>}
+                </> :<button onClick={()=>navigate(`/purchase/${pricing._id}`)} className="px-4 py-2 font-semibold text-sm bg-sky-500 text-white rounded-md shadow-sm opacity-100 mt-5 lg:mt-0 md:mt-0">
                   choose plan
                 </button>
 
