@@ -3,7 +3,7 @@ import React from "react";
 const AboutUs = () => {
   return (
     <section className="about  px-5  py-20">
-      <div className="container mx-auto grid  grid-cols-1 lg:grid-cols-2 gap-10">
+      <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10">
         <div>
           <img
             src="https://i.ibb.co/pPsRgP1/about-image.png"
