@@ -1,16 +1,40 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import Loading from '../../components/Loading/Loading';
 import MusicCard from '../../components/MusicCard/MusicCard';
 import UsePlayer from '../../Hooks/UsePlayer';
 import { Link } from 'react-router-dom';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
 const Explore = () => {
   const [toggle, setToggle] = useState(false)
-  const [clickedMusic, setClickedMusic] = useState({})
+  const [clickedMusic, setClickedMusic] = useState({});
+  const [user, loading] = useAuthState(auth);
+  const [singleUser, setSingleUser] = useState({});
   const { isLoading, data: musics, } = useQuery(['song'], () =>
     fetch('http://localhost:5000/song/all-song').then(res => res.json())
   )
-  if (isLoading) {
+  // const { singleUserLoading, data: singleUser, } = useQuery(['singleUser'], () =>
+  //    fetch(`http://localhost:5000/user/single-user/${user?.email}`).then(res => res.json())
+  // )
+
+
+  // // Single
+  const fetchSingleUser = () => {
+    fetch(`http://localhost:5000/user/single-user/${user?.email}`)
+      .then(res => res.json())
+      .then(data => {
+        setSingleUser(data)
+      })
+  }
+
+  // console.log(singleUser)
+
+  useEffect(() => {
+    fetchSingleUser()
+  }, [])
+
+  if (isLoading || loading) {
     return <Loading></Loading>
   }
   const handlePlayMusic = (clickedMusic) => {
@@ -32,6 +56,8 @@ const Explore = () => {
               key={music._id}
               music={music}
               handlePlayMusic={handlePlayMusic}
+              singleUser={singleUser}
+              fetchSingleUser={fetchSingleUser}
             ></MusicCard>)
           }
         </div>
