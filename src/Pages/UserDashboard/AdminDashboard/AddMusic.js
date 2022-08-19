@@ -9,7 +9,6 @@ const AddMusic = () => {
   });
 
   const onSubmit = (data) => {
-    console.log(data)
     fetch('http://localhost:5000/song/add-song', {
       method: 'POST',
       headers: {
@@ -23,7 +22,7 @@ const AddMusic = () => {
         console.log(result)
         if (result.status === "successful") {
           toast.success('Song successfully added');
-          reset()
+          // reset()
         }
         else {
           toast.error(result.error)

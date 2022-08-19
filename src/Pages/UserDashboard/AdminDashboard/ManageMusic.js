@@ -28,7 +28,7 @@ const ManageMusic = () => {
 
   return (
     <>
-      <div>
+      <div className='pb-5'>
         <h2 className='text-2xl signika mb-5'>Manage Song</h2>
         <div className='w-full relative'>
           <div className='overflow-x-auto w-full'>
