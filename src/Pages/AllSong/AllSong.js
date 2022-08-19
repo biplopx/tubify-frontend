@@ -6,6 +6,7 @@ import UsePlayer from '../../Hooks/UsePlayer';
 import { Link } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
+import { useEffect } from 'react';
 const AllSongs = () => {
   const [toggle, setToggle] = useState(false)
   const [clickedMusic, setClickedMusic] = useState({});
@@ -25,10 +26,16 @@ const AllSongs = () => {
   }
 
 
+  useEffect(() => {
+    fetchSingleUser()
+  }, [])
+
   if (isLoading || loading) {
     return <Loading></Loading>
   }
 
+
+  console.log(singleUser)
 
   const handlePlayMusic = (clickedMusic) => {
     setClickedMusic(clickedMusic);

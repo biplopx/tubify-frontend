@@ -19,7 +19,7 @@ const Explore = () => {
   // )
 
 
-  // // Single
+  // Single
   const fetchSingleUser = () => {
     fetch(`http://localhost:5000/user/single-user/${user?.email}`)
       .then(res => res.json())
