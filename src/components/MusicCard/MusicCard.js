@@ -14,7 +14,6 @@ const MusicCard = ({ music, handlePlayMusic, singleUser, fetchSingleUser }) => {
   const [isPlaylistModal, setPlaylistModal] = useState(false);
   const refmenu = useRef();
   const [user, loading] = useAuthState(auth);
-  console.log(singleUser)
   useEffect(() => {
     const checkIfClickedOutside = e => {
       // If the menu is open and the clicked target is not within the menu,
@@ -84,6 +83,22 @@ const MusicCard = ({ music, handlePlayMusic, singleUser, fetchSingleUser }) => {
 
   }
 
+  const toggleSaveForLater = () => {
+    fetch(`http://localhost:5000/song/save-for-later`, {
+      method: 'PUT',
+      headers: {
+        'content-type': 'application/json',
+        'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+      },
+      body: JSON.stringify({ id: _id, email: user?.email })
+    })
+      .then(res => res.json())
+      .then(result => {
+        console.log(result)
+        fetchSingleUser()
+      })
+  }
+
   return (
     <>
       <div className='secondary-bg p-3 rounded-md relative'>
@@ -112,8 +127,8 @@ const MusicCard = ({ music, handlePlayMusic, singleUser, fetchSingleUser }) => {
                     <li onClick={() => setPlaylistModal(!isPlaylistModal)} className="flex items-center py-2 px-4 text-sm  hover:bg-blue-900">
                       <i className="ri-play-list-add-line text-lg mr-2"></i> Add to Playlist
                     </li>
-                    <li className="flex items-center py-2 px-4 text-sm hover:bg-blue-900">
-                      <i className="ri-add-line text-lg mr-2"></i>  Add to watch later
+                    <li onClick={() => toggleSaveForLater()} className="flex items-center py-2 px-4 text-sm hover:bg-blue-900">
+                      <i className="ri-add-line text-lg mr-2"></i>  Save For Later
                     </li>
                     <li onClick={() => toggleLike()} className="flex items-center py-2 px-4 text-sm hover:bg-blue-900">
                       <i className={`${singleUser?.likedSongs.find(song => song._id === _id) ? 'ri-heart-fill text-red-500' : "ri-heart-line"} text-lg mr-2`}></i> {singleUser?.likedSongs.find(song => song._id === _id) ? 'Liked' : 'Like'}
