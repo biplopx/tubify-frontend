@@ -34,7 +34,6 @@ const MusicCard = ({ music, handlePlayMusic, singleUser, fetchSingleUser }) => {
   }
 
   const toggleLike = () => {
-
     if (singleUser?.likedSongs.find(song => song._id === _id)) {
       fetch(`http://localhost:5000/song/unlike`, {
         method: 'PUT',
@@ -48,13 +47,6 @@ const MusicCard = ({ music, handlePlayMusic, singleUser, fetchSingleUser }) => {
         .then(result => {
           console.log(result)
           fetchSingleUser()
-          // if (result.status === "successful") {
-          //   toast.success('Song successfully updated');
-          //   refetch();
-          // }
-          // else {
-          //   toast.error(result.error)
-          // }
         })
     }
     else {
@@ -70,13 +62,6 @@ const MusicCard = ({ music, handlePlayMusic, singleUser, fetchSingleUser }) => {
         .then(result => {
           console.log(result)
           fetchSingleUser()
-          // if (result.status === "successful") {
-          //   toast.success('Song successfully updated');
-          //   refetch();
-          // }
-          // else {
-          //   toast.error(result.error)
-          // }
         })
     }
 
@@ -131,7 +116,7 @@ const MusicCard = ({ music, handlePlayMusic, singleUser, fetchSingleUser }) => {
                       <i className="ri-add-line text-lg mr-2"></i>  Save For Later
                     </li>
                     <li onClick={() => toggleLike()} className="flex items-center py-2 px-4 text-sm hover:bg-blue-900">
-                      <i className={`${singleUser?.likedSongs.find(song => song._id === _id) ? 'ri-heart-fill text-red-500' : "ri-heart-line"} text-lg mr-2`}></i> {singleUser?.likedSongs.find(song => song._id === _id) ? 'Liked' : 'Like'}
+                      <i className={`${singleUser?.likedSongs?.find(song => song._id === _id) ? 'ri-heart-fill text-red-500' : "ri-heart-line"} text-lg mr-2`}></i> {singleUser?.likedSongs.find(song => song._id === _id) ? 'Liked' : 'Like'}
                     </li>
                   </ul>
                 </div>

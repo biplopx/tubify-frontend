@@ -28,8 +28,6 @@ const Explore = () => {
       })
   }
 
-  // console.log(singleUser)
-
   useEffect(() => {
     fetchSingleUser()
   }, [])
