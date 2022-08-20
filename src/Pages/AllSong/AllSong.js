@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import Loading from '../../components/Loading/Loading';
 import MusicCard from '../../components/MusicCard/MusicCard';
@@ -6,20 +6,17 @@ import UsePlayer from '../../Hooks/UsePlayer';
 import { Link } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
-const Explore = () => {
+import { useEffect } from 'react';
+const AllSongs = () => {
   const [toggle, setToggle] = useState(false)
   const [clickedMusic, setClickedMusic] = useState({});
-  const [user, loading] = useAuthState(auth);
   const [singleUser, setSingleUser] = useState({});
   const { isLoading, data: musics, } = useQuery(['song'], () =>
     fetch('http://localhost:5000/song/all-song').then(res => res.json())
   )
-  // const { singleUserLoading, data: singleUser, } = useQuery(['singleUser'], () =>
-  //    fetch(`http://localhost:5000/user/single-user/${user?.email}`).then(res => res.json())
-  // )
 
+  const [user, loading] = useAuthState(auth);
 
-  // Single
   const fetchSingleUser = () => {
     fetch(`http://localhost:5000/user/single-user/${user?.email}`)
       .then(res => res.json())
@@ -28,6 +25,7 @@ const Explore = () => {
       })
   }
 
+
   useEffect(() => {
     fetchSingleUser()
   }, [])
@@ -35,6 +33,10 @@ const Explore = () => {
   if (isLoading || loading) {
     return <Loading></Loading>
   }
+
+
+  console.log(singleUser)
+
   const handlePlayMusic = (clickedMusic) => {
     setClickedMusic(clickedMusic);
     setToggle(true)
@@ -42,15 +44,14 @@ const Explore = () => {
 
   return (
     <>
-      <section>
+      <section className='pb-5'>
         <div className='flex justify-between items-center mb-4'>
-          <h2 className='text-xl signika font-semibold'>Recently Added</h2>
-          <p className='text-normal'><Link to="/dashboard/all-songs">View All</Link></p>
+          <h2 className='text-xl signika font-semibold'>All Recent Song</h2>
         </div>
 
-        <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-8 gap-4 justify-between'>
+        <div className='py-3 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-8 gap-4 justify-between'>
           {
-            musics.slice(0, 8).map(music => <MusicCard
+            musics.map(music => <MusicCard
               key={music._id}
               music={music}
               handlePlayMusic={handlePlayMusic}
@@ -65,4 +66,4 @@ const Explore = () => {
   );
 };
 
-export default Explore;
+export default AllSongs;
