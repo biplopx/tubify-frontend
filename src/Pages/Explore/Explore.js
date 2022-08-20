@@ -15,23 +15,6 @@ const Explore = () => {
   const { isLoading, data: musics, } = useQuery(['song'], () =>
     fetch('http://localhost:5000/song/all-song').then(res => res.json())
   )
-  // const { singleUserLoading, data: singleUser, } = useQuery(['singleUser'], () =>
-  //    fetch(`http://localhost:5000/user/single-user/${user?.email}`).then(res => res.json())
-  // )
-
-
-  // // Single
-  // const fetchSingleUser = () => {
-  //   fetch(`http://localhost:5000/user/single-user/${user?.email}`)
-  //     .then(res => res.json())
-  //     .then(data => {
-  //       setSingleUser(data)
-  //     })
-  // }
-
-  // useEffect(() => {
-  //   fetchSingleUser()
-  // }, [])
 
   if (isLoading || loading) {
     return <Loading></Loading>
@@ -56,7 +39,7 @@ const Explore = () => {
               music={music}
               handlePlayMusic={handlePlayMusic}
               singleUser={singleUser}
-              singleUserRefetch={singleUserRefetch}
+              fetchSingleUser={singleUserRefetch}
             ></MusicCard>)
           }
         </div>
