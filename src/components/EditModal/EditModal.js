@@ -16,7 +16,6 @@ const EditModal = ({ setShowModal, singleSong, refetch }) => {
   }, [singleSong])
 
   const onSubmit = (data) => {
-    console.log(data)
     fetch(`http://localhost:5000/song/edit/${_id}`, {
       method: 'PATCH',
       headers: {
