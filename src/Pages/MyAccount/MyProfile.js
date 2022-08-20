@@ -51,14 +51,12 @@ const MyProfile = () => {
           await updateProfile({ photoURL });
           toast.success('Profile Picture successfully updated');
           reset();
-          console.log(user)
         }
       })
   }
 
   // Change Name Function
   const changeName = async (e) => {
-    console.log("Click")
     await updateProfile({ displayName });
     if (updating) {
       return <Loading />

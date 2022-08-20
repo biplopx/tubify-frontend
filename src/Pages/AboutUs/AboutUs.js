@@ -1,6 +1,6 @@
 import React from 'react';
-import aboutMusic from '../../images/Headphone.svg'
-import aboutSupport from '../../images/Service_24.svg'
+import aboutMusic from '../../images/Headphone.svg';
+import aboutSupport from '../../images/Service_24.svg';
 
 const AboutUs = () => {
   return (

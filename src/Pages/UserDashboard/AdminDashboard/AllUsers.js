@@ -3,7 +3,6 @@ import UserRow from './UserRow';
 
 const AllUsers = () => {
   const [users, setUsers] = useState([]);
-  console.log(users[0]);
   const fetchUsers = () => {
     fetch('http://localhost:5000/user/all-users')
       .then(res => res.json())

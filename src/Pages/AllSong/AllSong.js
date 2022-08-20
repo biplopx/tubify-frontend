@@ -35,8 +35,6 @@ const AllSongs = () => {
   }
 
 
-  console.log(singleUser)
-
   const handlePlayMusic = (clickedMusic) => {
     setClickedMusic(clickedMusic);
     setToggle(true)

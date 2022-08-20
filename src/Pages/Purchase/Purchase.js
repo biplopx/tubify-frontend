@@ -43,7 +43,6 @@ const Purchase = () => {
         setIsOpen(true)
 
     }
-    console.log(myPlan)
     return (
         <div className='w-3/4 mx-auto my-12'>
 
