@@ -7,6 +7,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import Loading from '../Loading/Loading';
 import PlaylistModal from '../PlaylistModal/PlaylistModal';
+import { toast } from 'react-toastify';
 
 const MusicCard = ({ music, handlePlayMusic, singleUser, fetchSingleUser }) => {
   const { _id, name, cover, singer } = music;
@@ -70,17 +71,35 @@ const MusicCard = ({ music, handlePlayMusic, singleUser, fetchSingleUser }) => {
   }
 
   const toggleSaveForLater = () => {
-    fetch(`http://localhost:5000/song/save-for-later`, {
-      method: 'PUT',
+    // fetch(`http://localhost:5000/song/save-for-later`, {
+    //   method: 'PUT',
+    //   headers: {
+    //     'content-type': 'application/json',
+    //     'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+    //   },
+    //   body: JSON.stringify({ id: _id, email: user?.email })
+    // })
+    //   .then(res => res.json())
+    //   .then(result => {
+    //     console.log(result)
+    //     fetchSingleUser()
+    //   })
+    fetch(`http://localhost:5000/playlists/${_id}`, {
+      method: "PUT",
       headers: {
-        'content-type': 'application/json',
-        'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+        "content-type": "application/json",
+        "authorization": `Bearer ${localStorage.getItem("accessToken")}`,
       },
-      body: JSON.stringify({ id: _id, email: user?.email })
+      body: JSON.stringify({ userId: userId, playlistName: "saveForLater" }),
     })
       .then(res => res.json())
       .then(result => {
-        fetchSingleUser()
+        if (result.message === "song already exist") {
+          toast.error(`Song already exits on this save for later`)
+        }
+        else {
+          toast.success(result.message)
+        }
       })
   }
 
