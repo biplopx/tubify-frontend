@@ -6,7 +6,6 @@ const Song = ({ song, index, refetch, setShowModal, editModal }) => {
   const { _id, name, album } = song;
   // Delete Song
   const deletSong = (id) => {
-    console.log(id, name, album)
     swal({
       title: "Are you sure?",
       text: "You want to delete this song?",
@@ -25,7 +24,6 @@ const Song = ({ song, index, refetch, setShowModal, editModal }) => {
           })
             .then(res => res.json())
             .then(result => {
-              console.log(result)
               if (result.status === "successful") {
                 toast.success('Song successfully Deleted', { autoClose: 2000 });
                 refetch()

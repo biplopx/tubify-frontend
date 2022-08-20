@@ -1,16 +1,31 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
+const PlaylistModal = ({ setPlaylistModal, playlists, songId, userId }) => {
 
-const PlaylistModal = ({ setPlaylistModal }) => {
   const { register, formState: { errors }, handleSubmit, reset } = useForm({
     mode: 'onChange',
     reValidateMode: 'onChange',
   });
-
-
   const onSubmit = (data) => {
-    console.log(data)
+    const playlistName = data.playlistName;
+    fetch(`http://localhost:5000/playlists/${songId}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+        "authorization": `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+      body: JSON.stringify({ userId: userId, playlistName: playlistName }),
+    })
+      .then(res => res.json())
+      .then(result => {
+        if (result.message === "song already exist") {
+          toast.error(`Song already exits on this playlist`)
+        }
+        else {
+          toast.success(result.message)
+        }
+      })
   }
 
   return (
@@ -37,7 +52,7 @@ const PlaylistModal = ({ setPlaylistModal }) => {
                     {...register("playlistName", {
                       required: {
                         value: true,
-                        message: 'Please enter song name'
+                        message: 'Enter playlist name'
                       }
                     })}
                     className='w-full bg-transparent px-3 py-2 text-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none 
@@ -51,11 +66,18 @@ const PlaylistModal = ({ setPlaylistModal }) => {
               </div>
               <div>
                 <h3 className='text-md mb-3 font-bold'>Add to current Playlist</h3>
-                <ul class="w-full text-sm font-medium text-white rounded-lg border border-gray-700 overflow-hidden">
-                  <li class="py-2 px-4 w-full border-b border-gray-700 hover:bg-sky-500 transition duration-300">Playlist 1</li>
-                  <li class="py-2 px-4 w-full border-b border-gray-700 hover:bg-sky-500 transition duration-300">Playlist 2</li>
-                  <li class="py-2 px-4 w-full rounded-b-lg hover:bg-sky-500 transition duration-300">Playlist 3</li>
-                </ul>
+                {
+                  playlists.length > 0 ? <>
+                    <ul className="w-full text-sm font-medium text-white rounded-lg border border-gray-700 overflow-hidden">
+                      {
+                        playlists.map((playlist, index) => <li key={index} className="py-2 px-4 w-full border-b border-gray-700 hover:bg-sky-500 transition duration-300">{playlist.name}</li>)
+                      }
+                    </ul> </>
+                    : <>
+                      <p>No Playlist</p>
+                    </>
+                }
+
               </div>
             </div>
             {/* <!-- Modal footer --> */}

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { CardElement, useStripe, useElements, } from '@stripe/react-stripe-js';
-import { toast} from 'react-toastify';
+import { toast } from 'react-toastify';
 // const email = "mahediimun@gmail.com"
 const CheckoutFrom = ({ data }) => {
   const { userName, userEmail, price, _id, plan, phoneNum } = data;
@@ -92,7 +92,6 @@ const CheckoutFrom = ({ data }) => {
           })
             .then(res => res.json())
             .then(data => {
-              console.log(data)
               if (data.modifiedCount > 0) {
                 toast.success('successfully payment ')
                 setDisabled(true)
@@ -124,11 +123,11 @@ const CheckoutFrom = ({ data }) => {
         }}
       />
       <div className=' p-5'>
-      {cardError && <p className=' text-red-700'>{cardError}</p>}
-      {success && <>
-        <p className=' text-success'>{success}</p>
-        <p className=' text-base-100'> your transaction id : <span className='text-base-300'>{transactionId}</span></p>
-      </>}
+        {cardError && <p className=' text-red-700'>{cardError}</p>}
+        {success && <>
+          <p className=' text-success'>{success}</p>
+          <p className=' text-base-100'> your transaction id : <span className='text-base-300'>{transactionId}</span></p>
+        </>}
       </div>
 
       {<button className=' border px-2 rounded mt-5 ' type="submit" disabled={!stripe || !clientSecret || disabled}>

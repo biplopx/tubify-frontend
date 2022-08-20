@@ -20,7 +20,7 @@ const PurchaseModal = ({ myPlan, setIsOpen, refetch, modalIsOpen }) => {
             phoneNum: userData?.phone,
             price: price,
             planName: plan,
-            plan:true
+            plan: true
 
         }
         fetch(`http://localhost:5000/booking/new-booking`, {
@@ -33,9 +33,8 @@ const PurchaseModal = ({ myPlan, setIsOpen, refetch, modalIsOpen }) => {
 
         })
             .then(res => res.json())
-            
+
             .then(data => {
-                console.log(data)
                 if (data._id) {
                     refetch()
                     setIsOpen(false)
@@ -44,7 +43,7 @@ const PurchaseModal = ({ myPlan, setIsOpen, refetch, modalIsOpen }) => {
                     navigate('/payment')
 
                 }
-                else{
+                else {
                     toast.error(data.massage)
                 }
             })
