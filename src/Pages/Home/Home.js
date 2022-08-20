@@ -6,14 +6,15 @@ import Partner from "./Partner/Partner";
 import WatchEverything from "./WatchEverything/WatchEveryting";
 
 
+
 const Home = () => {
   return (
     <>
       <Banner />
       <About />
-      <WatchEverything/>
+      <WatchEverything />
       <Partner />
-      <Pricing />
+      <Pricing></Pricing>
     </>
   );
 };

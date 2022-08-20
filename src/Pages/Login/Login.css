@@ -1,0 +1,41 @@
+.form-container {
+  width: 326px;
+}
+
+.input-group input {
+  width: 326px;
+  height: 45px;
+  background: #0D0F2C;
+  border-radius: 5px;
+}
+
+.login-btn {
+  width: 326px;
+  height: 45px;
+  background: #00B0FF;
+  border-radius: 5px;
+ } 
+
+.buttom-text {
+  color: #00B0FF;
+}
+
+.or-login-option::after {
+  right: 20px;
+  position: absolute;
+  content: "";
+  width: 126px;
+  height: 1px;
+  background: #ffffff;
+  top: 13px;
+}
+
+.or-login-option::before {
+  position: absolute;
+  content: "";
+  width: 126px;
+  height: 1px;
+  background: #ffffff;
+  top: 13px;
+  left: 20px;
+}
