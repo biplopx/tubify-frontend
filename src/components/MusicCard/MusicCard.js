@@ -14,6 +14,9 @@ const MusicCard = ({ music, handlePlayMusic, singleUser, fetchSingleUser }) => {
   const [isPlaylistModal, setPlaylistModal] = useState(false);
   const refmenu = useRef();
   const [user, loading] = useAuthState(auth);
+  const playlists = singleUser?.playlist;
+  const userId = singleUser?._id;
+
   useEffect(() => {
     const checkIfClickedOutside = e => {
       // If the menu is open and the clicked target is not within the menu,
@@ -45,7 +48,6 @@ const MusicCard = ({ music, handlePlayMusic, singleUser, fetchSingleUser }) => {
       })
         .then(res => res.json())
         .then(result => {
-          console.log(result)
           fetchSingleUser()
         })
     }
@@ -60,7 +62,6 @@ const MusicCard = ({ music, handlePlayMusic, singleUser, fetchSingleUser }) => {
       })
         .then(res => res.json())
         .then(result => {
-          console.log(result)
           fetchSingleUser()
         })
     }
@@ -79,7 +80,6 @@ const MusicCard = ({ music, handlePlayMusic, singleUser, fetchSingleUser }) => {
     })
       .then(res => res.json())
       .then(result => {
-        console.log(result)
         fetchSingleUser()
       })
   }
@@ -126,7 +126,8 @@ const MusicCard = ({ music, handlePlayMusic, singleUser, fetchSingleUser }) => {
         </div>
       </div>
       {
-        isPlaylistModal && <PlaylistModal isPlaylistModal={isPlaylistModal} setPlaylistModal={setPlaylistModal} />
+        isPlaylistModal && <PlaylistModal isPlaylistModal={isPlaylistModal} setPlaylistModal={setPlaylistModal} songId={_id} playlists={playlists}
+          userId={userId} />
       }
     </>
 

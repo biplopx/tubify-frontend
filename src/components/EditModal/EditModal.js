@@ -12,7 +12,7 @@ const EditModal = ({ setShowModal, singleSong, refetch }) => {
   });
 
   useEffect(() => {
-    console.log(singleSong)
+    // 
   }, [singleSong])
 
   const onSubmit = (data) => {
@@ -26,7 +26,6 @@ const EditModal = ({ setShowModal, singleSong, refetch }) => {
     })
       .then(res => res.json())
       .then(result => {
-        console.log(result)
         if (result.status === "successful") {
           toast.success('Song successfully updated');
           refetch();

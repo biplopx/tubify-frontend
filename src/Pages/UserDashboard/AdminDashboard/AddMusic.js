@@ -49,7 +49,6 @@ const AddMusic = () => {
             })
               .then((res) => res.json())
               .then((result) => {
-                console.log(result);
                 if (result.status === "successful") {
                   toast.success("Song successfully added");
                   reset();
