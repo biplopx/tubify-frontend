@@ -15,7 +15,7 @@ const UserRow = ({ user, index, fetchUsers }) => {
     })
       .then((willAdmin) => {
         if (willAdmin) {
-          fetch(`http://localhost:5000/user/admin/${email}`, {
+          fetch(`https://tubifybd.herokuapp.com/user/admin/${email}`, {
             method: 'PUT',
             headers: {
               'content-type': 'application/json',
@@ -54,7 +54,7 @@ const UserRow = ({ user, index, fetchUsers }) => {
     })
       .then((willAdmin) => {
         if (willAdmin) {
-          fetch(`http://localhost:5000/user/admin/remove/${email}`, {
+          fetch(`https://tubifybd.herokuapp.com/user/admin/remove/${email}`, {
             method: 'PUT',
             headers: {
               'content-type': 'application/json',
