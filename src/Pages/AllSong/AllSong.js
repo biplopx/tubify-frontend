@@ -12,13 +12,13 @@ const AllSongs = () => {
   const [clickedMusic, setClickedMusic] = useState({});
   const [singleUser, setSingleUser] = useState({});
   const { isLoading, data: musics, } = useQuery(['song'], () =>
-    fetch('http://localhost:5000/song/all-song').then(res => res.json())
+    fetch('https://tubifybd.herokuapp.com/song/all-song').then(res => res.json())
   )
 
   const [user, loading] = useAuthState(auth);
 
   const fetchSingleUser = () => {
-    fetch(`http://localhost:5000/user/single-user/${user?.email}`)
+    fetch(`https://tubifybd.herokuapp.com/user/single-user/${user?.email}`)
       .then(res => res.json())
       .then(data => {
         setSingleUser(data)

@@ -14,7 +14,7 @@ const Purchase = () => {
 
     const navigate = useNavigate()
     const { id } = useParams()
-    const url = `http://localhost:5000/pricing/plan/${id}`
+    const url = `https://tubifybd.herokuapp.com/pricing/plan/${id}`
 
     const { data: myPlan, isLoading, refetch } = useQuery(['product'], () => fetch(url, {
         method: 'GET',

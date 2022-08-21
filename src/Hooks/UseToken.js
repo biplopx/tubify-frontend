@@ -9,7 +9,7 @@ const useToken = (user) => {
             email: email,
         };
         if (email) {
-            fetch(`http://localhost:5000/user/${email}`, {
+            fetch(`https://tubifybd.herokuapp.com/user/${email}`, {
                 method: 'PUT',
                 headers: {
                     'content-type': 'application/json'

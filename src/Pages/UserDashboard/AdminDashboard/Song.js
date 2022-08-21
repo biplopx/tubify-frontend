@@ -15,7 +15,7 @@ const Song = ({ song, index, refetch, setShowModal, editModal }) => {
     })
       .then((willAdmin) => {
         if (willAdmin) {
-          fetch(`http://localhost:5000/song/delete/${id}`, {
+          fetch(`https://tubifybd.herokuapp.com/song/delete/${id}`, {
             method: 'DELETE',
             headers: {
               'content-type': 'application/json',

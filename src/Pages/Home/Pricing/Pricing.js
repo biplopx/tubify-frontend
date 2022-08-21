@@ -9,7 +9,7 @@ const Pricing = () => {
   const path = useLocation();
   const navigate = useNavigate()
   const { isLoading, data: plans, } = useQuery(['plan'], () =>
-    fetch('http://localhost:5000/pricing/plan').then(res =>
+    fetch('https://tubifybd.herokuapp.com/pricing/plan').then(res =>
       res.json()
     )
   )
