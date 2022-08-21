@@ -39,7 +39,7 @@ const AddMusic = () => {
               cover: photoUrl,
             };
 
-            fetch("http://localhost:5000/song/add-song", {
+            fetch("https://tubifybd.herokuapp.com/song/add-song", {
               method: "POST",
               headers: {
                 "content-type": "application/json",
