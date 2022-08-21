@@ -65,9 +65,9 @@ const PlaylistModal = ({ setPlaylistModal, playlists, songId, userId }) => {
                 </form>
               </div>
               <div>
-                <h3 className='text-md mb-3 font-bold'>Add to current Playlist</h3>
+                <h3 className='text-md mb-3 font-bold'>Your Playlists</h3>
                 {
-                  playlists.length > 0 ? <>
+                  playlists?.length > 0 ? <>
                     <ul className="w-full text-sm font-medium text-white rounded-lg border border-gray-700 overflow-hidden">
                       {
                         playlists.map((playlist, index) => <li key={index} className="py-2 px-4 w-full border-b border-gray-700 hover:bg-sky-500 transition duration-300">{playlist.name}</li>)

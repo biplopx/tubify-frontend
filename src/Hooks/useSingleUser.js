@@ -6,7 +6,6 @@ const useSingleUser = (email) => {
     fetch(`http://localhost:5000/user/single-user/${email}`)
       .then(res => res.json())
   )
-
   if (singleUserLoading) {
     return <Loading />
   }
