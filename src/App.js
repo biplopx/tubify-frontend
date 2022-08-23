@@ -26,6 +26,7 @@ import Purchase from "./Pages/Purchase/Purchase";
 import Payment from "./Pages/Purchase/Payment";
 import AllSongs from "./Pages/AllSong/AllSong";
 import LikedSongs from "./Pages/YourLibary/LikedSongs";
+import AddArtist from "./Pages/UserDashboard/AdminDashboard/AddArtist";
 
 function App() {
   return (
@@ -54,6 +55,7 @@ function App() {
             <Route path="all-users" element={<DashboardLayout children={<RequireAdmin><AllUsers /></RequireAdmin>} />}></Route>
             <Route path="add-music" element={<DashboardLayout children={<RequireAdmin><AddMusic /></RequireAdmin>} />}></Route>
             <Route path="manage-music" element={<DashboardLayout children={<RequireAdmin><ManageMusic /></RequireAdmin>} />}></Route>
+            <Route path="add-artist" element={<DashboardLayout children={<RequireAdmin><AddArtist /></RequireAdmin>} />}></Route>
 
           </Route>
         </Route>
