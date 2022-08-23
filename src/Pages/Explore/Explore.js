@@ -32,7 +32,7 @@ const Explore = () => {
           <p className='text-normal'><Link to="/dashboard/all-songs">View All</Link></p>
         </div>
 
-        <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-8 gap-4 justify-between'>
+        <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-6 gap-4 justify-between'>
           {
             musics.slice(0, 8).map(music => <MusicCard
               key={music._id}

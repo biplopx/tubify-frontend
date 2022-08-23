@@ -6,8 +6,8 @@ const UsePlayer = ({ musics, clickedMusic, toggle }) => {
         <div>
             {!toggle && <MusicPlayer music={musics} ></MusicPlayer>}
             {toggle && <ClickedMusic clickedMusic={clickedMusic} ></ClickedMusic>}
+            
         </div>
     );
 };
-
 export default UsePlayer;
