@@ -27,6 +27,7 @@ import Payment from "./Pages/Purchase/Payment";
 import AllSongs from "./Pages/AllSong/AllSong";
 import LikedSongs from "./Pages/YourLibary/LikedSongs";
 import AddArtist from "./Pages/UserDashboard/AdminDashboard/AddArtist";
+import Artist from "./Pages/Artist/Artist";
 
 function App() {
   return (
@@ -50,6 +51,7 @@ function App() {
             <Route path="my-profile" element={<DashboardLayout children={<MyProfile />} />}></Route>
             <Route path="all-songs" element={<DashboardLayout children={<AllSongs />} />}></Route>
             <Route path="liked-songs" element={<DashboardLayout children={<LikedSongs />} />}></Route>
+            <Route path="artist" element={<DashboardLayout children={<Artist />} />}></Route>
             {/* Admin Routes */}
 
             <Route path="all-users" element={<DashboardLayout children={<RequireAdmin><AllUsers /></RequireAdmin>} />}></Route>
