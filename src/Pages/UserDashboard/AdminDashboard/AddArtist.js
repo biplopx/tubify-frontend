@@ -18,6 +18,7 @@ const AddArtist = () => {
     });
 
     const onSubmit = (data) => {
+        console.log(data)
         const imageCover = data.cover[0];
         const imgProfile = data.profile[0]
         if (imageCover && imgProfile) {
@@ -32,7 +33,6 @@ const AddArtist = () => {
                     setProfile(profileUrl);
                     const fromData2 = new FormData();
                     fromData2.append("image", imageCover);
-
                     axios.post(url, fromData2).then((res) => {
                         if (res.data.success) {
                             const coverUrl = res.data.data.url;
@@ -53,9 +53,10 @@ const AddArtist = () => {
                                 })
                                     .then((res) => res.json())
                                     .then((result) => {
+                                        console.log(result);
                                         if (result.message === 'artist created') {
-                                            toast.success("successfully added artist");
                                             setArtistLoading(false);
+                                            toast.success("successfully added artist");
                                             reset();
                                         } 
                                         else if( result.message === "artist already exists"){
