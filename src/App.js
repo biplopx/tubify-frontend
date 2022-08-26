@@ -28,6 +28,7 @@ import AllSongs from "./Pages/AllSong/AllSong";
 import LikedSongs from "./Pages/YourLibary/LikedSongs";
 import AddArtist from "./Pages/UserDashboard/AdminDashboard/AddArtist";
 import Artist from "./Pages/Artist/Artist";
+import VideoMusic from "./Pages/Video/VideoMusic";
 
 function App() {
   return (
