@@ -31,6 +31,7 @@ import AddVideo from "./Pages/UserDashboard/AdminDashboard/AddVideo";
 import Video from "./Pages/Video/Video";
 import AddArtist from "./Pages/UserDashboard/AdminDashboard/AddArtist";
 import Artist from "./Pages/Artist/Artist";
+import VideoMusic from "./Pages/Video/VideoMusic";
 
 function App() {
   return (
