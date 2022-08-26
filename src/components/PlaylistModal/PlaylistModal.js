@@ -9,7 +9,7 @@ const PlaylistModal = ({ setPlaylistModal, playlists, songId, userId }) => {
   });
   const onSubmit = (data) => {
     const playlistName = data.playlistName;
-    fetch(`https://tubifybd.herokuapp.com/playlists/${songId}`, {
+    fetch(`http://localhost:5000/playlists/${songId}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

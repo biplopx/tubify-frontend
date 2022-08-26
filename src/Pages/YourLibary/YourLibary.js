@@ -24,10 +24,6 @@ const YourLibary = () => {
   }
 
 
-  if (loading) {
-    return <Loading />
-  }
-
   return (
     <>
       <div className='grid grid-cols-8 gap-5'>

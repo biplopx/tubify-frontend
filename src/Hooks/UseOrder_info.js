@@ -7,7 +7,7 @@ const UseOrder_info = () => {
     const email = user?.email;
     const [orderInfo, setOrderInfo] = useState({})
     useEffect(() => {
-        fetch(`https://tubifybd.herokuapp.com/booking/my-booking/${email}`, {
+        fetch(`http://localhost:5000/booking/my-booking/${email}`, {
             method: 'GET',
             headers: {
                 'authorization': `Barer ${localStorage.getItem('accessToken')}`

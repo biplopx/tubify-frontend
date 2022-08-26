@@ -39,7 +39,7 @@ const MusicCard = ({ music, handlePlayMusic, singleUser, fetchSingleUser }) => {
 
   const toggleLike = () => {
     if (singleUser?.likedSongs.find(song => song._id === _id)) {
-      fetch(`https://tubifybd.herokuapp.com/song/unlike`, {
+      fetch(`http://localhost:5000/song/unlike`, {
         method: 'PUT',
         headers: {
           'content-type': 'application/json',
@@ -53,7 +53,7 @@ const MusicCard = ({ music, handlePlayMusic, singleUser, fetchSingleUser }) => {
         })
     }
     else {
-      fetch(`https://tubifybd.herokuapp.com/song/like`, {
+      fetch(`http://localhost:5000/song/like`, {
         method: 'PUT',
         headers: {
           'content-type': 'application/json',
@@ -71,7 +71,7 @@ const MusicCard = ({ music, handlePlayMusic, singleUser, fetchSingleUser }) => {
   }
 
   const toggleSaveForLater = () => {
-    // fetch(`https://tubifybd.herokuapp.com/song/save-for-later`, {
+    // fetch(`http://localhost:5000/song/save-for-later`, {
     //   method: 'PUT',
     //   headers: {
     //     'content-type': 'application/json',
@@ -84,7 +84,7 @@ const MusicCard = ({ music, handlePlayMusic, singleUser, fetchSingleUser }) => {
     //     console.log(result)
     //     fetchSingleUser()
     //   })
-    fetch(`https://tubifybd.herokuapp.com/playlists/${_id}`, {
+    fetch(`http://localhost:5000/playlists/${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
