@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { CardElement, useStripe, useElements, } from '@stripe/react-stripe-js';
 import { toast } from 'react-toastify';
+import { Navigate, useNavigate } from 'react-router-dom';
 // const email = "mahediimun@gmail.com"
 const CheckoutFrom = ({ data }) => {
   const { userName, userEmail, price, _id, plan, phoneNum } = data;
@@ -11,7 +12,7 @@ const CheckoutFrom = ({ data }) => {
   const [clientSecret, setClientSecret] = useState("");
   const stripe = useStripe();
   const elements = useElements();
-
+  const navigate= useNavigate()
   useEffect(() => {
     fetch("https://tubifybd.herokuapp.com/payment/create-payment-intent", {
       method: "POST",
@@ -95,6 +96,7 @@ const CheckoutFrom = ({ data }) => {
               if (data.modifiedCount > 0) {
                 toast.success('successfully payment ')
                 setDisabled(true)
+                navigate('/')
               }
             })
         }
