@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
@@ -14,7 +15,6 @@ const YourLibary = () => {
   const [singleUser, singleUserRefetch] = useSingleUser(user?.email)
   const likedSongs = singleUser?.likedSongs;
 
-
   if (loading) {
     return <Loading></Loading>
   }
@@ -23,10 +23,9 @@ const YourLibary = () => {
     setToggle(true)
   }
 
-
   return (
     <>
-      <div className='grid grid-cols-8 gap-5'>
+      <div className='grid grid-cols-6 gap-5'>
         <div className='bg-gradient-to-br from-pink-400 to-pink-600 text-white p-4 rounded-md col-span-2'>
           <h2 className='text-xl font-bold mb-3'>Liked Songs</h2>
           <p><Link to="/dashboard/liked-songs">{likedSongs?.length} Liked Song</Link></p>

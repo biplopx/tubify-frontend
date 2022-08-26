@@ -52,7 +52,7 @@ const PlaylistModal = ({ setPlaylistModal, playlists, songId, userId }) => {
                     {...register("playlistName", {
                       required: {
                         value: true,
-                        message: 'Enter playlist name'
+                        message: 'Enter exit playlist name or new name'
                       }
                     })}
                     className='w-full bg-transparent px-3 py-2 text-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none 
@@ -61,13 +61,13 @@ const PlaylistModal = ({ setPlaylistModal, playlists, songId, userId }) => {
                   <label className="block mt-2">
                     {errors.playlistName?.type === 'required' && <span className="text-sm text-red-500">{errors.playlistName.message}</span>}
                   </label>
-                  <input className='bg-sky-500 text-white text-sm px-2 py-2 w-full rounded-md hover:bg-sky-600 transition duration-300' type="submit" value="Create New Playlist" />
+                  <input className='bg-sky-500 text-white text-sm px-2 py-2 w-full rounded-md hover:bg-sky-600 transition duration-300' type="submit" value="Add song to palylist" />
                 </form>
               </div>
               <div>
-                <h3 className='text-md mb-3 font-bold'>Add to current Playlist</h3>
+                <h3 className='text-md mb-3 font-bold'>Your Playlists</h3>
                 {
-                  playlists.length > 0 ? <>
+                  playlists?.length > 0 ? <>
                     <ul className="w-full text-sm font-medium text-white rounded-lg border border-gray-700 overflow-hidden">
                       {
                         playlists.map((playlist, index) => <li key={index} className="py-2 px-4 w-full border-b border-gray-700 hover:bg-sky-500 transition duration-300">{playlist.name}</li>)
