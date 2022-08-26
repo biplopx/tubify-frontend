@@ -1,10 +1,10 @@
-import axios from "axios";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { toast } from "react-toastify";
 import Loading from "../../../components/Loading/Loading";
+import { toast } from "react-toastify";
+import axios from "axios";
 
-const AddMusic = () => {
+const AddVideo = () => {
   const [coverUploading, setCoverUploading] = useState(false);
   const {
     register,
@@ -34,23 +34,23 @@ const AddMusic = () => {
             const photoUrl = res.data.data.url;
             setCoverUploading(false);
 
-            const songData = {
+            const videoData = {
               ...data,
               cover: photoUrl,
             };
 
-            fetch("https://tubifybd.herokuapp.com/song/add-song", {
+            fetch("http://localhost:5000/video/add-video", {
               method: "POST",
               headers: {
                 "content-type": "application/json",
                 authorization: `Bearer ${localStorage.getItem("accessToken")}`,
               },
-              body: JSON.stringify(songData),
+              body: JSON.stringify(videoData),
             })
               .then((res) => res.json())
               .then((result) => {
                 if (result.status === "successful") {
-                  toast.success("Song successfully added");
+                  toast.success("Video successfully added");
                   reset();
                 } else {
                   toast.error(result.error);
@@ -71,22 +71,22 @@ const AddMusic = () => {
   return (
     <div>
       <div className="max-w-4xl w-full mx-auto my-5 secondary-bg px-4 py-6 rounded-md">
-        <h2 className="text-2xl signika mb-4">Add Music</h2>
+        <h2 className="text-2xl signika mb-4">Add Video</h2>
         <form onSubmit={handleSubmit(onSubmit)} className="transparent">
-          {/* Song Name */}
+          {/* Video Name */}
           <div className="mb-4">
-            <label className="block mb-4">Song Name</label>
+            <label className="block mb-4">Video Name</label>
             <input
               type="text"
               {...register("name", {
                 required: {
                   value: true,
-                  message: "Please enter song name",
+                  message: "Please enter Video name",
                 },
               })}
               className="w-full bg-transparent px-3 py-2 text-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none 
               focus:border-sky-300 focus:ring-sky-300 block rounded-md sm:text-sm focus:ring-1"
-              placeholder="Enter Song Name"
+              placeholder="Enter Video Name"
               required
             />
             <label className="block mt-2">
@@ -125,7 +125,7 @@ const AddMusic = () => {
           <div className="mb-4">
             <label className="block mb-4">Cover Image</label>
             <label class="block">
-              <span class="sr-only">Choose File</span>
+              <span class="sr-only">Choose Cover Image</span>
               <input
                 type="file"
                 class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 file:cursor-pointer"
@@ -147,27 +147,42 @@ const AddMusic = () => {
             </label>
           </div>
 
-          {/* Music Source Input */}
+          {/* video Source Input */}
           <div className="mb-4">
-            <label className="block mb-4">Music URL</label>
+            <label className="block mb-4">Video</label>
+            {/* <label class="block">
+              <span class="sr-only">Choose VIdeo</span>
+              <input
+                type="file"
+                class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 file:cursor-pointer"
+                accept="image/png"
+                {...register("videoSrc", {
+                    required: {
+                      value: true,
+                      message: "Please upload video",
+                    },
+                  })}
+              />
+            </label> */}
+
             <input
               type="url"
-              {...register("musicSrc", {
+              {...register("videoSrc", {
                 required: {
                   value: true,
-                  message: "Please enter music url",
+                  message: "Please Video URL",
                 },
               })}
               className="w-full bg-transparent px-3 py-2 text-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none 
               focus:border-sky-300 focus:ring-sky-300 block rounded-md sm:text-sm focus:ring-1"
-              placeholder="Enter song name"
+              placeholder="Enter Video URL"
               required
             />
 
             <label className="block mt-2">
-              {errors.musicSrc?.type === "required" && (
+              {errors.videoSrc?.type === "required" && (
                 <span className="text-sm text-red-500">
-                  {errors.musicSrc.message}
+                  {errors.videoSrc.message}
                 </span>
               )}
             </label>
@@ -204,7 +219,7 @@ const AddMusic = () => {
                   {...register("lang", {
                     required: {
                       value: true,
-                      message: "Please select music language",
+                      message: "Please select video language",
                     },
                   })}
                   className="form-select appearance-none
@@ -241,9 +256,9 @@ const AddMusic = () => {
             </label>
           </div>
 
-          {/* Lanaguage Input */}
+          {/* Type Input */}
           <div className="mb-4">
-            <label className="block mb-4">Music Type</label>
+            <label className="block mb-4">Video Type</label>
             <div className="flex gap-x-5">
               <div>
                 <input
@@ -252,7 +267,7 @@ const AddMusic = () => {
                   {...register("videoType", {
                     required: {
                       value: true,
-                      message: "Please select music type",
+                      message: "Please select video type",
                     },
                   })}
                   required
@@ -266,7 +281,7 @@ const AddMusic = () => {
                   {...register("videoType", {
                     required: {
                       value: true,
-                      message: "Please Select music type",
+                      message: "Please Select video type",
                     },
                   })}
                   required
@@ -276,9 +291,9 @@ const AddMusic = () => {
             </div>
 
             <label className="block mt-2">
-              {errors.musicType?.type === "required" && (
+              {errors.videoType?.type === "required" && (
                 <span className="text-sm text-red-500">
-                  {errors.musicType.message}
+                  {errors.videoType.message}
                 </span>
               )}
             </label>
@@ -288,7 +303,7 @@ const AddMusic = () => {
           <input
             className="bg-sky-500 text-white px-3 py-2 w-full rounded-md hover:bg-sky-600 transition duration-300"
             type="submit"
-            value="Add Song"
+            value="Add Video"
           />
         </form>
       </div>
@@ -296,4 +311,4 @@ const AddMusic = () => {
   );
 };
 
-export default AddMusic;
+export default AddVideo;
