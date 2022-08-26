@@ -2,7 +2,6 @@ import React from 'react';
 import { useRef } from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
-import { useQuery } from '@tanstack/react-query';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import Loading from '../Loading/Loading';
@@ -108,7 +107,7 @@ const MusicCard = ({ music, handlePlayMusic, singleUser, fetchSingleUser }) => {
       <div className='secondary-bg p-3 rounded-md relative'>
         {/* Card Image */}
         <div className='mb-3 relative'>
-          <img style={{ width: "100%", height: "200px" }} src={cover} alt={name} width="100%" height="200px" className='rounded' />
+          <img src={cover} alt={name} className='rounded object-cover h-52 w-full' />
           <i onClick={() => handlePlayMusic(music)} className="ri-play-fill text-2xl w-10 h-10 rounded-full text-white bg-sky-500 absolute right-3 bottom-4 flex justify-center items-center"></i>
         </div>
         {/* Content */}
