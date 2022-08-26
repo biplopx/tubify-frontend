@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import Loading from '../../components/Loading/Loading';
 import MusicCard from '../../components/MusicCard/MusicCard';
@@ -12,6 +12,7 @@ const Explore = () => {
   const [clickedMusic, setClickedMusic] = useState({});
   const [user, loading] = useAuthState(auth);
   const [singleUser, singleUserRefetch] = useSingleUser(user?.email)
+  
   const { isLoading, data: musics, } = useQuery(['song'], () =>
     fetch('https://tubifybd.herokuapp.com/song/all-song').then(res => res.json())
   )
@@ -32,7 +33,7 @@ const Explore = () => {
           <p className='text-normal'><Link to="/dashboard/all-songs">View All</Link></p>
         </div>
 
-        <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-6 gap-4 justify-between'>
+        <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-7 gap-4 justify-between'>
           {
             musics.slice(0, 8).map(music => <MusicCard
               key={music._id}

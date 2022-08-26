@@ -26,6 +26,9 @@ import Purchase from "./Pages/Purchase/Purchase";
 import Payment from "./Pages/Purchase/Payment";
 import AllSongs from "./Pages/AllSong/AllSong";
 import LikedSongs from "./Pages/YourLibary/LikedSongs";
+import Videos from "./Pages/Videos/Videos";
+import AddVideo from "./Pages/UserDashboard/AdminDashboard/AddVideo";
+import Video from "./Pages/Video/Video";
 import AddArtist from "./Pages/UserDashboard/AdminDashboard/AddArtist";
 import Artist from "./Pages/Artist/Artist";
 function App() {
@@ -45,6 +48,8 @@ function App() {
           <Route>
             <Route index element={<DashboardLayout children={<Explore />} />}></Route>
             <Route path="explore" element={<DashboardLayout children={<Explore />} />}></Route>
+            <Route path="videos" element={<DashboardLayout children={<Videos />} />}></Route>
+            <Route path="video/:id" element={<DashboardLayout children={<Video />} />}></Route>
             <Route path="your-libary" element={<DashboardLayout children={<YourLibary />} />}></Route>
             <Route path="create-playlist" element={<DashboardLayout children={<CreatePlaylist />} />}></Route>
             <Route path="my-profile" element={<DashboardLayout children={<MyProfile />} />}></Route>
@@ -55,6 +60,7 @@ function App() {
 
             <Route path="all-users" element={<DashboardLayout children={<RequireAdmin><AllUsers /></RequireAdmin>} />}></Route>
             <Route path="add-music" element={<DashboardLayout children={<RequireAdmin><AddMusic /></RequireAdmin>} />}></Route>
+            <Route path="add-video" element={<DashboardLayout children={<RequireAdmin><AddVideo /></RequireAdmin>} />}></Route>
             <Route path="manage-music" element={<DashboardLayout children={<RequireAdmin><ManageMusic /></RequireAdmin>} />}></Route>
             <Route path="add-artist" element={<DashboardLayout children={<RequireAdmin><AddArtist /></RequireAdmin>} />}></Route>
 
