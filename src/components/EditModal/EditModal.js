@@ -16,7 +16,7 @@ const EditModal = ({ setShowModal, singleSong, refetch }) => {
   }, [singleSong])
 
   const onSubmit = (data) => {
-    fetch(`https://tubifybd.herokuapp.com/song/edit/${_id}`, {
+    fetch(`http://localhost:5000/song/edit/${_id}`, {
       method: 'PATCH',
       headers: {
         'content-type': 'application/json',

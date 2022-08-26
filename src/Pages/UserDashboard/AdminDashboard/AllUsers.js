@@ -4,7 +4,7 @@ import UserRow from './UserRow';
 const AllUsers = () => {
   const [users, setUsers] = useState([]);
   const fetchUsers = () => {
-    fetch('https://tubifybd.herokuapp.com/user/all-users')
+    fetch(`http://localhost:5000/user/all-users`)
       .then(res => res.json())
       .then(data => setUsers(data))
   }

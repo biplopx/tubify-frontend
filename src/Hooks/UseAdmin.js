@@ -5,8 +5,9 @@ const useAdmin = (user) => {
     const [adminLoading, setAdminLoading] = useState(true)
     useEffect(() => {
         const email = user?.email;
+        console.log(process.env.REACT_APP_SERVER_URL)
         if (user) {
-            fetch(`https://tubifybd.herokuapp.com/user/admin/${email}`, {
+            fetch(`http://localhost:5000/user/admin/${email}`, {
                 method: 'GET',
                 headers: {
                     'content-type': 'application/json',

@@ -29,7 +29,7 @@ const Videos = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 justify-between">
-          {videos.slice(0, 8).map((video) => (
+          {videos?.slice(0, 8).map((video) => (
             <VideoCard
               key={video._id}
               video={video}
