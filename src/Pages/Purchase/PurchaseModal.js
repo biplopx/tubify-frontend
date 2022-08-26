@@ -23,7 +23,7 @@ const PurchaseModal = ({ myPlan, setIsOpen, refetch, modalIsOpen }) => {
             plan: true
 
         }
-        fetch(`https://tubifybd.herokuapp.com/booking/new-booking`, {
+        fetch(`http://localhost:5000/booking/new-booking`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',

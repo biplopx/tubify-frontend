@@ -14,7 +14,7 @@ const Explore = () => {
   const [singleUser, singleUserRefetch] = useSingleUser(user?.email)
   
   const { isLoading, data: musics, } = useQuery(['song'], () =>
-    fetch('https://tubifybd.herokuapp.com/song/all-song').then(res => res.json())
+    fetch(`http://localhost:5000/song/all-song`).then(res => res.json())
   )
 
   if (isLoading || loading) {
