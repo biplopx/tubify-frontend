@@ -151,12 +151,12 @@ const EditModal = ({ setShowModal, singleSong, refetch }) => {
                   <div className='flex gap-x-5'>
                     <div>
                       <input type="radio" value="free" name='musicType'
-                        {...register("videoType")}
+                        {...register("musicType")}
                       /> Free
                     </div>
                     <div>
                       <input type="radio" value="paid"
-                        {...register("videoType")}
+                        {...register("musicType")}
                       /> Paid
                     </div>
                   </div>

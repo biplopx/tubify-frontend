@@ -43,28 +43,28 @@ const AddArtist = () => {
                                 artistProfile: profile,
                                 artistCover: cover,
                             };
-                                fetch("http://localhost:5000/artist/new-artist", {
-                                    method: "POST",
-                                    headers: {
-                                        "content-type": "application/json",
-                                        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-                                    },
-                                    body: JSON.stringify(artistData),
-                                })
-                                    .then((res) => res.json())
-                                    .then((result) => {
-                                        console.log(result);
-                                        if (result.message === 'artist created') {
-                                            setArtistLoading(false);
-                                            toast.success("successfully added artist");
-                                            reset();
-                                        } 
-                                        else if( result.message === "artist already exists"){
-                                            toast.error('already added artist');
-                                            setArtistLoading(false);
-                                        }
-                                    });
-                       
+                            fetch("http://localhost:5000/artist/new-artist", {
+                                method: "POST",
+                                headers: {
+                                    "content-type": "application/json",
+                                    authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+                                },
+                                body: JSON.stringify(artistData),
+                            })
+                                .then((res) => res.json())
+                                .then((result) => {
+                                    console.log(result);
+                                    if (result.message === 'artist created') {
+                                        setArtistLoading(false);
+                                        toast.success("successfully added artist");
+                                        reset();
+                                    }
+                                    else if (result.message === "artist already exists") {
+                                        toast.error('already added artist');
+                                        setArtistLoading(false);
+                                    }
+                                });
+
                         }
                     })
                 }
@@ -130,11 +130,11 @@ const AddArtist = () => {
                     {/* Cover Image Input */}
                     <div className="mb-4">
                         <label className="block mb-4">Cover Image</label>
-                        <label class="block">
-                            <span class="sr-only">Choose File</span>
+                        <label className="block">
+                            <span className="sr-only">Choose File</span>
                             <input
                                 type="file"
-                                class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 file:cursor-pointer"
+                                className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 file:cursor-pointer"
                                 accept="image/png"
                                 {...register("cover", {
                                     required: {
@@ -155,11 +155,11 @@ const AddArtist = () => {
                     {/* artist profile Image Input */}
                     <div className="mb-4">
                         <label className="block mb-4">profile Image</label>
-                        <label class="block">
-                            <span class="sr-only">Choose File</span>
+                        <label className="block">
+                            <span className="sr-only">Choose File</span>
                             <input
                                 type="file"
-                                class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 file:cursor-pointer"
+                                className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 file:cursor-pointer"
                                 accept="image/png"
                                 {...register("profile", {
                                     required: {
