@@ -124,11 +124,11 @@ const AddVideo = () => {
           {/* Cover Image Input */}
           <div className="mb-4">
             <label className="block mb-4">Cover Image</label>
-            <label class="block">
-              <span class="sr-only">Choose Cover Image</span>
+            <label className="block">
+              <span className="sr-only">Choose Cover Image</span>
               <input
                 type="file"
-                class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 file:cursor-pointer"
+                className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 file:cursor-pointer"
                 accept="image/png"
                 {...register("cover", {
                   required: {
@@ -150,11 +150,11 @@ const AddVideo = () => {
           {/* video Source Input */}
           <div className="mb-4">
             <label className="block mb-4">Video</label>
-            {/* <label class="block">
-              <span class="sr-only">Choose VIdeo</span>
+            {/* <label className="block">
+              <span className="sr-only">Choose VIdeo</span>
               <input
                 type="file"
-                class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 file:cursor-pointer"
+                className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 file:cursor-pointer"
                 accept="image/png"
                 {...register("videoSrc", {
                     required: {
