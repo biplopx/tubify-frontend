@@ -10,8 +10,8 @@ const Header = () => {
   const navigate = useNavigate()
   const [isMenuOpen, setMenuOpen] = useState(false);
   const [user, loading] = useAuthState(auth);
-    const [singleUser]= useSingleUser(user?.email);
-    const payment = singleUser?.payment;
+  const [singleUser] = useSingleUser(user?.email);
+  const payment = singleUser?.payment;
   if (loading) {
     return <Loading />
   }
@@ -19,18 +19,18 @@ const Header = () => {
     <header className='px-5'>
       <div className="container mx-auto ">
         <div className='logo cursor-pointer'>
-          <img onClick={()=>navigate('/')} src="https://i.ibb.co/fFhrMHZ/tubify-logo.png" alt="logo" />
+          <img onClick={() => navigate('/')} src="https://i.ibb.co/fFhrMHZ/tubify-logo.png" alt="logo" />
         </div>
         <nav className={`navbar ${isMenuOpen ? "menu-open" : ""}`}>
           <ul>
             <li><NavLink to="/">Home</NavLink></li>
             <li><NavLink to="/dashboard" >Explore</NavLink></li>
-            {payment ||<li><NavLink to="/pricing">Pricing</NavLink></li>}
+            {payment || <li><NavLink to="/pricing">Pricing</NavLink></li>}
             <li><NavLink to="/">Blogs</NavLink></li>
             <li><NavLink to="/contact">Contact</NavLink></li>
             {
               user ? <button className='py-1 px-2 bg-sky-500 text-white rounded-md'><Link to="/dashboard">Dashboard</Link></button> : <li>
-                <NavLink to="/signup"><button className='py-1 px-2 bg-sky-500 text-white rounded-md'>Create New Accont</button></NavLink>
+                <NavLink to="/signup"><button className='py-1 px-2 bg-sky-500 text-white rounded-md'>Login/Register</button></NavLink>
               </li>
             }
           </ul>
