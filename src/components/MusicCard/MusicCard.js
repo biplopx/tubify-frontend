@@ -70,26 +70,13 @@ const MusicCard = ({ music, handlePlayMusic, singleUser, fetchSingleUser }) => {
   }
 
   const toggleSaveForLater = () => {
-    // fetch(`http://localhost:5000/song/save-for-later`, {
-    //   method: 'PUT',
-    //   headers: {
-    //     'content-type': 'application/json',
-    //     'authorization': `Bearer ${localStorage.getItem('accessToken')}`
-    //   },
-    //   body: JSON.stringify({ id: _id, email: user?.email })
-    // })
-    //   .then(res => res.json())
-    //   .then(result => {
-    //     console.log(result)
-    //     fetchSingleUser()
-    //   })
     fetch(`http://localhost:5000/playlists/${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
         "authorization": `Bearer ${localStorage.getItem("accessToken")}`,
       },
-      body: JSON.stringify({ userId: userId, playlistName: "saveForLater" }),
+      body: JSON.stringify({ userId: userId, playlistName: "Save For Later" }),
     })
       .then(res => res.json())
       .then(result => {
