@@ -18,6 +18,8 @@ const UserDashboard = () => {
     <li className='flex items-center py-3'><i className="ri-folder-music-line text-xl mr-3"></i> <Link to="/dashboard/artist">artist</Link></li>
     {/* Admin Route */}
     {admin && <>
+
+      <li className='flex items-center p-2 bg-sky-500 rounded-md text-center mt-3'>Admin Control</li>
       <li className='flex items-center py-3'><i className="ri-group-fill text-xl mr-3"></i> <Link to="/dashboard/all-users">All Users</Link></li>
       <li className='flex items-center py-3'><i className="ri-add-fill text-xl mr-3"></i> <Link to="/dashboard/add-music">Add Music</Link></li>
       <li className='flex items-center py-3'><i className="ri-add-fill text-xl mr-3"></i> <Link to="/dashboard/add-video">Add Video</Link></li>
