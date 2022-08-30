@@ -14,7 +14,12 @@ const Explore = () => {
   const [singleUser, singleUserRefetch] = useSingleUser(user?.email)
   
   const { isLoading, data: musics, } = useQuery(['song'], () =>
-    fetch(`http://localhost:5000/song/all-song`).then(res => res.json())
+    fetch(`http://localhost:5000/song/all-song`,{
+                headers: {
+                    'content-type': 'application/json',
+                    'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+                }
+    }).then(res => res.json())
   )
 
   if (isLoading || loading) {
@@ -35,7 +40,7 @@ const Explore = () => {
 
         <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-7 gap-4 justify-between'>
           {
-            musics.slice(0, 8).map(music => <MusicCard
+            musics?.slice(0, 8).map(music => <MusicCard
               key={music._id}
               music={music}
               handlePlayMusic={handlePlayMusic}

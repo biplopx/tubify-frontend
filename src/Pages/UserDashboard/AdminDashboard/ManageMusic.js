@@ -5,7 +5,13 @@ import Song from './Song';
 import EditModal from '../../../components/EditModal/EditModal';
 const ManageMusic = () => {
   const { isLoading, data: songs, refetch } = useQuery(['song'], () =>
-    fetch(`http://localhost:5000/song/all-song`).then(res =>
+    fetch(`http://localhost:5000/song/all-song`,{
+      method: 'GET',
+      headers: {
+        'content-type': 'application/json',
+        'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+      }
+    }).then(res =>
       res.json()
     )
   );

@@ -8,7 +8,13 @@ import { Player } from "video-react";
 const Video = () => {
   const { id } = useParams();
   const { isLoading, data: video } = useQuery(["video"], () =>
-    fetch(`http://localhost:5000/video/${id}`).then((res) => res.json())
+    fetch(`http://localhost:5000/video/${id}`,{
+      method: 'GET',
+      headers: {
+        'content-type': 'application/json',
+        'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+      }
+    }).then((res) => res.json())
   );
 
   if (isLoading) {
@@ -16,7 +22,7 @@ const Video = () => {
   }
 
   const { name, singer, videoSrc, cover } = video;
-
+  console.log(videoSrc);
   return (
     <div className="singleVideo">
       <div className="video-container">
@@ -25,7 +31,7 @@ const Video = () => {
           height={500}
           autoPlay={true}
           poster={cover}
-          src={videoSrc}
+          src='https://youtu.be/JRqAVqd2WuM'
           className="mx-auto"
         />
         <h2 className="ml-60 text-xl mt-3">{name}</h2>
