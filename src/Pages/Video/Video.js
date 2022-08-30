@@ -16,7 +16,7 @@ const Video = () => {
   }
 
   const { name, singer, videoSrc, cover } = video;
-
+  console.log(videoSrc);
   return (
     <div className="singleVideo">
       <div className="video-container">
@@ -25,7 +25,7 @@ const Video = () => {
           height={500}
           autoPlay={true}
           poster={cover}
-          src={videoSrc}
+          src='https://youtu.be/JRqAVqd2WuM'
           className="mx-auto"
         />
         <h2 className="ml-60 text-xl mt-3">{name}</h2>
