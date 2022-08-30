@@ -8,7 +8,13 @@ import { Player } from "video-react";
 const Video = () => {
   const { id } = useParams();
   const { isLoading, data: video } = useQuery(["video"], () =>
-    fetch(`http://localhost:5000/video/${id}`).then((res) => res.json())
+    fetch(`http://localhost:5000/video/${id}`,{
+      method: 'GET',
+      headers: {
+        'content-type': 'application/json',
+        'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+      }
+    }).then((res) => res.json())
   );
 
   if (isLoading) {

@@ -9,7 +9,13 @@ const Pricing = () => {
   const path = useLocation();
   const navigate = useNavigate()
   const { isLoading, data: plans, } = useQuery(['plan'], () =>
-    fetch(`http://localhost:5000/pricing/plan`).then(res =>
+    fetch(`http://localhost:5000/pricing/plan`,{
+      method: 'GET',
+      headers: {
+        'content-type': 'application/json',
+        'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+      }
+    }).then(res =>
       res.json()
     )
   )

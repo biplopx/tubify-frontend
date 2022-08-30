@@ -12,7 +12,13 @@ const Videos = () => {
   const [singleUser, singleUserRefetch] = useSingleUser(user?.email);
 
   const { isLoading, data: videos } = useQuery(["videos"], () =>
-    fetch("http://localhost:5000/video/all-video").then((res) => res.json())
+    fetch("http://localhost:5000/video/all-video",{
+      method: 'GET',
+      headers: {
+        'content-type': 'application/json',
+        'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+      }
+    }).then((res) => res.json())
   );
 
   if (isLoading || loading) {
