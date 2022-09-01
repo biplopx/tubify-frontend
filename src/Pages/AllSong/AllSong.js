@@ -12,13 +12,25 @@ const AllSongs = () => {
   const [clickedMusic, setClickedMusic] = useState({});
   const [singleUser, setSingleUser] = useState({});
   const { isLoading, data: musics, } = useQuery(['song'], () =>
-    fetch(`http://localhost:5000/song/all-song`).then(res => res.json())
+    fetch(`http://localhost:5000/song/all-song`,{
+      headers: {
+        'content-type': 'application/json',
+        'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+    }
+    }
+    ).then(res => res.json())
   )
 
   const [user, loading] = useAuthState(auth);
 
   const fetchSingleUser = () => {
-    fetch(`http://localhost:5000/user/single-user/${user?.email}`)
+    fetch(`http://localhost:5000/user/single-user/${user?.email}`,{
+      method: 'GET',
+      headers: {
+        'content-type': 'application/json',
+        'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+      }
+    })
       .then(res => res.json())
       .then(data => {
         setSingleUser(data)
