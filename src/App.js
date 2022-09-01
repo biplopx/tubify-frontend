@@ -32,6 +32,7 @@ import Video from "./Pages/Video/Video";
 import AddArtist from "./Pages/UserDashboard/AdminDashboard/AddArtist";
 import Artist from "./Pages/Artist/Artist";
 import AlbumPage from "./Pages/AlbumPage/AlbumPage";
+import YourPlaylists from "./Pages/YourLibary/YourPlaylists";
 function App() {
   return (
     <>
@@ -56,6 +57,7 @@ function App() {
             <Route path="my-profile" element={<DashboardLayout children={<MyProfile />} />}></Route>
             <Route path="all-songs" element={<DashboardLayout children={<AllSongs />} />}></Route>
             <Route path="liked-songs" element={<DashboardLayout children={<LikedSongs />} />}></Route>
+            <Route path="your-playlists" element={<DashboardLayout children={<YourPlaylists />} />}></Route>
             <Route path="artist" element={<DashboardLayout children={<Artist />} />}></Route>
             <Route path="album/:albumId" element={<DashboardLayout children={<AlbumPage />} />}></Route>
             {/* Admin Routes */}
