@@ -31,7 +31,14 @@ import AddVideo from "./Pages/UserDashboard/AdminDashboard/AddVideo";
 import Video from "./Pages/Video/Video";
 import AddArtist from "./Pages/UserDashboard/AdminDashboard/AddArtist";
 import Artist from "./Pages/Artist/Artist";
+import { useState } from "react";
 function App() {
+  const [search, setSearch] = useState('');
+  const handleSearch = (e) => {
+    e.preventDefault();
+    const searchValue = e.target.search.value;
+    setSearch(searchValue);
+  }
   return (
     <>
       <Routes>
@@ -43,11 +50,11 @@ function App() {
         <Route path="/purchase/:id" element={<Layout><RequireAuth><Purchase /></RequireAuth></Layout>}></Route>
         <Route path="/payment" element={<Layout><RequireAuth><Payment /></RequireAuth></Layout>}></Route>
         <Route path="/dashboard" element={
-          <DashboardLayout children={<RequireAuth><UserDashboard /></RequireAuth>} />
+          <DashboardLayout children={<RequireAuth><UserDashboard handleSearch={handleSearch} /></RequireAuth>} />
         }>
           <Route>
-            <Route index element={<DashboardLayout children={<Explore />} />}></Route>
-            <Route path="explore" element={<DashboardLayout children={<Explore />} />}></Route>
+            <Route index element={<DashboardLayout children={<Explore search={search} />} />}></Route>
+            <Route path="explore" element={<DashboardLayout children={<Explore></Explore>} />}></Route>
             <Route path="videos" element={<DashboardLayout children={<Videos />} />}></Route>
             <Route path="video/:id" element={<DashboardLayout children={<Video />} />}></Route>
             <Route path="your-libary" element={<DashboardLayout children={<YourLibary />} />}></Route>
