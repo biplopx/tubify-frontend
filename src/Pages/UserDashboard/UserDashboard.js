@@ -35,6 +35,11 @@ const UserDashboard = () => {
   const logout = () => {
     signOut(auth);
   };
+  const handleSearch = (e) => {
+    e.preventDefault();
+    const search = e.target.value;
+    console.log(search);
+  }
 
 
   return (
@@ -64,8 +69,9 @@ const UserDashboard = () => {
           </div>
           {/* Mobile Menu End */}
           {/* Search */}
-          <div>
-            <input className="shadow bg-[#000221] border rounded w-full py-2 px-3 text-white text-sm leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Search song, movies, videos" />
+          <div >
+            <input onChange={handleSearch} name='search' className="shadow bg-[#000221] border rounded w-full py-2 px-3 text-white text-sm leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Search song, movies, videos" />
+            
           </div>
           {/* My Account */}
           <div className="relative inline-block text-left">
