@@ -3,12 +3,12 @@ import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import Loading from "../../components/Loading/Loading";
 import "/node_modules/video-react/dist/video-react.css";
-import { Player } from "video-react";
+import { BigPlayButton, ControlBar, ForwardControl, PlaybackRateMenuButton, Player, ReplayControl } from "video-react";
 
 const Video = () => {
   const { id } = useParams();
   const { isLoading, data: video } = useQuery(["video"], () =>
-    fetch(`http://localhost:5000/video/${id}`,{
+    fetch(`http://localhost:5000/video/${id}`, {
       method: 'GET',
       headers: {
         'content-type': 'application/json',
@@ -21,21 +21,30 @@ const Video = () => {
     return <Loading />;
   }
 
-  const { name, singer, videoSrc, cover } = video;
+  const { title, description, thumbnail, videoSrc } = video;
   console.log(videoSrc);
   return (
-    <div className="singleVideo">
-      <div className="video-container">
+    <div className="w-full">
+      <div className="max-w-[768px] mx-auto">
         <Player
-          fluid={false}
-          height={500}
+          fluid={true}
           autoPlay={true}
-          poster={cover}
-          src='https://youtu.be/JRqAVqd2WuM'
-          className="mx-auto"
-        />
-        <h2 className="ml-60 text-xl mt-3">{name}</h2>
-        <h4 className="ml-60 text-xs">{singer}</h4>
+          poster={thumbnail}
+          src={videoSrc}
+          className="mx-auto">
+          <BigPlayButton position="center" />
+          <ControlBar autoHide={false}>
+            <ReplayControl seconds={5} order={2.1} />
+            <ForwardControl seconds={5} order={3.1} />
+            <PlaybackRateMenuButton rates={[5, 2, 1, 0.5, 0.1]} />
+          </ControlBar>
+        </Player>
+        <div className="my-3">
+          <h2 className="text-2xl font-bold">{title}</h2>
+        </div>
+        <div className="my-3 text-sm">
+          <p>{description}</p>
+        </div>
       </div>
     </div>
   );

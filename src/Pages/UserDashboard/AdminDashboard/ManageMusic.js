@@ -5,7 +5,7 @@ import Song from './Song';
 import EditModal from '../../../components/EditModal/EditModal';
 const ManageMusic = () => {
   const { isLoading, data: songs, refetch } = useQuery(['song'], () =>
-    fetch(`http://localhost:5000/song/all-song`,{
+    fetch(`http://localhost:5000/song/all-song`, {
       method: 'GET',
       headers: {
         'content-type': 'application/json',
@@ -20,7 +20,12 @@ const ManageMusic = () => {
   const [singleSong, setSingleSong] = useState(false);
 
   const editModal = (id) => {
-    fetch(`http://localhost:5000/song/single-song/${id}`)
+    fetch(`http://localhost:5000/song/single-song/${id}`, {
+      headers: {
+        'content-type': 'application/json',
+        'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+      }
+    })
       .then(res => res.json())
       .then(data => {
         setSingleSong(data)

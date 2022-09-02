@@ -6,6 +6,7 @@ import MusicCard from '../../components/MusicCard/MusicCard';
 import auth from '../../firebase.init';
 import UsePlayer from '../../Hooks/UsePlayer';
 import useSingleUser from '../../Hooks/useSingleUser';
+import swal from 'sweetalert';
 
 const LikedSongs = () => {
   const [user, loading] = useAuthState(auth);
@@ -16,9 +17,22 @@ const LikedSongs = () => {
   if (loading) {
     return <Loading></Loading>
   }
+
   const handlePlayMusic = (clickedMusic) => {
-    setClickedMusic(clickedMusic);
-    setToggle(true)
+    if (clickedMusic.musicType === 'paid') {
+      if (singleUser.payment === true) {
+        setClickedMusic(clickedMusic);
+        setToggle(true)
+      }
+      else {
+        swal('Please upgrade to primeum')
+      }
+    }
+    else {
+      setClickedMusic(clickedMusic);
+      setToggle(true)
+    }
+
   }
 
   return (

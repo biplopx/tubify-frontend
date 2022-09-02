@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import Layout from './Layouts/Layout';
 import Home from "./Pages/Home/Home";
@@ -11,13 +12,11 @@ import RequireAuth from "./Pages/RequireAuth/RequireAuth";
 import YourLibary from "./Pages/YourLibary/YourLibary";
 import Explore from "./Pages/Explore/Explore";
 import MyProfile from "./Pages/MyAccount/MyProfile";
-import CreatePlaylist from "./Pages/CreatePlaylist/CreatePlaylist";
 import AllUsers from "./Pages/UserDashboard/AdminDashboard/AllUsers";
 import ContactUs from "./Pages/ContactUs/ContactUs";
 import RequireAdmin from "./Pages/RequireAdmin/RequireAdmin";
 import AddMusic from "./Pages/UserDashboard/AdminDashboard/AddMusic";
 import 'react-jinke-music-player/assets/index.css'
-
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
 import ManageMusic from "./Pages/UserDashboard/AdminDashboard/ManageMusic";
@@ -31,7 +30,9 @@ import AddVideo from "./Pages/UserDashboard/AdminDashboard/AddVideo";
 import Video from "./Pages/Video/Video";
 import AddArtist from "./Pages/UserDashboard/AdminDashboard/AddArtist";
 import Artist from "./Pages/Artist/Artist";
-import { useState } from "react";
+import AlbumPage from "./Pages/AlbumPage/AlbumPage";
+import YourPlaylists from "./Pages/YourLibary/YourPlaylists";
+
 function App() {
   const [search, setSearch] = useState('');
   const handleSearch = (e) => {
@@ -58,11 +59,12 @@ function App() {
             <Route path="videos" element={<DashboardLayout children={<Videos />} />}></Route>
             <Route path="video/:id" element={<DashboardLayout children={<Video />} />}></Route>
             <Route path="your-libary" element={<DashboardLayout children={<YourLibary />} />}></Route>
-            <Route path="create-playlist" element={<DashboardLayout children={<CreatePlaylist />} />}></Route>
             <Route path="my-profile" element={<DashboardLayout children={<MyProfile />} />}></Route>
             <Route path="all-songs" element={<DashboardLayout children={<AllSongs />} />}></Route>
             <Route path="liked-songs" element={<DashboardLayout children={<LikedSongs />} />}></Route>
+            <Route path="your-playlists" element={<DashboardLayout children={<YourPlaylists />} />}></Route>
             <Route path="artist" element={<DashboardLayout children={<Artist />} />}></Route>
+            <Route path="album/:albumId" element={<DashboardLayout children={<AlbumPage />} />}></Route>
             {/* Admin Routes */}
 
             <Route path="all-users" element={<DashboardLayout children={<RequireAdmin><AllUsers /></RequireAdmin>} />}></Route>

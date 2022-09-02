@@ -3,29 +3,27 @@ import { useQuery } from '@tanstack/react-query';
 import Loading from '../../components/Loading/Loading';
 import MusicCard from '../../components/MusicCard/MusicCard';
 import UsePlayer from '../../Hooks/UsePlayer';
-import { Link } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
+import swal from 'sweetalert';
 import { useEffect } from 'react';
 const AllSongs = () => {
   const [toggle, setToggle] = useState(false)
   const [clickedMusic, setClickedMusic] = useState({});
   const [singleUser, setSingleUser] = useState({});
   const { isLoading, data: musics, } = useQuery(['song'], () =>
-    fetch(`http://localhost:5000/song/all-song`,{
+    fetch(`http://localhost:5000/song/all-song`, {
       headers: {
         'content-type': 'application/json',
         'authorization': `Bearer ${localStorage.getItem('accessToken')}`
-    }
-    }
-    ).then(res => res.json())
+      }
+    }).then(res => res.json())
   )
 
   const [user, loading] = useAuthState(auth);
 
   const fetchSingleUser = () => {
-    fetch(`http://localhost:5000/user/single-user/${user?.email}`,{
-      method: 'GET',
+    fetch(`http://localhost:5000/user/single-user/${user?.email}`, {
       headers: {
         'content-type': 'application/json',
         'authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -48,10 +46,22 @@ const AllSongs = () => {
 
 
   const handlePlayMusic = (clickedMusic) => {
-    setClickedMusic(clickedMusic);
-    setToggle(true)
-  }
+    console.log(clickedMusic)
+    if (clickedMusic.musicType === 'paid') {
+      if (singleUser.payment === true) {
+        setClickedMusic(clickedMusic);
+        setToggle(true)
+      }
+      else {
+        swal('Please upgrade to primeum')
+      }
+    }
+    else {
+      setClickedMusic(clickedMusic);
+      setToggle(true)
+    }
 
+  }
   return (
     <>
       <section className='pb-5'>

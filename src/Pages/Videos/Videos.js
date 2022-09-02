@@ -12,7 +12,7 @@ const Videos = () => {
   const [singleUser, singleUserRefetch] = useSingleUser(user?.email);
 
   const { isLoading, data: videos } = useQuery(["videos"], () =>
-    fetch("http://localhost:5000/video/all-video",{
+    fetch("http://localhost:5000/video/all-video", {
       method: 'GET',
       headers: {
         'content-type': 'application/json',
@@ -34,7 +34,7 @@ const Videos = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 justify-between">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 justify-between">
           {videos?.slice(0, 8).map((video) => (
             <VideoCard
               key={video._id}

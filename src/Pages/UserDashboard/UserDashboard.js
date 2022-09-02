@@ -5,17 +5,17 @@ import { Link, Outlet } from 'react-router-dom';
 import Loading from '../../components/Loading/Loading';
 import auth from '../../firebase.init';
 import useAdmin from '../../Hooks/UseAdmin';
-const UserDashboard = ({handleSearch}) => {
-  
+import useOutSideMenu from '../../Hooks/useOutSideMenu';
+const UserDashboard = ({ handleSearch }) => {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isMyAccountMenuOpen, setMyAccountMenu] = useState(false);
   const [user, loading] = useAuthState(auth);
   const [admin, adminLoading] = useAdmin(user);
+  const [refMenu] = useOutSideMenu(isMobileMenuOpen, setMobileMenuOpen);
   const menuItems = <>
     <li className='flex items-center py-3'><i className="ri-home-line text-xl mr-3"></i> <Link to="/dashboard">Explore</Link></li>
     <li className='flex items-center py-3'><i className="ri-video-line text-xl mr-3"></i> <Link to="/dashboard/videos">Videos</Link></li>
     <li className='flex items-center py-3'><i className="ri-folder-music-line text-xl mr-3"></i> <Link to="/dashboard/your-libary">Your Libary</Link></li>
-    <li className='flex items-center py-3'><i className="ri-add-box-fill text-xl mr-3"></i> <Link to="/dashboard/create-playlist">Create Playlist</Link></li>
     <li className='flex items-center py-3'><i className="ri-folder-music-line text-xl mr-3"></i> <Link to="/dashboard/artist">artist</Link></li>
     {/* Admin Route */}
     {admin && <>
@@ -59,7 +59,7 @@ const UserDashboard = ({handleSearch}) => {
           <div onClick={() => { setMobileMenuOpen(!isMobileMenuOpen) }} className='lg:hidden flex items-center'>
             <i className={isMobileMenuOpen ? "ri-close-line text-xl mr-3" : "ri-menu-line text-xl mr-3"}></i>
           </div>
-          <div className={`z-[100000] transition duration-500 w-60 bg-[#0D0F2C] p-3 absolute left-0 top-20 rounded-md ${isMobileMenuOpen ? 'opacity-100' : "opacity-0 pointer-events-none"}`}>
+          <div ref={refMenu} className={`z-[100000] transition duration-500 w-60 bg-[#0D0F2C] p-3 absolute left-0 top-20 rounded-md ${isMobileMenuOpen ? 'opacity-100' : "opacity-0 pointer-events-none"}`}>
             <ul>
               {menuItems}
             </ul>
@@ -68,10 +68,10 @@ const UserDashboard = ({handleSearch}) => {
           {/* Search */}
           <div >
             <form className='flex' onSubmit={handleSearch}>
-            <input  name='search' className="shadow bg-[#000221] border rounded w-full py-2 px-3 text-white text-sm leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Search song, movies, videos" />
-            <input className=' p-2 ml-1 cursor-pointer hover: bg-sky-400 font-semibold text-sm bg-sky-500 text-white rounded-md shadow-sm opacity-100 mt-5 lg:mt-0 md:mt-0' type="submit" value="search" />
+              <input name='search' className="shadow bg-[#000221] border rounded w-full py-2 px-3 text-white text-sm leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Search song, movies, videos" />
+              <input className=' p-2 ml-1 cursor-pointer hover:bg-sky-400 font-semibold text-sm bg-sky-500 text-white rounded-md shadow-sm opacity-100 mt-5 lg:mt-0 md:mt-0' type="submit" value="search" />
             </form>
-            
+
           </div>
           {/* My Account */}
           <div className="relative inline-block text-left">
