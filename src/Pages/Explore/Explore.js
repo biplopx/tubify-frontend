@@ -19,7 +19,7 @@ const Explore = ({ search }) => {
 
   // recent song
   const { isLoading, data: musics, } = useQuery(['song'], () =>
-    fetch(`http://localhost:5000/song/all-song`, {
+    fetch(`https://tubifybd.herokuapp.com/song/all-song`, {
       headers: {
         'content-type': 'application/json',
         'authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -30,7 +30,7 @@ const Explore = ({ search }) => {
 
   // Load paid song
   const { paidSongLoading, data: paidSongs } = useQuery(['paidSong'], () =>
-    fetch(`http://localhost:5000/song/paid-songs`, {
+    fetch(`https://tubifybd.herokuapp.com/song/paid-songs`, {
       headers: {
         'content-type': 'application/json',
         'authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -41,7 +41,7 @@ const Explore = ({ search }) => {
 
   //  Recent Album
   const { albumLoading, data: albums, } = useQuery(['albums'], () =>
-    fetch(`http://localhost:5000/albums`, {
+    fetch(`https://tubifybd.herokuapp.com/albums`, {
       headers: {
         'content-type': 'application/json',
         'authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -71,63 +71,77 @@ const Explore = ({ search }) => {
   }
 
 
+
   return (
     <>
       <section>
-        <div className='flex justify-between items-center mb-4'>
-          {search.length > 1 ? <h2 className='text-xl font-semibold'>Not found</h2> : <h2 className='text-xl font-semibold'>Recently Added</h2>}
-          <p className='text-normal'><Link to="/dashboard/all-songs">View All</Link></p>
-        </div>
-
         <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-7 gap-4 justify-between'>
 
-          {search === '' ? musics?.slice(0, 8).map(music => <MusicCard
-            key={music._id}
-            music={music}
-            handlePlayMusic={handlePlayMusic}
-            singleUser={singleUser}
-            fetchSingleUser={singleUserRefetch}
-          ></MusicCard>) : searchSong?.slice(0, 8).map(music => <MusicCard
-            key={music._id}
-            music={music}
-            handlePlayMusic={handlePlayMusic}
-            singleUser={singleUser}
-            fetchSingleUser={singleUserRefetch}
-          ></MusicCard>)
-
-          }
-        </div>
-      </section>
-      <section className='my-4'>
-        <div className='flex justify-between items-center mb-4'>
-          <h2 className='text-xl font-semibold'>Recent Albums</h2>
-          <p className='text-normal'><Link to="/dashboard/all-songs">View All</Link></p>
-        </div>
-
-        <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-8 gap-4 justify-between'>
           {
-            albums?.map(album => <AlbumCard key={album._id} album={album} />)
-          }
-        </div>
-      </section>
-      <section>
-        <div className='flex justify-between items-center mb-4'>
-          <h2 className='text-xl font-semibold'>Paid Songs</h2>
-          <p className='text-normal'><Link to="/dashboard/all-songs">View All</Link></p>
-        </div>
 
-        <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-8 gap-4 justify-between'>
-          {
-            paidSongs?.slice(0, 8).map(music => <MusicCard
+            searchSong?.slice(0, 8).map(music => <MusicCard
               key={music._id}
               music={music}
               handlePlayMusic={handlePlayMusic}
               singleUser={singleUser}
               fetchSingleUser={singleUserRefetch}
             ></MusicCard>)
+
           }
         </div>
       </section>
+      {
+        !search && <>
+          <section>
+            <div className='flex justify-between items-center mb-4'>
+              <h2 className='text-xl font-semibold'>Recently Added</h2>
+              <p className='text-normal'><Link to="/dashboard/all-songs">View All</Link></p>
+            </div>
+
+            <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-7 gap-4 justify-between'>
+
+              {musics?.slice(0, 8).map(music => <MusicCard
+                key={music._id}
+                music={music}
+                handlePlayMusic={handlePlayMusic}
+                singleUser={singleUser}
+                fetchSingleUser={singleUserRefetch}
+              ></MusicCard>)
+              }
+            </div>
+          </section>
+          <section className='my-4'>
+            <div className='flex justify-between items-center mb-4'>
+              <h2 className='text-xl font-semibold'>Recent Albums</h2>
+              <p className='text-normal'><Link to="/dashboard/all-songs">View All</Link></p>
+            </div>
+
+            <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-8 gap-4 justify-between'>
+              {
+                albums?.map(album => <AlbumCard key={album._id} album={album} />)
+              }
+            </div>
+          </section>
+          <section>
+            <div className='flex justify-between items-center mb-4'>
+              <h2 className='text-xl font-semibold'>Paid Songs</h2>
+              <p className='text-normal'><Link to="/dashboard/all-songs">View All</Link></p>
+            </div>
+
+            <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-8 gap-4 justify-between'>
+              {
+                paidSongs?.slice(0, 8).map(music => <MusicCard
+                  key={music._id}
+                  music={music}
+                  handlePlayMusic={handlePlayMusic}
+                  singleUser={singleUser}
+                  fetchSingleUser={singleUserRefetch}
+                ></MusicCard>)
+              }
+            </div>
+          </section>
+        </>
+      }
       <UsePlayer toggle={toggle} musics={musics} clickedMusic={clickedMusic} ></UsePlayer>
     </>
   );

@@ -12,7 +12,7 @@ const Videos = () => {
   const [singleUser, singleUserRefetch] = useSingleUser(user?.email);
 
   const { isLoading, data: videos } = useQuery(["videos"], () =>
-    fetch("http://localhost:5000/video/all-video", {
+    fetch("https://tubifybd.herokuapp.com/video/all-videos", {
       method: 'GET',
       headers: {
         'content-type': 'application/json',
@@ -35,7 +35,7 @@ const Videos = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 justify-between">
-          {videos?.slice(0, 8).map((video) => (
+          {videos?.map((video) => (
             <VideoCard
               key={video._id}
               video={video}

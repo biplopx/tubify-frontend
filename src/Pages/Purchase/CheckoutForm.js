@@ -12,9 +12,9 @@ const CheckoutFrom = ({ data }) => {
   const [clientSecret, setClientSecret] = useState("");
   const stripe = useStripe();
   const elements = useElements();
-  const navigate= useNavigate()
+  const navigate = useNavigate()
   useEffect(() => {
-    fetch("http://localhost:5000/payment/create-payment-intent", {
+    fetch("https://tubifybd.herokuapp.com/payment/create-payment-intent", {
       method: "POST",
       headers: {
         'authorization': `Barer ${localStorage.getItem('accessToken')}`,
@@ -83,7 +83,7 @@ const CheckoutFrom = ({ data }) => {
           price: price,
         };
         if (paymentIntent.id) {
-          fetch(`http://localhost:5000/payment/plan-booked/${userEmail}`, {
+          fetch(`https://tubifybd.herokuapp.com/payment/plan-booked/${userEmail}`, {
             method: 'PUT',
             headers: {
               'authorization': `Barer ${localStorage.getItem('accessToken')}`,

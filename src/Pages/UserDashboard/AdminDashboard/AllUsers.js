@@ -4,7 +4,7 @@ import UserRow from './UserRow';
 const AllUsers = () => {
   const [users, setUsers] = useState([]);
   const fetchUsers = () => {
-    fetch(`http://localhost:5000/user/all-users`,{
+    fetch(`https://tubifybd.herokuapp.com/user/all-users`, {
       method: 'GET',
       headers: { 'content-type': 'application/json', 'authorization': `Bearer ${localStorage.getItem('accessToken')}` }
     })

@@ -13,7 +13,7 @@ import swal from 'sweetalert';
 const AlbumPage = () => {
   const { albumId } = useParams();
   const { isLoading, data: album, } = useQuery(['album'], () =>
-    fetch(`http://localhost:5000/albums/single-album/${albumId}`, {
+    fetch(`https://tubifybd.herokuapp.com/albums/single-album/${albumId}`, {
       headers: {
         'content-type': 'application/json',
         'authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -24,8 +24,6 @@ const AlbumPage = () => {
   const [clickedMusic, setClickedMusic] = useState({});
   const [user, loading] = useAuthState(auth);
   const [singleUser] = useSingleUser(user?.email);
-
-  console.log(singleUser)
 
   // Loading
   if (isLoading || loading) {
@@ -38,7 +36,6 @@ const AlbumPage = () => {
 
   // Hnadle Song Play
   const handlePlayMusic = (clickedMusic) => {
-    console.log(clickedMusic)
     if (clickedMusic.musicType === 'paid') {
       if (singleUser.payment === true) {
         setClickedMusic(clickedMusic);

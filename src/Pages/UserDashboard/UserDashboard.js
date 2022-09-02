@@ -25,6 +25,7 @@ const UserDashboard = ({ handleSearch }) => {
       <li className='flex items-center py-3'><i className="ri-add-fill text-xl mr-3"></i> <Link to="/dashboard/add-music">Add Music</Link></li>
       <li className='flex items-center py-3'><i className="ri-add-fill text-xl mr-3"></i> <Link to="/dashboard/add-video">Add Video</Link></li>
       <li className='flex items-center py-3'><i className="ri-folder-music-line text-xl mr-3"></i> <Link to="/dashboard/manage-music">Manage Music</Link></li>
+      <li className='flex items-center py-3'><i className="ri-folder-music-line text-xl mr-3"></i> <Link to="/dashboard/manage-video">Manage Video</Link></li>
       <li className='flex items-center py-3'><i className="ri-folder-music-line text-xl mr-3"></i> <Link to="/dashboard/add-artist">add-artist</Link></li>
     </>}
   </>
@@ -36,8 +37,6 @@ const UserDashboard = ({ handleSearch }) => {
   const logout = () => {
     signOut(auth);
   };
-
-
 
   return (
     <section className='flex h-screen'>
@@ -83,7 +82,6 @@ const UserDashboard = ({ handleSearch }) => {
                 </svg>
               </button>
             </div>
-
             <div className={`origin-top-right absolute right-0 z-10 mt-5 w-56 rounded-md shadow-lg secondary-bg ring-1 ring-black ring-opacity-5 divide-y divide-gray-100 focus:outline-none ${isMyAccountMenuOpen ? "block" : "hidden"}`} role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabIndex="-1">
               <div className="py-1 z-10" role="none">
                 <Link to="/dashboard/my-profile" className="text--white block px-4 py-2 text-sm" role="menuitem" tabIndex="-1" id="menu-item-0">Profile</Link>
