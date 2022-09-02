@@ -11,7 +11,6 @@ import RequireAuth from "./Pages/RequireAuth/RequireAuth";
 import YourLibary from "./Pages/YourLibary/YourLibary";
 import Explore from "./Pages/Explore/Explore";
 import MyProfile from "./Pages/MyAccount/MyProfile";
-import CreatePlaylist from "./Pages/CreatePlaylist/CreatePlaylist";
 import AllUsers from "./Pages/UserDashboard/AdminDashboard/AllUsers";
 import ContactUs from "./Pages/ContactUs/ContactUs";
 import RequireAdmin from "./Pages/RequireAdmin/RequireAdmin";
@@ -53,7 +52,6 @@ function App() {
             <Route path="videos" element={<DashboardLayout children={<Videos />} />}></Route>
             <Route path="video/:id" element={<DashboardLayout children={<Video />} />}></Route>
             <Route path="your-libary" element={<DashboardLayout children={<YourLibary />} />}></Route>
-            <Route path="create-playlist" element={<DashboardLayout children={<CreatePlaylist />} />}></Route>
             <Route path="my-profile" element={<DashboardLayout children={<MyProfile />} />}></Route>
             <Route path="all-songs" element={<DashboardLayout children={<AllSongs />} />}></Route>
             <Route path="liked-songs" element={<DashboardLayout children={<LikedSongs />} />}></Route>
