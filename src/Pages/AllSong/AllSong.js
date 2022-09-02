@@ -12,7 +12,7 @@ const AllSongs = () => {
   const [clickedMusic, setClickedMusic] = useState({});
   const [singleUser, setSingleUser] = useState({});
   const { isLoading, data: musics, } = useQuery(['song'], () =>
-    fetch(`http://localhost:5000/song/all-song`, {
+    fetch(`https://tubifybd.herokuapp.com/song/all-song`, {
       headers: {
         'content-type': 'application/json',
         'authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -23,7 +23,7 @@ const AllSongs = () => {
   const [user, loading] = useAuthState(auth);
 
   const fetchSingleUser = () => {
-    fetch(`http://localhost:5000/user/single-user/${user?.email}`, {
+    fetch(`https://tubifybd.herokuapp.com/user/single-user/${user?.email}`, {
       headers: {
         'content-type': 'application/json',
         'authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -46,7 +46,6 @@ const AllSongs = () => {
 
 
   const handlePlayMusic = (clickedMusic) => {
-    console.log(clickedMusic)
     if (clickedMusic.musicType === 'paid') {
       if (singleUser.payment === true) {
         setClickedMusic(clickedMusic);

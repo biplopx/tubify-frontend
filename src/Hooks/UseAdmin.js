@@ -6,7 +6,7 @@ const useAdmin = (user) => {
     useEffect(() => {
         const email = user?.email;
         if (user) {
-            fetch(`http://localhost:5000/user/admin/${email}`, {
+            fetch(`https://tubifybd.herokuapp.com/user/admin/${email}`, {
                 method: 'GET',
                 headers: {
                     'content-type': 'application/json',

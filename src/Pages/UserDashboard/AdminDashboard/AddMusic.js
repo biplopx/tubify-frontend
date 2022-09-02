@@ -9,7 +9,7 @@ const AddMusic = () => {
   });
 
   const onSubmit = (data) => {
-    fetch('http://localhost:5000/song/add-song', {
+    fetch('https://tubifybd.herokuapp.com/song/add-song', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
@@ -19,7 +19,6 @@ const AddMusic = () => {
     })
       .then(res => res.json())
       .then(result => {
-        console.log(result)
         if (result.status === "successful") {
           toast.success('Song successfully added');
           // reset()

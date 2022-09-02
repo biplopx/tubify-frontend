@@ -8,7 +8,7 @@ import { BigPlayButton, ControlBar, ForwardControl, PlaybackRateMenuButton, Play
 const Video = () => {
   const { id } = useParams();
   const { isLoading, data: video } = useQuery(["video"], () =>
-    fetch(`http://localhost:5000/video/${id}`, {
+    fetch(`https://tubifybd.herokuapp.com/video/single-video/${id}`, {
       method: 'GET',
       headers: {
         'content-type': 'application/json',
@@ -22,7 +22,7 @@ const Video = () => {
   }
 
   const { title, description, thumbnail, videoSrc } = video;
-  console.log(videoSrc);
+
   return (
     <div className="w-full">
       <div className="max-w-[768px] mx-auto">

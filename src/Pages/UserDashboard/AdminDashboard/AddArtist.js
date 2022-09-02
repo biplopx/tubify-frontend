@@ -18,7 +18,6 @@ const AddArtist = () => {
     });
 
     const onSubmit = (data) => {
-        console.log(data)
         const imageCover = data.cover[0];
         const imgProfile = data.profile[0]
         if (imageCover && imgProfile) {
@@ -43,7 +42,7 @@ const AddArtist = () => {
                                 artistProfile: profile,
                                 artistCover: cover,
                             };
-                            fetch("http://localhost:5000/artist/new-artist", {
+                            fetch("https://tubifybd.herokuapp.com/artist/new-artist", {
                                 method: "POST",
                                 headers: {
                                     "content-type": "application/json",
@@ -53,7 +52,6 @@ const AddArtist = () => {
                             })
                                 .then((res) => res.json())
                                 .then((result) => {
-                                    console.log(result);
                                     if (result.message === 'artist created') {
                                         setArtistLoading(false);
                                         toast.success("successfully added artist");

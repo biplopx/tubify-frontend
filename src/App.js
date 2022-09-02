@@ -32,6 +32,8 @@ import AddArtist from "./Pages/UserDashboard/AdminDashboard/AddArtist";
 import Artist from "./Pages/Artist/Artist";
 import AlbumPage from "./Pages/AlbumPage/AlbumPage";
 import YourPlaylists from "./Pages/YourLibary/YourPlaylists";
+import ManageVideo from "./Pages/UserDashboard/AdminDashboard/ManageVideo";
+import EditVideo from "./Pages/UserDashboard/AdminDashboard/EditVideo";
 
 function App() {
   const [search, setSearch] = useState('');
@@ -72,6 +74,8 @@ function App() {
             <Route path="add-video" element={<DashboardLayout children={<RequireAdmin><AddVideo /></RequireAdmin>} />}></Route>
             <Route path="manage-music" element={<DashboardLayout children={<RequireAdmin><ManageMusic /></RequireAdmin>} />}></Route>
             <Route path="add-artist" element={<DashboardLayout children={<RequireAdmin><AddArtist /></RequireAdmin>} />}></Route>
+            <Route path="manage-video" element={<DashboardLayout children={<RequireAdmin><ManageVideo /></RequireAdmin>} />}></Route>
+            <Route path="edit-video/:id" element={<DashboardLayout children={<RequireAdmin><EditVideo /></RequireAdmin>} />}></Route>
 
           </Route>
         </Route>
