@@ -5,11 +5,13 @@ import { Link, Outlet } from 'react-router-dom';
 import Loading from '../../components/Loading/Loading';
 import auth from '../../firebase.init';
 import useAdmin from '../../Hooks/UseAdmin';
+import useOutSideMenu from '../../Hooks/useOutSideMenu';
 const UserDashboard = () => {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isMyAccountMenuOpen, setMyAccountMenu] = useState(false);
   const [user, loading] = useAuthState(auth);
   const [admin, adminLoading] = useAdmin(user);
+  const [refMenu] = useOutSideMenu(isMobileMenuOpen, setMobileMenuOpen);
   const menuItems = <>
     <li className='flex items-center py-3'><i className="ri-home-line text-xl mr-3"></i> <Link to="/dashboard">Explore</Link></li>
     <li className='flex items-center py-3'><i className="ri-video-line text-xl mr-3"></i> <Link to="/dashboard/videos">Videos</Link></li>
@@ -56,7 +58,7 @@ const UserDashboard = () => {
           <div onClick={() => { setMobileMenuOpen(!isMobileMenuOpen) }} className='lg:hidden flex items-center'>
             <i className={isMobileMenuOpen ? "ri-close-line text-xl mr-3" : "ri-menu-line text-xl mr-3"}></i>
           </div>
-          <div className={`z-[100000] transition duration-500 w-60 bg-[#0D0F2C] p-3 absolute left-0 top-20 rounded-md ${isMobileMenuOpen ? 'opacity-100' : "opacity-0 pointer-events-none"}`}>
+          <div ref={refMenu} className={`z-[100000] transition duration-500 w-60 bg-[#0D0F2C] p-3 absolute left-0 top-20 rounded-md ${isMobileMenuOpen ? 'opacity-100' : "opacity-0 pointer-events-none"}`}>
             <ul>
               {menuItems}
             </ul>

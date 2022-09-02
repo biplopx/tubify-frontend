@@ -159,7 +159,7 @@ const AddMusic = () => {
             </label>
           </div>
 
-          {/* Lanaguage Input */}
+          {/* Music Type Input */}
           <div className='mb-4'>
             <label className='block mb-4'>Music Type</label>
             <div className='flex gap-x-5'>
