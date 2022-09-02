@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import Layout from './Layouts/Layout';
 import Home from "./Pages/Home/Home";
@@ -11,13 +12,11 @@ import RequireAuth from "./Pages/RequireAuth/RequireAuth";
 import YourLibary from "./Pages/YourLibary/YourLibary";
 import Explore from "./Pages/Explore/Explore";
 import MyProfile from "./Pages/MyAccount/MyProfile";
-import CreatePlaylist from "./Pages/CreatePlaylist/CreatePlaylist";
 import AllUsers from "./Pages/UserDashboard/AdminDashboard/AllUsers";
 import ContactUs from "./Pages/ContactUs/ContactUs";
 import RequireAdmin from "./Pages/RequireAdmin/RequireAdmin";
 import AddMusic from "./Pages/UserDashboard/AdminDashboard/AddMusic";
 import 'react-jinke-music-player/assets/index.css'
-
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
 import ManageMusic from "./Pages/UserDashboard/AdminDashboard/ManageMusic";
@@ -26,8 +25,23 @@ import Purchase from "./Pages/Purchase/Purchase";
 import Payment from "./Pages/Purchase/Payment";
 import AllSongs from "./Pages/AllSong/AllSong";
 import LikedSongs from "./Pages/YourLibary/LikedSongs";
+import Videos from "./Pages/Videos/Videos";
+import AddVideo from "./Pages/UserDashboard/AdminDashboard/AddVideo";
+import Video from "./Pages/Video/Video";
+import AddArtist from "./Pages/UserDashboard/AdminDashboard/AddArtist";
+import Artist from "./Pages/Artist/Artist";
+import AlbumPage from "./Pages/AlbumPage/AlbumPage";
+import YourPlaylists from "./Pages/YourLibary/YourPlaylists";
+import ManageVideo from "./Pages/UserDashboard/AdminDashboard/ManageVideo";
+import EditVideo from "./Pages/UserDashboard/AdminDashboard/EditVideo";
 
 function App() {
+  const [search, setSearch] = useState('');
+  const handleSearch = (e) => {
+    e.preventDefault();
+    const searchValue = e.target.search.value;
+    setSearch(searchValue);
+  }
   return (
     <>
       <Routes>
@@ -39,21 +53,29 @@ function App() {
         <Route path="/purchase/:id" element={<Layout><RequireAuth><Purchase /></RequireAuth></Layout>}></Route>
         <Route path="/payment" element={<Layout><RequireAuth><Payment /></RequireAuth></Layout>}></Route>
         <Route path="/dashboard" element={
-          <DashboardLayout children={<RequireAuth><UserDashboard /></RequireAuth>} />
+          <DashboardLayout children={<RequireAuth><UserDashboard handleSearch={handleSearch} /></RequireAuth>} />
         }>
           <Route>
-            <Route index element={<DashboardLayout children={<Explore />} />}></Route>
-            <Route path="explore" element={<DashboardLayout children={<Explore />} />}></Route>
+            <Route index element={<DashboardLayout children={<Explore search={search} />} />}></Route>
+            <Route path="explore" element={<DashboardLayout children={<Explore></Explore>} />}></Route>
+            <Route path="videos" element={<DashboardLayout children={<Videos />} />}></Route>
+            <Route path="video/:id" element={<DashboardLayout children={<Video />} />}></Route>
             <Route path="your-libary" element={<DashboardLayout children={<YourLibary />} />}></Route>
-            <Route path="create-playlist" element={<DashboardLayout children={<CreatePlaylist />} />}></Route>
             <Route path="my-profile" element={<DashboardLayout children={<MyProfile />} />}></Route>
             <Route path="all-songs" element={<DashboardLayout children={<AllSongs />} />}></Route>
             <Route path="liked-songs" element={<DashboardLayout children={<LikedSongs />} />}></Route>
+            <Route path="your-playlists" element={<DashboardLayout children={<YourPlaylists />} />}></Route>
+            <Route path="artist" element={<DashboardLayout children={<Artist />} />}></Route>
+            <Route path="album/:albumId" element={<DashboardLayout children={<AlbumPage />} />}></Route>
             {/* Admin Routes */}
 
             <Route path="all-users" element={<DashboardLayout children={<RequireAdmin><AllUsers /></RequireAdmin>} />}></Route>
             <Route path="add-music" element={<DashboardLayout children={<RequireAdmin><AddMusic /></RequireAdmin>} />}></Route>
+            <Route path="add-video" element={<DashboardLayout children={<RequireAdmin><AddVideo /></RequireAdmin>} />}></Route>
             <Route path="manage-music" element={<DashboardLayout children={<RequireAdmin><ManageMusic /></RequireAdmin>} />}></Route>
+            <Route path="add-artist" element={<DashboardLayout children={<RequireAdmin><AddArtist /></RequireAdmin>} />}></Route>
+            <Route path="manage-video" element={<DashboardLayout children={<RequireAdmin><ManageVideo /></RequireAdmin>} />}></Route>
+            <Route path="edit-video/:id" element={<DashboardLayout children={<RequireAdmin><EditVideo /></RequireAdmin>} />}></Route>
 
           </Route>
         </Route>
