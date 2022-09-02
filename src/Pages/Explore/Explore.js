@@ -7,15 +7,17 @@ import { Link } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import useSingleUser from '../../Hooks/useSingleUser';
-import AlbumCard from '../../components/AlbumCard/AlbumCard';
+import useSearch from '../../Hooks/useSearch';
 import swal from 'sweetalert';
-const Explore = () => {
+import AlbumCard from '../../components/AlbumCard/AlbumCard';
+const Explore = ({ search }) => {
+  const [searchSong] = useSearch({ search });
   const [toggle, setToggle] = useState(false)
   const [clickedMusic, setClickedMusic] = useState({});
   const [user, loading] = useAuthState(auth);
-  const [singleUser, singleUserRefetch] = useSingleUser(user?.email)
+  const [singleUser, singleUserRefetch] = useSingleUser(user?.email);
 
-  // Load recent song
+  // recent song
   const { isLoading, data: musics, } = useQuery(['song'], () =>
     fetch(`http://localhost:5000/song/all-song`, {
       headers: {
@@ -24,7 +26,9 @@ const Explore = () => {
       }
     }).then(res => res.json())
   )
-  // Load recent song
+
+
+  // Load paid song
   const { paidSongLoading, data: paidSongs } = useQuery(['paidSong'], () =>
     fetch(`http://localhost:5000/song/paid-songs`, {
       headers: {
@@ -66,23 +70,31 @@ const Explore = () => {
 
   }
 
+
   return (
     <>
       <section>
         <div className='flex justify-between items-center mb-4'>
-          <h2 className='text-xl font-semibold'>Recently Added</h2>
+          {search.length > 1 ? <h2 className='text-xl font-semibold'>Not found</h2> : <h2 className='text-xl font-semibold'>Recently Added</h2>}
           <p className='text-normal'><Link to="/dashboard/all-songs">View All</Link></p>
         </div>
 
-        <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-8 gap-4 justify-between'>
-          {
-            musics?.slice(0, 8).map(music => <MusicCard
-              key={music._id}
-              music={music}
-              handlePlayMusic={handlePlayMusic}
-              singleUser={singleUser}
-              fetchSingleUser={singleUserRefetch}
-            ></MusicCard>)
+        <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-7 gap-4 justify-between'>
+
+          {search === '' ? musics?.slice(0, 8).map(music => <MusicCard
+            key={music._id}
+            music={music}
+            handlePlayMusic={handlePlayMusic}
+            singleUser={singleUser}
+            fetchSingleUser={singleUserRefetch}
+          ></MusicCard>) : searchSong?.slice(0, 8).map(music => <MusicCard
+            key={music._id}
+            music={music}
+            handlePlayMusic={handlePlayMusic}
+            singleUser={singleUser}
+            fetchSingleUser={singleUserRefetch}
+          ></MusicCard>)
+
           }
         </div>
       </section>

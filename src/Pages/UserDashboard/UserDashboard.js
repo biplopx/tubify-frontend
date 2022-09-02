@@ -6,7 +6,7 @@ import Loading from '../../components/Loading/Loading';
 import auth from '../../firebase.init';
 import useAdmin from '../../Hooks/UseAdmin';
 import useOutSideMenu from '../../Hooks/useOutSideMenu';
-const UserDashboard = () => {
+const UserDashboard = ({ handleSearch }) => {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isMyAccountMenuOpen, setMyAccountMenu] = useState(false);
   const [user, loading] = useAuthState(auth);
@@ -38,6 +38,7 @@ const UserDashboard = () => {
   };
 
 
+
   return (
     <section className='flex h-screen'>
       {/* Sidebar */}
@@ -65,8 +66,12 @@ const UserDashboard = () => {
           </div>
           {/* Mobile Menu End */}
           {/* Search */}
-          <div>
-            <input className="shadow bg-[#000221] border rounded w-full py-2 px-3 text-white text-sm leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Search song, movies, videos" />
+          <div >
+            <form className='flex' onSubmit={handleSearch}>
+              <input name='search' className="shadow bg-[#000221] border rounded w-full py-2 px-3 text-white text-sm leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Search song, movies, videos" />
+              <input className=' p-2 ml-1 cursor-pointer hover:bg-sky-400 font-semibold text-sm bg-sky-500 text-white rounded-md shadow-sm opacity-100 mt-5 lg:mt-0 md:mt-0' type="submit" value="search" />
+            </form>
+
           </div>
           {/* My Account */}
           <div className="relative inline-block text-left">

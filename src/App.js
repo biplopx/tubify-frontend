@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import Layout from './Layouts/Layout';
 import Home from "./Pages/Home/Home";
@@ -16,7 +17,6 @@ import ContactUs from "./Pages/ContactUs/ContactUs";
 import RequireAdmin from "./Pages/RequireAdmin/RequireAdmin";
 import AddMusic from "./Pages/UserDashboard/AdminDashboard/AddMusic";
 import 'react-jinke-music-player/assets/index.css'
-
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
 import ManageMusic from "./Pages/UserDashboard/AdminDashboard/ManageMusic";
@@ -32,7 +32,14 @@ import AddArtist from "./Pages/UserDashboard/AdminDashboard/AddArtist";
 import Artist from "./Pages/Artist/Artist";
 import AlbumPage from "./Pages/AlbumPage/AlbumPage";
 import YourPlaylists from "./Pages/YourLibary/YourPlaylists";
+
 function App() {
+  const [search, setSearch] = useState('');
+  const handleSearch = (e) => {
+    e.preventDefault();
+    const searchValue = e.target.search.value;
+    setSearch(searchValue);
+  }
   return (
     <>
       <Routes>
@@ -44,11 +51,11 @@ function App() {
         <Route path="/purchase/:id" element={<Layout><RequireAuth><Purchase /></RequireAuth></Layout>}></Route>
         <Route path="/payment" element={<Layout><RequireAuth><Payment /></RequireAuth></Layout>}></Route>
         <Route path="/dashboard" element={
-          <DashboardLayout children={<RequireAuth><UserDashboard /></RequireAuth>} />
+          <DashboardLayout children={<RequireAuth><UserDashboard handleSearch={handleSearch} /></RequireAuth>} />
         }>
           <Route>
-            <Route index element={<DashboardLayout children={<Explore />} />}></Route>
-            <Route path="explore" element={<DashboardLayout children={<Explore />} />}></Route>
+            <Route index element={<DashboardLayout children={<Explore search={search} />} />}></Route>
+            <Route path="explore" element={<DashboardLayout children={<Explore></Explore>} />}></Route>
             <Route path="videos" element={<DashboardLayout children={<Videos />} />}></Route>
             <Route path="video/:id" element={<DashboardLayout children={<Video />} />}></Route>
             <Route path="your-libary" element={<DashboardLayout children={<YourLibary />} />}></Route>
